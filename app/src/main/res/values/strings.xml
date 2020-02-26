@@ -1,0 +1,76 @@
+<resources>
+
+    <string name="app_name">Cari Pura</string>
+
+    <!--    activity_my_temple_list-->
+    <string name="my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+
+    <!--    activity_sign_up-->
+    <string name="sign_up_text_already_have_an_account">Sudah punya akun?</string>
+    <string name="sign_up_text_login_here">Login disini</string>
+    <string name="sign_up_edit_phone_number">Nomor Telepon</string>
+    <string name="sign_up_edit_full_name">Nama Lengkap</string>
+    <string name="sign_up_edit_password">Kata Sandi</string>
+    <string name="sign_up_edit_email">Email</string>
+    <string name="sign_up_button">Daftar</string>
+
+    <!--    activity_temple_detail-->
+    <string name="temple_detail_button_route">Rute</string>
+    <string name="temple_detail_button_call">Hubungi</string>
+    <string name="temple_detail_text_dash">-</string>
+    <string name="temple_detail_text_temple_feast_day">Piodalan Pura</string>
+    <string name="temple_detail_text_pray_together">Persembahyangan Bersama</string>
+    <string name="temple_detail_text_full_moon">Purnama</string>
+    <string name="temple_detail_text_dead_moon">Tilem</string>
+    <string name="temple_detail_text_galungan">Galungan</string>
+    <string name="temple_detail_text_kuningan">Kuningan</string>
+    <string name="temple_detail_text_saraswati">Saraswati</string>
+    <string name="temple_detail_text_pagerwesi">Pagerwesi</string>
+    <string name="temple_detail_text_siwaratri">Siwaratri</string>
+    <string name="temple_detail_text_melukat">Melukat</string>
+    <string name="temple_detail_text_others">Lain-Lain</string>
+    <string name="temple_detail_text_prayer_needs_seller">Penjual perlengkapan persembahyangan</string>
+    <string name="temple_detail_text_food_drink_seller"><![CDATA[Penjual makanan & minuman]]></string>
+
+    <!--    fragment_account-->
+    <string name="account_edit_email">Email</string>
+    <string name="account_edit_password">Kata Sandi</string>
+    <string name="account_button_login">Login</string>
+    <string name="account_text_any_account">Tidak punya akun?</string>
+    <string name="account_text_sign_up_here">Daftar disini</string>
+
+    <!--    fragment_find_temple-->
+    <string name="find_temple_button_find_the_closest_temple">Cari Pura Terdekat</string>
+
+    <!--    fragment_logged_in-->
+    <string name="logged_in_text_input_edit_text_full_name">Nama Lengkap</string>
+    <string name="logged_in_text_input_edit_text_phone_number">Nomor Telepon</string>
+    <string name="logged_in_text_input_edit_text_email">Email</string>
+    <string name="logged_in_button_my_temple_list">Daftar Pura Saya</string>
+    <string name="logged_in_text_account">Akun</string>
+
+    <!--    fragment_temple_list-->
+    <string name="temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+
+    <!--    item_temple_list-->
+    <string name="item_temple_list_text_dash">-</string>
+    <string name="item_temple_list_text_pray_together">Persembahyangan Bersama</string>
+    <string name="item_temple_list_text_full_moon">Purnama</string>
+    <string name="item_temple_list_text_dead_moon">Tilem</string>
+
+    <!--    menu_main_bottom_navigation-->
+    <string name="menu_main_bottom_navigation_find_temple">Cari Pura</string>
+    <string name="menu_main_bottom_navigation_temple_list">Daftar Pura</string>
+    <string name="menu_main_bottom_navigation_account">Akun</string>
+
+    <!--    menu_logged_in-->
+    <string name="menu_logged_in_logout">Logout</string>
+    <string name="dialog_logout_title">Logout?</string>
+    <string name="dialog_logout_message">Anda yakin ingin logout?</string>
+    <string name="dialog_logout_positive_button">LOGOUT</string>
+    <string name="dialog_logout_negative_button">BATAL</string>
+    <string name="label_temple_detail">Detail Pura</string>
+    <string name="label_my_temple_list">Daftar Pura Saya</string>
+    <string name="label_sign_up">Daftar</string>
+
+</resources>

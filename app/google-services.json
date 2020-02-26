@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "316369989134",
+    "firebase_url": "https://caripura.firebaseio.com",
+    "project_id": "caripura",
+    "storage_bucket": "caripura.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316369989134:android:d037a47193a4da1339965f",
+        "android_client_info": {
+          "package_name": "com.panjikrisnayasa.caripura"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316369989134-vsha18n2mt1l5nu5jmbeshss47vdmbr3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.panjikrisnayasa.caripura",
+            "certificate_hash": "711c44dad34237f0c2a999b556aebf56aba54e68"
+          }
+        },
+        {
+          "client_id": "316369989134-kld4qn0rgdoh09kp347lo8o30vr62eg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOgBqcj8oXwMoJuusBeQnMz5f_YRNBEds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316369989134-kld4qn0rgdoh09kp347lo8o30vr62eg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

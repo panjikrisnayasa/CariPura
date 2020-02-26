@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#C7C7C7</color>
+    <color name="colorAccent">#6200EA</color>
+    <color name="colorLayoutBackground">#F3F5F9</color>
+    <color name="colorUnpressedItem">#9F9F9F</color>
+    <color name="colorTextHint">#808080</color>
+    <color name="colorTextBlack">#424242</color>
+    <color name="colorEditTextBackground">#E6E6E6</color>
+    <color name="colorNegativeButton">#A7A7A7</color>
+</resources>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.panjikrisnayasa.caripura">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -13,40 +15,65 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".TempleDetailActivity"
+            android:name=".view.MyTempleDetailActivity"
             android:label="@string/label_temple_detail"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".MyTempleListActivity"
-            android:label="@string/label_my_temple_list"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".SignUpActivity"
-            android:label="@string/label_sign_up"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.EditTempleSecondActivity"
+            android:label="@string/label_edit_temple"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.EditTempleFirstActivity"
+            android:label="@string/label_edit_temple"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.AddTempleSecondActivity"
+            android:label="@string/label_add_temple"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.AddTempleFirstActivity"
+            android:label="@string/label_add_temple"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.TempleDetailActivity"
+            android:label="@string/label_temple_detail"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.MyTempleListActivity"
+            android:label="@string/label_my_temple_list"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.SignUpActivity"
+            android:label="@string/label_sign_up"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".view.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDmL95lQBtliz5QwfEV_gcaiWoEhFuNc84" />
-
     </application>
 
 </manifest>

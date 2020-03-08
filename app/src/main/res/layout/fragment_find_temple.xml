@@ -7,7 +7,7 @@
     android:background="@color/colorLayoutBackground"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".FindTempleFragment">
+    tools:context=".view.FindTempleFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,20 +22,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/edit_find_temple"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:drawableStart="@drawable/ic_search_black_24dp"
-                android:drawablePadding="8dp"
-                android:focusableInTouchMode="false"
-                android:hint="@string/app_name"
-                android:importantForAutofill="no"
-                android:inputType="none" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_search_dark_grey_16dp"
+                    tools:ignore="ContentDescription" />
+
+                <EditText
+                    android:id="@+id/edit_find_temple"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/find_temple_edit_find_temple"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords" />
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -56,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@string/find_temple_button_find_the_closest_temple"
+            android:text="@string/find_temple_button_find_the_nearest_temple"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

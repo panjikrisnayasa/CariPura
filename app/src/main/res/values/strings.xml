@@ -1,25 +1,25 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name">Cari Pura</string>
 
     <!--    activity_my_temple_list-->
-    <string name="my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+    <string name="my_temple_list_text_no_data">There are no registered temples yet</string>
 
     <!--    activity_sign_up-->
-    <string name="sign_up_text_already_have_an_account">Sudah punya akun?</string>
-    <string name="sign_up_text_login_here">Login disini</string>
-    <string name="sign_up_edit_phone_number">Nomor Telepon</string>
-    <string name="sign_up_edit_full_name">Nama Lengkap</string>
-    <string name="sign_up_edit_password">Kata Sandi</string>
+    <string name="sign_up_text_already_have_an_account">Already have an account?</string>
+    <string name="sign_up_text_login_here">Login here</string>
+    <string name="sign_up_edit_phone_number">Phone number</string>
+    <string name="sign_up_edit_full_name">Full name</string>
+    <string name="sign_up_edit_password">Password</string>
     <string name="sign_up_edit_email">Email</string>
-    <string name="sign_up_button">Daftar</string>
+    <string name="sign_up_button">Sign Up</string>
 
     <!--    activity_temple_detail-->
-    <string name="temple_detail_button_route">Rute</string>
-    <string name="temple_detail_button_call">Hubungi</string>
+    <string name="temple_detail_button_route">Route</string>
+    <string name="temple_detail_button_call">Call</string>
     <string name="temple_detail_text_dash">-</string>
-    <string name="temple_detail_text_temple_feast_day">Piodalan Pura</string>
-    <string name="temple_detail_text_pray_together">Persembahyangan Bersama</string>
+    <string name="temple_detail_text_temple_feast_day">Temple Feast Day</string>
+    <string name="temple_detail_text_together_prayer">Together Prayer</string>
     <string name="temple_detail_text_full_moon">Purnama</string>
     <string name="temple_detail_text_dead_moon">Tilem</string>
     <string name="temple_detail_text_galungan">Galungan</string>
@@ -28,49 +28,89 @@
     <string name="temple_detail_text_pagerwesi">Pagerwesi</string>
     <string name="temple_detail_text_siwaratri">Siwaratri</string>
     <string name="temple_detail_text_melukat">Melukat</string>
-    <string name="temple_detail_text_others">Lain-Lain</string>
-    <string name="temple_detail_text_prayer_needs_seller">Penjual perlengkapan persembahyangan</string>
-    <string name="temple_detail_text_food_drink_seller"><![CDATA[Penjual makanan & minuman]]></string>
+    <string name="temple_detail_text_others">Others</string>
+    <string name="temple_detail_text_prayer_needs_seller">Prayer needs shop</string>
+    <string name="temple_detail_text_food_drink_seller"><![CDATA[Food & drink shop]]></string>
 
     <!--    fragment_account-->
     <string name="account_edit_email">Email</string>
-    <string name="account_edit_password">Kata Sandi</string>
+    <string name="account_edit_password">Password</string>
     <string name="account_button_login">Login</string>
-    <string name="account_text_any_account">Tidak punya akun?</string>
-    <string name="account_text_sign_up_here">Daftar disini</string>
+    <string name="account_text_any_account">Don\'t have an account?</string>
+    <string name="account_text_sign_up_here">Sign up here</string>
 
     <!--    fragment_find_temple-->
-    <string name="find_temple_button_find_the_closest_temple">Cari Pura Terdekat</string>
+    <string name="find_temple_button_find_the_nearest_temple">Find Nearest Temple</string>
+    <string name="find_temple_edit_find_temple">Find temple</string>
 
     <!--    fragment_logged_in-->
-    <string name="logged_in_text_input_edit_text_full_name">Nama Lengkap</string>
-    <string name="logged_in_text_input_edit_text_phone_number">Nomor Telepon</string>
+    <string name="logged_in_text_input_edit_text_full_name">Full Name</string>
+    <string name="logged_in_text_input_edit_text_phone_number">Phone Number</string>
     <string name="logged_in_text_input_edit_text_email">Email</string>
-    <string name="logged_in_button_my_temple_list">Daftar Pura Saya</string>
-    <string name="logged_in_text_account">Akun</string>
+    <string name="logged_in_button_my_temple_list">My Temple List</string>
+    <string name="logged_in_text_account">Account</string>
 
     <!--    fragment_temple_list-->
-    <string name="temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+    <string name="temple_list_text_no_data">There are no registered temples yet</string>
+    <string name="temple_list_edit_find_temple">Find temple</string>
 
     <!--    item_temple_list-->
     <string name="item_temple_list_text_dash">-</string>
-    <string name="item_temple_list_text_pray_together">Persembahyangan Bersama</string>
+    <string name="item_temple_list_text_together_prayer">Together Prayer</string>
     <string name="item_temple_list_text_full_moon">Purnama</string>
     <string name="item_temple_list_text_dead_moon">Tilem</string>
 
     <!--    menu_main_bottom_navigation-->
-    <string name="menu_main_bottom_navigation_find_temple">Cari Pura</string>
-    <string name="menu_main_bottom_navigation_temple_list">Daftar Pura</string>
-    <string name="menu_main_bottom_navigation_account">Akun</string>
+    <string name="menu_main_bottom_navigation_find_temple">Find Temple</string>
+    <string name="menu_main_bottom_navigation_temple_list">Temple List</string>
+    <string name="menu_main_bottom_navigation_account">Account</string>
 
-    <!--    menu_logged_in-->
-    <string name="menu_logged_in_logout">Logout</string>
-    <string name="dialog_logout_title">Logout?</string>
-    <string name="dialog_logout_message">Anda yakin ingin logout?</string>
-    <string name="dialog_logout_positive_button">LOGOUT</string>
-    <string name="dialog_logout_negative_button">BATAL</string>
-    <string name="label_temple_detail">Detail Pura</string>
-    <string name="label_my_temple_list">Daftar Pura Saya</string>
-    <string name="label_sign_up">Daftar</string>
+    <!--    menu_logged_in_options-->
+    <string name="menu_logged_in_options_logout">Logout</string>
+    <string name="dialog_logout_title">Logout</string>
+    <string name="dialog_logout_message">Are you sure you want to logout?</string>
+    <string name="dialog_logout_positive_button" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="dialog_logout_negative_button">LOGOUT</string>
+
+    <!--    menu_my_temple_detail_options-->
+    <string name="menu_my_temple_detail_options_edit">Edit</string>
+    <string name="menu_my_temple_detail_options_delete">Delete</string>
+
+    <!--    add_temple_first_activity-->
+    <string name="add_temple_text_time">00:00</string>
+    <string name="add_temple_text_dash">-</string>
+    <string name="add_temple_edit_temple_name">Temple name</string>
+    <string name="add_temple_edit_temple_address">Temple address</string>
+    <string name="add_temple_edit_village_office">Village office</string>
+    <string name="add_temple_edit_sub_district">Sub district</string>
+    <string name="add_temple_button_pick_location">Pick Location</string>
+    <string name="add_temple_caretaker_name">Caretaker name</string>
+    <string name="add_temple_edit_caretaker_phone_number">Caretaker phone number</string>
+    <string name="add_temple_temple_feast_day">Temple feast day</string>
+    <string name="add_temple_button_add_photo">Add Photo</string>
+    <string name="add_temple_button_next">Next</string>
+
+    <!--    add_temple_second_activity-->
+    <string name="add_temple_text_together_prayer">Together Prayer</string>
+    <string name="add_temple_checkbox_full_moon">Purnama</string>
+    <string name="add_temple_checkbox_dead_moon">Tilem</string>
+    <string name="add_temple_checkbox_galungan">Galungan</string>
+    <string name="add_temple_checkbox_kuningan">Kuningan</string>
+    <string name="add_temple_checkbox_saraswati">Saraswati</string>
+    <string name="add_temple_checkbox_pagerwesi">Pagerwesi</string>
+    <string name="add_temple_checkbox_siwaratri">Siwaratri</string>
+    <string name="add_temple_checkbox_melukat">Melukat</string>
+    <string name="add_temple_edit_melukat_information">Information about melukat schedule</string>
+    <string name="add_temple_checkbox_prayer_needs_seller">Prayer needs shop</string>
+    <string name="add_temple_checkbox_food_drink_seller"><![CDATA[Food & drink shop]]></string>
+    <string name="add_temple_text_others">Others</string>
+    <string name="add_temple_button_add">Add</string>
+
+    <!--    label-->
+    <string name="label_my_temple_list">My Temple List</string>
+    <string name="label_sign_up">Sign Up</string>
+    <string name="label_temple_detail">Temple Detail</string>
+    <string name="label_edit_temple">Edit Temple</string>
+    <string name="label_add_temple">Add Temple</string>
 
 </resources>

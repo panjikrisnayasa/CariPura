@@ -43,8 +43,8 @@ class LoggedInFragment : Fragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.menu_logged_in_options_logout -> {
                 val tContext = context
                 if (tContext != null) {

@@ -18,8 +18,8 @@
     <string name="temple_detail_button_route">Route</string>
     <string name="temple_detail_button_call">Call</string>
     <string name="temple_detail_text_dash">-</string>
-    <string name="temple_detail_text_temple_feast_day">Temple Feast Day</string>
-    <string name="temple_detail_text_together_prayer">Together Prayer</string>
+    <string name="temple_detail_text_temple_feast_day">Temple feast day</string>
+    <string name="temple_detail_text_together_prayer">Together prayer</string>
     <string name="temple_detail_text_full_moon">Purnama</string>
     <string name="temple_detail_text_dead_moon">Tilem</string>
     <string name="temple_detail_text_galungan">Galungan</string>
@@ -56,7 +56,7 @@
 
     <!--    item_temple_list-->
     <string name="item_temple_list_text_dash">-</string>
-    <string name="item_temple_list_text_together_prayer">Together Prayer</string>
+    <string name="item_temple_list_text_together_prayer">Together prayer</string>
     <string name="item_temple_list_text_full_moon">Purnama</string>
     <string name="item_temple_list_text_dead_moon">Tilem</string>
 
@@ -91,7 +91,7 @@
     <string name="add_temple_button_next">Next</string>
 
     <!--    add_temple_second_activity-->
-    <string name="add_temple_text_together_prayer">Together Prayer</string>
+    <string name="add_temple_text_together_prayer">Together prayer</string>
     <string name="add_temple_checkbox_full_moon">Purnama</string>
     <string name="add_temple_checkbox_dead_moon">Tilem</string>
     <string name="add_temple_checkbox_galungan">Galungan</string>

@@ -19,8 +19,8 @@
     <string name="temple_detail_button_route">Rute</string>
     <string name="temple_detail_button_call">Hubungi</string>
     <string name="temple_detail_text_dash">-</string>
-    <string name="temple_detail_text_temple_feast_day">Piodalan Pura</string>
-    <string name="temple_detail_text_together_prayer">Persembahyangan Bersama</string>
+    <string name="temple_detail_text_temple_feast_day">Piodalan pura</string>
+    <string name="temple_detail_text_together_prayer">Persembahyangan bersama</string>
     <string name="temple_detail_text_full_moon">Purnama</string>
     <string name="temple_detail_text_dead_moon">Tilem</string>
     <string name="temple_detail_text_galungan">Galungan</string>
@@ -29,7 +29,7 @@
     <string name="temple_detail_text_pagerwesi">Pagerwesi</string>
     <string name="temple_detail_text_siwaratri">Siwaratri</string>
     <string name="temple_detail_text_melukat">Melukat</string>
-    <string name="temple_detail_text_others">Lain-Lain</string>
+    <string name="temple_detail_text_others">Lain-lain</string>
     <string name="temple_detail_text_prayer_needs_seller">Penjual perlengkapan persembahyangan</string>
     <string name="temple_detail_text_food_drink_seller"><![CDATA[Penjual makanan & minuman]]></string>
 
@@ -57,7 +57,7 @@
 
     <!--    item_temple_list-->
     <string name="item_temple_list_text_dash">-</string>
-    <string name="item_temple_list_text_together_prayer">Persembahyangan Bersama</string>
+    <string name="item_temple_list_text_together_prayer">Persembahyangan bersama</string>
     <string name="item_temple_list_text_full_moon">Purnama</string>
     <string name="item_temple_list_text_dead_moon">Tilem</string>
 
@@ -92,7 +92,7 @@
     <string name="add_temple_button_next">Lanjut</string>
 
     <!--    add_temple_second_activity-->
-    <string name="add_temple_text_together_prayer">Persembahyangan Bersama</string>
+    <string name="add_temple_text_together_prayer">Persembahyangan bersama</string>
     <string name="add_temple_checkbox_full_moon">Purnama</string>
     <string name="add_temple_checkbox_dead_moon">Tilem</string>
     <string name="add_temple_checkbox_galungan">Galungan</string>

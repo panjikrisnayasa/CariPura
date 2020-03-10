@@ -3,7 +3,6 @@ package com.panjikrisnayasa.caripura.view
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,9 +33,8 @@ class TempleListFragment : Fragment() {
         override fun onChildChanged(p0: DataSnapshot, p1: String?) {}
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-            val temple = p0.getValue(Temple::class.java)
+            val temple = p0.child("data").getValue(Temple::class.java)
             if (temple != null) {
-                Log.d("morgan", "test ${temple.name}")
                 mTempleList.add(temple)
                 showRecyclerView()
             }
@@ -58,7 +56,7 @@ class TempleListFragment : Fragment() {
 
         val tActivity = this.activity
 
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("pura")
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
         mDatabaseReference.addChildEventListener(mChildEventListener)
 
         if (tActivity != null)

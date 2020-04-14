@@ -12,6 +12,8 @@ class AddTempleSecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit_temple_second)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

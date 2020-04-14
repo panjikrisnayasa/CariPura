@@ -9,4 +9,8 @@
     <color name="colorTextBlack">#424242</color>
     <color name="colorEditTextBackground">#E6E6E6</color>
     <color name="colorNegativeButton">#A7A7A7</color>
+    <color name="colorBlueRoute">#4285F4</color>
+    <color name="colorGreen">#6EBC79</color>
+    <color name="colorRed">#FF776F</color>
+    <color name="colorOrange">#FFAE00</color>
 </resources>

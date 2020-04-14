@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
-    tools:context=".view.MyTempleListActivity">
+    tools:context=".view.AdminMyTempleListActivity">
 
     <ProgressBar
-        android:id="@+id/progress_my_temple_list"
+        android:id="@+id/progress_admin_my_temple_list"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_my_temple_list"
+        android:id="@+id/recycler_admin_my_temple_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -30,17 +30,17 @@
         tools:listitem="@layout/item_temple_list" />
 
     <TextView
-        android:id="@+id/text_my_temple_list_no_data"
+        android:id="@+id/text_admin_my_temple_list_no_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/my_temple_list_text_no_data"
+        android:text="@string/admin_my_temple_list_text_no_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button_my_temple_list_add_temple"
+        android:id="@+id/floating_action_button_admin_my_temple_list_add_temple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

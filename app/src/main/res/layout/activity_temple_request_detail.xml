@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.TempleRequestDetailAddActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLayoutBackground">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carousel_temple_detail_photo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:fillColor="#FFFFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:pageColor="#00000000"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp" />
+
+        <LinearLayout
+            android:id="@+id/linear_temple_detail_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/carousel_temple_detail_photo">
+
+            <TextView
+                android:id="@+id/text_temple_detail_temple_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_bold"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="20sp"
+                tools:text="Pura Marga Sirsha" />
+
+            <TextView
+                android:id="@+id/text_temple_detail_temple_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_location_on_purple_14dp"
+                android:drawablePadding="12dp"
+                android:lineSpacingMultiplier="1.5"
+                tools:text="Jl. Pisang Candi Barat No. 100 - 101, Pisang Candi, Sukun" />
+
+            <TextView
+                android:id="@+id/text_temple_detail_temple_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_itinerary_purple_14dp"
+                android:drawablePadding="8dp"
+                tools:text="1 km" />
+
+            <TextView
+                android:id="@+id/text_temple_detail_temple_caretaker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_account_box_purple_14dp"
+                android:drawablePadding="8dp"
+                tools:text="Pak Wayan" />
+
+            <TextView
+                android:id="@+id/text_temple_detail_caretaker_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_call_purple_14dp"
+                android:drawablePadding="8dp"
+                tools:text="08214531xxxx" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_rounded">
+
+                    <Button
+                        android:id="@+id/button_temple_detail_route"
+                        style="@style/ButtonTheme.Small.Primary"
+                        android:layout_width="wrap_content"
+                        android:drawableStart="@drawable/ic_directions_white_14dp"
+                        android:text="@string/temple_detail_button_route" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_rounded_stroke">
+
+                    <Button
+                        android:id="@+id/button_temple_detail_call"
+                        style="@style/ButtonTheme.Small.Secondary"
+                        android:layout_width="wrap_content"
+                        android:drawableStart="@drawable/ic_call_purple_14dp"
+                        android:drawablePadding="16dp"
+                        android:text="@string/temple_detail_button_call" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_temple_detail_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_temple_detail_layout_1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temple_detail_text_temple_feast_day"
+                android:textColor="@color/colorNegativeButton" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_temple_detail_temple_feast_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="Purnama Kapat" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_feast_day_start"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_feast_day_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/temple_detail_text_together_prayer"
+                android:textColor="@color/colorNegativeButton" />
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_full_moon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_full_moon"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_full_moon_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_full_moon_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_dead_moon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_dead_moon"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_dead_moon_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_dead_moon_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_galungan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_galungan"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_galungan_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_galungan_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_kuningan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_kuningan"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_kuningan_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_kuningan_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_saraswati"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_saraswati"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_saraswati_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_saraswati_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_pagerwesi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_pagerwesi"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_pagerwesi_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_pagerwesi_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_siwaratri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_siwaratri"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_siwaratri_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="18.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_siwaratri_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="21.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_temple_detail_melukat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/temple_detail_text_melukat"
+                    android:textColor="@color/colorTextBlack" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_melukat_prayer_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="07.00" />
+
+                <TextView
+                    android:id="@+id/text_temple_detail_melukat_prayer_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorTextBlack"
+                    tools:text="10.00" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_temple_detail_melukat_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_info_outline_grey_12dp"
+                android:drawablePadding="8dp"
+                android:lineSpacingMultiplier="1.5"
+                android:textColor="@color/colorPrimaryDark"
+                tools:text="Melukat dilaksanakan sebulan sekali pada hari Minggu pekan pertama bulan tersebut" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_temple_detail_layout_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_temple_detail_layout_2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temple_detail_text_others"
+                android:textColor="@color/colorNegativeButton" />
+
+            <TextView
+                android:id="@+id/text_temple_detail_prayer_needs_seller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_check_box_purple_14dp"
+                android:drawablePadding="8dp"
+                android:text="@string/temple_detail_text_prayer_needs_seller"
+                android:textColor="@color/colorTextBlack" />
+
+            <TextView
+                android:id="@+id/text_temple_detail_text_food_drink_seller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_check_box_purple_14dp"
+                android:drawablePadding="8dp"
+                android:text="@string/temple_detail_text_food_drink_seller"
+                android:textColor="@color/colorTextBlack" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_temple_request_detail_layout_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_temple_detail_layout_3">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edit_temple_request_detail_contributor_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/temple_request_detail_edit_contributor_note"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/temple_request_detail_text_requested_by"
+                android:textColor="@color/colorNegativeButton"
+                tools:ignore="TooManyViews" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorAccent"
+                tools:text="I Putu Panji Krisnayasa" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_temple_request_detail_layout_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_temple_request_detail_layout_4">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/temple_request_detail_note_for_contributor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/temple_request_detail_edit_note_for_contributor"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_temple_request_detail_layout_5">
+
+            <Button
+                android:id="@+id/button_temple_request_detail_reject"
+                style="@style/ButtonTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorRed"
+                android:text="@string/temple_request_detail_button_reject" />
+
+            <Button
+                android:id="@+id/button_temple_request_detail_accept"
+                style="@style/ButtonTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorGreen"
+                android:text="@string/temple_request_detail_button_accept" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

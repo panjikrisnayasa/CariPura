@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_temple_request_list_history"
+        android:icon="@drawable/ic_history_dark_grey_20dp"
+        android:title="@string/menu_temple_request_list_temple_request_history"
+        app:showAsAction="ifRoom" />
+
+</menu>

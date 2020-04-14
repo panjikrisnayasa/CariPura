@@ -2,11 +2,11 @@
 
     <string name="app_name">Cari Pura</string>
 
-    <!--    activity_my_temple_list-->
-    <string name="my_temple_list_text_no_data">There are no registered temples yet</string>
+    <!--    activity_admin_my_temple_list-->
+    <string name="admin_my_temple_list_text_no_data">There are no registered temples yet</string>
 
     <!--    activity_sign_up-->
-    <string name="sign_up_text_already_have_an_account">Already have an account?</string>
+    <string name="sign_up_text_already_have_a_contributor_account">Already have a contributor account?</string>
     <string name="sign_up_text_login_here">Login here</string>
     <string name="sign_up_edit_phone_number">Phone number</string>
     <string name="sign_up_edit_full_name">Full name</string>
@@ -32,12 +32,55 @@
     <string name="temple_detail_text_prayer_needs_seller">Prayer needs shop</string>
     <string name="temple_detail_text_food_drink_seller"><![CDATA[Food & drink shop]]></string>
 
-    <!--    fragment_account-->
-    <string name="account_edit_email">Email</string>
-    <string name="account_edit_password">Password</string>
-    <string name="account_button_login">Login</string>
-    <string name="account_text_any_account">Don\'t have an account?</string>
-    <string name="account_text_sign_up_here">Sign up here</string>
+    <!--    activity_add_edit_temple_first-->
+    <string name="add_edit_temple_first_text_time">00:00</string>
+    <string name="add_edit_temple_first_text_dash">-</string>
+    <string name="add_edit_temple_first_edit_temple_name">Temple name</string>
+    <string name="add_edit_temple_first_edit_temple_address">Temple address</string>
+    <string name="add_edit_temple_first_edit_village_office">Village office</string>
+    <string name="add_edit_temple_first_edit_sub_district">Sub district</string>
+    <string name="add_edit_temple_first_button_pick_location">Pick Location</string>
+    <string name="add_edit_temple_first_caretaker_name">Caretaker name</string>
+    <string name="add_edit_temple_first_edit_caretaker_phone_number">Caretaker phone number</string>
+    <string name="add_edit_temple_first_temple_feast_day">Temple feast day</string>
+    <string name="add_edit_temple_first_button_add_photo">Add Photo</string>
+    <string name="add_edit_temple_first_button_next">Next</string>
+
+    <!--    activity_add_edit_temple_second-->
+    <string name="add_edit_temple_second_text_together_prayer">Together prayer</string>
+    <string name="add_edit_temple_second_checkbox_full_moon">Purnama</string>
+    <string name="add_edit_temple_second_checkbox_dead_moon">Tilem</string>
+    <string name="add_edit_temple_second_checkbox_galungan">Galungan</string>
+    <string name="add_edit_temple_second_checkbox_kuningan">Kuningan</string>
+    <string name="add_edit_temple_second_checkbox_saraswati">Saraswati</string>
+    <string name="add_edit_temple_second_checkbox_pagerwesi">Pagerwesi</string>
+    <string name="add_edit_temple_second_checkbox_siwaratri">Siwaratri</string>
+    <string name="add_edit_temple_second_checkbox_melukat">Melukat</string>
+    <string name="add_edit_temple_second_edit_melukat_information">Information about melukat schedule</string>
+    <string name="add_edit_temple_second_checkbox_prayer_needs_seller">Prayer needs shop</string>
+    <string name="add_edit_temple_second_checkbox_food_drink_seller"><![CDATA[Food & drink shop]]></string>
+    <string name="add_edit_temple_second_text_others">Others</string>
+    <string name="add_edit_temple_second_button_add">Add</string>
+
+    <!--    activity_requested_by-->
+    <string name="requested_by_text_input_edit_text_full_name">Full Name</string>
+    <string name="requested_by_text_input_edit_text_phone_number">Phone Number</string>
+    <string name="requested_by_text_input_edit_text_email">Email</string>
+
+
+    <!--    activity_temple_request_detail-->
+    <string name="temple_request_detail_edit_contributor_note">Contributor note</string>
+    <string name="temple_request_detail_text_requested_by">Requested by</string>
+    <string name="temple_request_detail_edit_note_for_contributor">Note for contributor</string>
+    <string name="temple_request_detail_button_accept">Accept</string>
+    <string name="temple_request_detail_button_reject">Reject</string>
+
+    <!--    fragment_account_login-->
+    <string name="account_login_edit_email">Email</string>
+    <string name="account_login_edit_password">Password</string>
+    <string name="account_login_button_login">Login</string>
+    <string name="account_login_text_want_to_be_a_contributor">Want to be a contributor?</string>
+    <string name="account_login_text_sign_up_here">Sign up here</string>
 
     <!--    fragment_find_temple-->
     <string name="find_temple_button_find_the_nearest_temple">Find Nearest Temple</string>
@@ -48,11 +91,23 @@
     <string name="logged_in_text_input_edit_text_phone_number">Phone Number</string>
     <string name="logged_in_text_input_edit_text_email">Email</string>
     <string name="logged_in_button_my_temple_list">My Temple List</string>
-    <string name="logged_in_text_account">Account</string>
+
+    <!--    fragment_admin_logged_in-->
+    <string name="admin_logged_in_text_admin">Admin</string>
+    <string name="admin_logged_in_button_temple_request_list">Temple Request List</string>
+
+    <!--    fragment_contributor_logged_in-->
+    <string name="contributor_logged_in_text_contributor">Contributor</string>
 
     <!--    fragment_temple_list-->
     <string name="temple_list_text_no_data">There are no registered temples yet</string>
     <string name="temple_list_edit_find_temple">Find temple</string>
+
+    <!--    fragment_temple_request_list-->
+    <string name="temple_request_list_no_requests">There are no requests yet</string>
+
+    <!--    fragment_temple_request_history-->
+    <string name="temple_request_list_no_histories">There are no histories yet</string>
 
     <!--    item_temple_list-->
     <string name="item_temple_list_text_dash">-</string>
@@ -76,35 +131,13 @@
     <string name="menu_my_temple_detail_options_edit">Edit</string>
     <string name="menu_my_temple_detail_options_delete">Delete</string>
 
-    <!--    add_temple_first_activity-->
-    <string name="add_temple_text_time">00:00</string>
-    <string name="add_temple_text_dash">-</string>
-    <string name="add_temple_edit_temple_name">Temple name</string>
-    <string name="add_temple_edit_temple_address">Temple address</string>
-    <string name="add_temple_edit_village_office">Village office</string>
-    <string name="add_temple_edit_sub_district">Sub district</string>
-    <string name="add_temple_button_pick_location">Pick Location</string>
-    <string name="add_temple_caretaker_name">Caretaker name</string>
-    <string name="add_temple_edit_caretaker_phone_number">Caretaker phone number</string>
-    <string name="add_temple_temple_feast_day">Temple feast day</string>
-    <string name="add_temple_button_add_photo">Add Photo</string>
-    <string name="add_temple_button_next">Next</string>
+    <!--    menu_temple_request_list-->
+    <string name="menu_temple_request_list_temple_request_history">Temple Request History</string>
 
-    <!--    add_temple_second_activity-->
-    <string name="add_temple_text_together_prayer">Together prayer</string>
-    <string name="add_temple_checkbox_full_moon">Purnama</string>
-    <string name="add_temple_checkbox_dead_moon">Tilem</string>
-    <string name="add_temple_checkbox_galungan">Galungan</string>
-    <string name="add_temple_checkbox_kuningan">Kuningan</string>
-    <string name="add_temple_checkbox_saraswati">Saraswati</string>
-    <string name="add_temple_checkbox_pagerwesi">Pagerwesi</string>
-    <string name="add_temple_checkbox_siwaratri">Siwaratri</string>
-    <string name="add_temple_checkbox_melukat">Melukat</string>
-    <string name="add_temple_edit_melukat_information">Information about melukat schedule</string>
-    <string name="add_temple_checkbox_prayer_needs_seller">Prayer needs shop</string>
-    <string name="add_temple_checkbox_food_drink_seller"><![CDATA[Food & drink shop]]></string>
-    <string name="add_temple_text_others">Others</string>
-    <string name="add_temple_button_add">Add</string>
+    <!--    view_pager-->
+    <string name="view_pager_add_temple">Add Temple</string>
+    <string name="view_pager_edit_temple">Edit Temple</string>
+    <string name="view_pager_delete_temple">Delete Temple</string>
 
     <!--    label-->
     <string name="label_my_temple_list">My Temple List</string>
@@ -112,5 +145,17 @@
     <string name="label_temple_detail">Temple Detail</string>
     <string name="label_edit_temple">Edit Temple</string>
     <string name="label_add_temple">Add Temple</string>
+    <string name="label_temple_request_list">Temple Request List</string>
+    <string name="label_temple_request_history">Temple Request History</string>
+    <string name="label_requested_by">Requested By</string>
+
+    <!--    item_label-->
+    <string name="item_label_request_add_temple">Request Add Temple</string>
+    <string name="item_label_request_edit_temple">Request Edit Temple</string>
+    <string name="item_label_request_delete_temple">Request Delete Temple</string>
+    <string name="item_label_accepted">Accepted</string>
+    <string name="item_label_rejected">Rejected</string>
+
+    <string name="google_maps_api_key">AIzaSyDmL95lQBtliz5QwfEV_gcaiWoEhFuNc84</string>
 
 </resources>

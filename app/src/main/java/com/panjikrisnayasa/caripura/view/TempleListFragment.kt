@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.adapter.TempleAdapter
+import com.panjikrisnayasa.caripura.adapter.TempleListAdapter
 import com.panjikrisnayasa.caripura.model.Temple
 import kotlinx.android.synthetic.main.fragment_temple_list.*
 
@@ -73,11 +73,11 @@ class TempleListFragment : Fragment() {
     }
 
     private fun showRecyclerView() {
-        recycler_temple_list.visibility = View.VISIBLE
-        text_temple_list_no_data.visibility = View.GONE
+        recycler_temple_list?.visibility = View.VISIBLE
+        text_temple_list_no_data?.visibility = View.GONE
         val templeAdapter =
-            TempleAdapter(mTempleList)
-        recycler_temple_list.layoutManager = LinearLayoutManager(context)
-        recycler_temple_list.adapter = templeAdapter
+            TempleListAdapter(mTempleList)
+        recycler_temple_list?.layoutManager = LinearLayoutManager(context)
+        recycler_temple_list?.adapter = templeAdapter
     }
 }

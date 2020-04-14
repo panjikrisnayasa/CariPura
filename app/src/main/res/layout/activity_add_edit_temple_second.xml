@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/linear_add_temple_pray_together"
+            android:id="@+id/linear_add_edit_temple_second_pray_together"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -25,15 +25,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_temple_text_together_prayer"
+                android:text="@string/add_edit_temple_second_text_together_prayer"
                 android:textColor="@color/colorNegativeButton" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_full_moon"
+                android:id="@+id/checkbox_add_edit_temple_second_full_moon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/add_temple_checkbox_full_moon" />
+                android:text="@string/add_edit_temple_second_checkbox_full_moon" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,14 +49,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_full_moon_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_full_moon_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -64,16 +64,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_full_moon_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_full_moon_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,11 +83,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_dead_moon"
+                android:id="@+id/checkbox_add_edit_temple_second_dead_moon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_dead_moon" />
+                android:text="@string/add_edit_temple_second_checkbox_dead_moon" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,14 +103,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_dead_moon_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_dead_moon_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -118,16 +118,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_dead_moon_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_dead_moon_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -137,11 +137,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_galungan"
+                android:id="@+id/checkbox_add_edit_temple_second_galungan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_galungan" />
+                android:text="@string/add_edit_temple_second_checkbox_galungan" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -157,14 +157,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_galungan_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_galungan_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -172,16 +172,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_galungan_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_galungan_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -191,11 +191,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_kuningan"
+                android:id="@+id/checkbox_add_edit_temple_second_kuningan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_kuningan" />
+                android:text="@string/add_edit_temple_second_checkbox_kuningan" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -211,14 +211,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_kuningan_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_kuningan_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -226,16 +226,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_kuningan_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_kuningan_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -245,11 +245,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_saraswati"
+                android:id="@+id/checkbox_add_edit_temple_second_saraswati"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_saraswati" />
+                android:text="@string/add_edit_temple_second_checkbox_saraswati" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,14 +265,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_saraswati_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_saraswati_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -280,16 +280,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_saraswati_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_saraswati_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -299,11 +299,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_pagerwesi"
+                android:id="@+id/checkbox_add_edit_temple_second_pagerwesi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_pagerwesi" />
+                android:text="@string/add_edit_temple_second_checkbox_pagerwesi" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -319,14 +319,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_pagerwesi_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_pagerwesi_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -334,16 +334,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_pagerwesi_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_pagerwesi_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -353,11 +353,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_siwaratri"
+                android:id="@+id/checkbox_add_edit_temple_second_siwaratri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_siwaratri" />
+                android:text="@string/add_edit_temple_second_checkbox_siwaratri" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -373,14 +373,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_siwaratri_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_siwaratri_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -388,16 +388,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_siwaratri_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_siwaratri_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -407,11 +407,11 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_melukat"
+                android:id="@+id/checkbox_add_edit_temple_second_melukat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/add_temple_checkbox_melukat" />
+                android:text="@string/add_edit_temple_second_checkbox_melukat" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -427,14 +427,14 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_melukat_prayer_start"
+                    android:id="@+id/text_add_edit_temple_second_melukat_prayer_start"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     style="@style/TimePickerTextTheme.Disabled"
@@ -442,16 +442,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_temple_text_dash" />
+                    android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
-                    android:id="@+id/text_add_temple_melukat_prayer_end"
+                    android:id="@+id/text_add_edit_temple_second_melukat_prayer_end"
                     style="@style/TimePickerTextTheme.Disabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/add_temple_text_time" />
+                    android:text="@string/add_edit_temple_first_text_time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -480,10 +480,10 @@
                     android:layout_marginStart="16dp">
 
                     <EditText
-                        android:id="@+id/edit_add_temple_melukat_information"
+                        android:id="@+id/edit_add_edit_temple_second_melukat_information"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/add_temple_edit_melukat_information"
+                        android:hint="@string/add_edit_temple_second_edit_melukat_information"
                         android:importantForAutofill="no"
                         android:inputType="textCapSentences" />
 
@@ -494,7 +494,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linear_add_temple_others"
+            android:id="@+id/linear_add_edit_temple_second_others"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -502,27 +502,27 @@
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_add_temple_pray_together">
+            app:layout_constraintTop_toBottomOf="@id/linear_add_edit_temple_second_pray_together">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_temple_text_others"
+                android:text="@string/add_edit_temple_second_text_others"
                 android:textColor="@color/colorNegativeButton" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_prayer_needs_seller"
+                android:id="@+id/checkbox_add_edit_temple_second_prayer_needs_seller"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/add_temple_checkbox_prayer_needs_seller" />
+                android:text="@string/add_edit_temple_second_checkbox_prayer_needs_seller" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_add_temple_food_drink_seller"
+                android:id="@+id/checkbox_add_edit_temple_second_food_drink_seller"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/add_temple_checkbox_food_drink_seller" />
+                android:text="@string/add_edit_temple_second_checkbox_food_drink_seller" />
 
         </LinearLayout>
 
@@ -531,15 +531,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_add_temple_others">
+            app:layout_constraintTop_toBottomOf="@id/linear_add_edit_temple_second_others">
 
             <Button
-                android:id="@+id/button_add_temple_add"
+                android:id="@+id/button_add_edit_temple_second_add"
                 style="@style/ButtonTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="@string/add_temple_button_add" />
+                android:text="@string/add_edit_temple_second_button_add" />
 
         </LinearLayout>
 

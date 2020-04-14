@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_main_bottom_navigation_account -> {
-                    replaceFragment(LoggedInFragment())
+                    replaceFragment(AdminLoggedInFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }

@@ -11,14 +11,18 @@
         android:layout_height="wrap_content"
         android:background="@color/colorLayoutBackground">
 
-        <ImageView
-            android:id="@+id/image_temple_detail"
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carousel_temple_detail_photo"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@color/colorAccent"
+            android:layout_height="200dp"
+            app:fillColor="#FFFFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:pageColor="#00000000"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp" />
 
         <LinearLayout
             android:id="@+id/linear_temple_detail_layout_1"
@@ -28,7 +32,7 @@
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_temple_detail">
+            app:layout_constraintTop_toBottomOf="@id/carousel_temple_detail_photo">
 
             <TextView
                 android:id="@+id/text_temple_detail_temple_name"
@@ -146,39 +150,26 @@
                     android:id="@+id/text_temple_detail_temple_feast_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:textColor="@color/colorTextBlack"
                     tools:text="Purnama Kapat" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_feast_day_start"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_feast_day_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -202,39 +193,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_full_moon"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_full_moon_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_full_moon_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -251,39 +229,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_dead_moon"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_dead_moon_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_dead_moon_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -300,39 +265,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_galungan"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_galungan_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_galungan_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -349,39 +301,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_kuningan"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_kuningan_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_kuningan_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -398,39 +337,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_saraswati"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_saraswati_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_saraswati_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -447,39 +373,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_pagerwesi"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_pagerwesi_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_pagerwesi_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -496,39 +409,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_siwaratri"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_siwaratri_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="18.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_siwaratri_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="21.00" />
@@ -545,39 +445,26 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="3"
                     android:text="@string/temple_detail_text_melukat"
                     android:textColor="@color/colorTextBlack" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_schedule_purple_14dp"
-                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_melukat_prayer_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_schedule_purple_14dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="07.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="@string/temple_detail_text_dash"
-                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_melukat_prayer_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                     android:gravity="center"
                     android:textColor="@color/colorTextBlack"
                     tools:text="10.00" />

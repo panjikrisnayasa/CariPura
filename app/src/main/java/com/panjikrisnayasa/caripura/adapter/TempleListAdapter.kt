@@ -12,8 +12,8 @@ import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.TempleDetailActivity
 
-class TempleAdapter(private var mListTemple: ArrayList<Temple>) :
-    RecyclerView.Adapter<TempleAdapter.TempleHolder>() {
+class TempleListAdapter(private var mTempleList: ArrayList<Temple>) :
+    RecyclerView.Adapter<TempleListAdapter.TempleHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempleHolder {
         val view =
@@ -22,11 +22,11 @@ class TempleAdapter(private var mListTemple: ArrayList<Temple>) :
     }
 
     override fun getItemCount(): Int {
-        return mListTemple.size
+        return mTempleList.size
     }
 
     override fun onBindViewHolder(holder: TempleHolder, position: Int) {
-        val temple = mListTemple[position]
+        val temple = mTempleList[position]
 
         holder.mImage.clipToOutline = true
         Glide.with(holder.itemView.context).load(temple.photo).into(holder.mImage)

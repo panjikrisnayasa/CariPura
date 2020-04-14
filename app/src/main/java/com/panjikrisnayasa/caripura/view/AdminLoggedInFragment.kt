@@ -13,21 +13,21 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.panjikrisnayasa.caripura.R
-import kotlinx.android.synthetic.main.fragment_logged_in.*
+import kotlinx.android.synthetic.main.fragment_admin_logged_in.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class LoggedInFragment : Fragment() {
+class AdminLoggedInFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_logged_in, container, false)
+        val view = inflater.inflate(R.layout.fragment_admin_logged_in, container, false)
         val toolbar =
-            view.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_logged_in)
+            view.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_admin_logged_in)
         toolbar.inflateMenu(R.menu.menu_logged_in_options)
         toolbar.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
@@ -37,8 +37,8 @@ class LoggedInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button_logged_in_my_temple_list.setOnClickListener {
-            val intent = Intent(view.context, MyTempleListActivity::class.java)
+        button_admin_logged_in_my_temple_list.setOnClickListener {
+            val intent = Intent(view.context, AdminMyTempleListActivity::class.java)
             startActivity(intent)
         }
     }
@@ -60,9 +60,12 @@ class LoggedInFragment : Fragment() {
                     val alertDialog = alertBuilder.create()
                     alertDialog.show()
                     alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-                        .setTextColor(ContextCompat.getColor(tContext,
-                            R.color.colorNegativeButton
-                        ))
+                        .setTextColor(
+                            ContextCompat.getColor(
+                                tContext,
+                                R.color.colorNegativeButton
+                            )
+                        )
                     val message: TextView = alertDialog.findViewById(android.R.id.message)
                     message.typeface = Typeface.createFromAsset(activity?.assets, "gotham_book.ttf")
                 }

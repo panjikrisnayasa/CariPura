@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".view.AccountFragment">
+    tools:context=".view.AccountLoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/image_account_app_logo"
+            android:id="@+id/image_account_login_app_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -26,40 +26,40 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/text_account_app_name"
+            android:id="@+id/text_account_login_app_name"
             style="@style/TextViewTheme.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_account_app_logo" />
+            app:layout_constraintTop_toBottomOf="@id/image_account_login_app_logo" />
 
         <EditText
-            android:id="@+id/edit_account_email"
+            android:id="@+id/edit_account_login_email"
             style="@style/EditTextTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:drawableStart="@drawable/ic_mail_outline_grey_24dp"
-            android:hint="@string/account_edit_email"
+            android:hint="@string/account_login_edit_email"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_account_app_name" />
+            app:layout_constraintTop_toBottomOf="@id/text_account_login_app_name" />
 
         <EditText
-            android:id="@+id/edit_account_password"
+            android:id="@+id/edit_account_login_password"
             style="@style/EditTextTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_lock_outline_grey_24dp"
-            android:hint="@string/account_edit_password"
+            android:hint="@string/account_login_edit_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_account_email" />
+            app:layout_constraintTop_toBottomOf="@id/edit_account_login_email" />
 
         <Button
             android:id="@+id/button_account_login"
@@ -67,12 +67,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/account_button_login"
+            android:text="@string/account_login_button_login"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_account_password" />
+            app:layout_constraintTop_toBottomOf="@id/edit_account_login_password" />
 
         <RelativeLayout
-            android:id="@+id/relative_account_sign_up_here"
+            android:id="@+id/relative_account_login_sign_up_here"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
@@ -83,17 +83,17 @@
             app:layout_constraintTop_toBottomOf="@id/button_account_login">
 
             <TextView
-                android:id="@+id/text_account_any_account"
+                android:id="@+id/text_account_login_want_to_be_a_contributor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/account_text_any_account" />
+                android:text="@string/account_login_text_want_to_be_a_contributor" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_toEndOf="@id/text_account_any_account"
-                android:text="@string/account_text_sign_up_here"
+                android:layout_toEndOf="@id/text_account_login_want_to_be_a_contributor"
+                android:text="@string/account_login_text_sign_up_here"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 

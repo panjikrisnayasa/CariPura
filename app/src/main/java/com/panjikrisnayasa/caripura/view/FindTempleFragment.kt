@@ -1,13 +1,17 @@
 package com.panjikrisnayasa.caripura.view
 
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -15,22 +19,29 @@ import com.firebase.geofire.GeoFire
 import com.firebase.geofire.GeoLocation
 import com.firebase.geofire.GeoQuery
 import com.firebase.geofire.GeoQueryDataEventListener
+import com.firebase.geofire.util.GeoUtils
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.maps.android.PolyUtil
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import com.panjikrisnayasa.caripura.BuildConfig
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.fragment_find_temple.*
+import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
@@ -39,6 +50,10 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+        private const val BASE_URL_ROUTE = "https://maps.googleapis.com/maps/api/directions/json"
+        private const val ORIGIN_PARAM = "origin"
+        private const val DESTINATION_PARAM = "destination"
+        private const val GOOGLE_API_KEY_PARAM = "key"
     }
 
     private var mGoogleMap: GoogleMap? = null
@@ -174,7 +189,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
                 GeoLocation(
                     lastLocation.latitude,
                     lastLocation.longitude
-                ), 1.0
+                ), 3.0
             )
         }
 
@@ -182,8 +197,61 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             override fun onGeoQueryReady() {
                 Log.d("hyperLoop", "geo query ready")
 
-                val latLng = LatLng(mTempleList[0].lat.toDouble(), mTempleList[0].lng.toDouble())
-                mGoogleMap?.addMarker(MarkerOptions().position(latLng).title(mTempleList[0].name))
+                if (mTempleList.size > 0) {
+                    val distanceTemple2: Double
+                    val distanceTemple1 = GeoUtils.distance(
+                        mTempleList[0].lat.toDouble(),
+                        mTempleList[0].lng.toDouble(),
+                        mLastLocation.latitude,
+                        mLastLocation.longitude
+                    )
+
+                    if (mTempleList.size > 1) {
+                        distanceTemple2 = GeoUtils.distance(
+                            mTempleList[1].lat.toDouble(),
+                            mTempleList[1].lng.toDouble(),
+                            mLastLocation.latitude,
+                            mLastLocation.longitude
+                        )
+
+                        if (distanceTemple1 < distanceTemple2) {
+                            val latLng =
+                                LatLng(
+                                    mTempleList[0].lat.toDouble(),
+                                    mTempleList[0].lng.toDouble()
+                                )
+                            mGoogleMap?.setInfoWindowAdapter(
+                                CustomInfoWindowAdapter(
+                                    context,
+                                    mTempleList[0].photo,
+                                    mTempleList[0].name
+                                )
+                            )
+                            mGoogleMap?.addMarker(
+                                MarkerOptions().position(latLng)
+                                    .title(mTempleList[0].name)
+                            )?.showInfoWindow()
+                            getRoute(mTempleList[0].lat, mTempleList[0].lng)
+                            mGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18f))
+                        } else {
+                            val latLng =
+                                LatLng(mTempleList[1].lat.toDouble(), mTempleList[1].lng.toDouble())
+                            mGoogleMap?.setInfoWindowAdapter(
+                                CustomInfoWindowAdapter(
+                                    context,
+                                    mTempleList[1].photo,
+                                    mTempleList[1].name
+                                )
+                            )
+                            mGoogleMap?.addMarker(
+                                MarkerOptions().position(latLng)
+                                    .title(mTempleList[1].name)
+                            )?.showInfoWindow()
+                            getRoute(mTempleList[1].lat, mTempleList[1].lng)
+                            mGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18f))
+                        }
+                    }
+                }
             }
 
             override fun onDataExited(dataSnapshot: DataSnapshot?) {
@@ -212,7 +280,6 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-
                 }
             }
 
@@ -223,7 +290,128 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             override fun onGeoQueryError(error: DatabaseError?) {
                 TODO("Not yet implemented")
             }
+        })
+    }
 
+    private class CustomInfoWindowAdapter(context: Context?, photoUrl: String, templeName: String) :
+        GoogleMap.InfoWindowAdapter {
+
+        companion object {
+            class MarkerCallback(var marker: Marker?) : Callback {
+
+                override fun onSuccess() {
+                    val tMarker = marker ?: return
+
+                    if (!tMarker.isInfoWindowShown)
+                        return
+
+                    tMarker.hideInfoWindow()
+                    tMarker.showInfoWindow()
+                }
+
+                override fun onError(e: Exception?) {
+                    e?.printStackTrace()
+                }
+            }
+        }
+
+        private var tPhotoUrl: String = photoUrl
+        private var tTempleName: String = templeName
+        private var viewGroup: ViewGroup? = null
+        private var layoutInflater =
+            context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        private var view = layoutInflater.inflate(R.layout.info_window_custom, viewGroup, false)
+
+        override fun getInfoContents(p0: Marker?): View? {
+            val imageView = view.findViewById<ImageView>(R.id.image_info_window_custom)
+            val textView = view.findViewById<TextView>(R.id.text_info_window_custom)
+
+            Picasso.get().load(tPhotoUrl).resize(1000, 1000).onlyScaleDown()
+                .centerCrop().into(imageView, MarkerCallback(p0))
+            textView.text = tTempleName
+
+            return view
+        }
+
+
+        override fun getInfoWindow(p0: Marker?): View? {
+            return null
+        }
+    }
+
+    private fun getRoute(destinationLat: String, destinationLng: String) {
+        val client = AsyncHttpClient()
+        val origin = "${mLastLocation.latitude},${mLastLocation.longitude}"
+        val destination = "$destinationLat,$destinationLng"
+        val builtUri = Uri.parse(BASE_URL_ROUTE).buildUpon()
+            .appendQueryParameter(ORIGIN_PARAM, origin)
+            .appendQueryParameter(DESTINATION_PARAM, destination)
+            .appendQueryParameter(
+                GOOGLE_API_KEY_PARAM,
+                BuildConfig.GOOGLE_API_KEY
+            )
+            .build()
+        val url = builtUri.toString()
+        Log.d("hyperLoop", url)
+        val path: MutableList<List<LatLng>> = ArrayList()
+        client.get(url, object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?
+            ) {
+                var tResult = ""
+                if (responseBody != null) {
+                    tResult = String(responseBody)
+                }
+                val resultRoute = tResult
+                val responseObjectRoute = JSONObject(resultRoute)
+                val routes = responseObjectRoute.getJSONArray("routes")
+                val legs = routes.getJSONObject(0).getJSONArray("legs")
+                val steps = legs.getJSONObject(0).getJSONArray("steps")
+                for (i in 0 until steps.length()) {
+                    val points =
+                        steps.getJSONObject(i).getJSONObject("polyline")
+                            .getString("points")
+                    path.add(PolyUtil.decode(points))
+                }
+                for (i in 0 until path.size) {
+                    if (i == 0) {
+                        mGoogleMap?.addPolyline(
+                            PolylineOptions().addAll(path[i]).width(16f)
+                                .startCap(CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.ic_route_start_end_white_8dp)))
+                                .endCap(RoundCap()).jointType(JointType.ROUND)
+                                .color(0xFF4285F4.toInt()).geodesic(true)
+                        )
+                    } else if (i == path.size - 1) {
+                        mGoogleMap?.addPolyline(
+                            PolylineOptions().addAll(path[i]).width(16f).startCap(RoundCap())
+                                .endCap(CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.ic_route_start_end_white_8dp)))
+                                .jointType(JointType.ROUND)
+                                .color(0xFF4285F4.toInt()).geodesic(true)
+                        )
+                    } else {
+                        mGoogleMap?.addPolyline(
+                            PolylineOptions().addAll(path[i]).width(16f).startCap(RoundCap())
+                                .endCap(RoundCap()).jointType(JointType.ROUND)
+                                .color(0xFF4285F4.toInt()).geodesic(true)
+                        )
+                    }
+                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
+                error: Throwable?
+            ) {
+                Log.d(
+                    "hyperLoop",
+                    "failed getting route \n${error?.printStackTrace()}"
+                )
+            }
         })
     }
 }
+

@@ -5,11 +5,11 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.panjikrisnayasa.caripura.R
 
-class MyTempleListActivity : AppCompatActivity() {
+class AdminMyTempleListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_temple_list)
+        setContentView(R.layout.activity_admin_my_temple_list)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

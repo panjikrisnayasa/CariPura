@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingTop="24dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="24dp"
+    tools:context=".view.RequestedByActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_requested_by_full_name"
+            style="@style/TextInputEditTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_account_box_purple_24dp"
+            android:hint="@string/requested_by_text_input_edit_text_full_name"
+            tools:text="I Putu Panji Krisnayasa" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_requested_by_phone_number"
+            style="@style/TextInputEditTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_call_purple_24dp"
+            android:hint="@string/requested_by_text_input_edit_text_phone_number"
+            tools:text="08214531xxxx" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text_requested_by_email"
+            style="@style/TextInputEditTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_mail_outline_purple_24dp"
+            android:hint="@string/logged_in_text_input_edit_text_email"
+            tools:text="panjikrisnayasa@gmail.com" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

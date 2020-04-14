@@ -84,16 +84,16 @@
         app:layout_constraintTop_toBottomOf="@id/button_sign_up">
 
         <TextView
-            android:id="@+id/text_sign_up_already_have_an_account"
+            android:id="@+id/text_sign_up_already_have_a_contributor_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up_text_already_have_an_account" />
+            android:text="@string/sign_up_text_already_have_a_contributor_account" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_toEndOf="@id/text_sign_up_already_have_an_account"
+            android:layout_toEndOf="@id/text_sign_up_already_have_a_contributor_account"
             android:text="@string/sign_up_text_login_here"
             android:textColor="@android:color/black"
             android:textStyle="bold" />

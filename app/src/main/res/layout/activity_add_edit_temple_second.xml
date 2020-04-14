@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
-    tools:context=".view.AddTempleSecondActivity">
+    tools:context=".view.admin.AddTempleSecondActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

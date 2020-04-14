@@ -16,8 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.admin.TempleRequestHistoryDetailActivity"></activity>
         <activity
-            android:name=".view.TempleRequestHistoryActivity"
+            android:name=".view.admin.TempleRequestHistoryActivity"
             android:label="@string/label_temple_request_history"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -28,77 +29,77 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.RequestedByActivity"
+            android:name=".view.admin.RequestedByActivity"
             android:label="@string/label_requested_by"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestDetailDeleteActivity"
+            android:name=".view.admin.TempleRequestDetailDeleteActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestDetailEditActivity"
+            android:name=".view.admin.TempleRequestDetailEditActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestDetailAddActivity"
+            android:name=".view.admin.TempleRequestDetailAddActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestListActivity"
+            android:name=".view.admin.TempleRequestListActivity"
             android:label="@string/label_temple_request_list"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.AdminMyTempleDetailActivity"
+            android:name=".view.admin.AdminMyTempleDetailActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.EditTempleSecondActivity"
+            android:name=".view.admin.EditTempleSecondActivity"
             android:label="@string/label_edit_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.EditTempleFirstActivity"
+            android:name=".view.admin.EditTempleFirstActivity"
             android:label="@string/label_edit_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.AddTempleSecondActivity"
+            android:name=".view.admin.AddTempleSecondActivity"
             android:label="@string/label_add_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.AddTempleFirstActivity"
+            android:name=".view.admin.AddTempleFirstActivity"
             android:label="@string/label_add_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleDetailActivity"
+            android:name=".view.guest.TempleDetailActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.AdminMyTempleListActivity"
+            android:name=".view.admin.AdminMyTempleListActivity"
             android:label="@string/label_my_temple_list"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.SignUpActivity"
+            android:name=".view.guest.SignUpActivity"
             android:label="@string/label_sign_up"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.SplashScreenActivity"
+            android:name=".view.guest.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.guest.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
-    tools:context=".view.AdminMyTempleListActivity">
+    tools:context=".view.admin.AdminMyTempleListActivity">
 
     <ProgressBar
         android:id="@+id/progress_admin_my_temple_list"

@@ -1,4 +1,4 @@
-package com.panjikrisnayasa.caripura.view.admin
+package com.panjikrisnayasa.caripura.view.contributor
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.panjikrisnayasa.caripura.R
 import kotlinx.android.synthetic.main.activity_add_edit_temple_first.*
 
-class AddTempleFirstActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListener {
+class AddTempleRequestFirstActivity : AppCompatActivity(), OnMapReadyCallback,
+    View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,7 @@ class AddTempleFirstActivity : AppCompatActivity(), OnMapReadyCallback, View.OnC
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.button_add_edit_temple_first_next -> {
-                val intent = Intent(this, AddTempleSecondActivity::class.java)
+                val intent = Intent(this, AddTempleRequestSecondActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -1,4 +1,4 @@
-package com.panjikrisnayasa.caripura.adapter.admin
+package com.panjikrisnayasa.caripura.adapter.contributor
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,22 +10,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
-import com.panjikrisnayasa.caripura.view.admin.AdminMyTempleDetailActivity
+import com.panjikrisnayasa.caripura.view.contributor.MyTempleDetailWaitingActivity
 
-class AdminMyTempleListAdapter(private var mTempleList: ArrayList<Temple>) :
-    RecyclerView.Adapter<AdminMyTempleListAdapter.AdminMyTempleListViewHolder>() {
+class ContributorMyTempleListWaitingAdapter(private var mTempleList: ArrayList<Temple>) :
+    RecyclerView.Adapter<ContributorMyTempleListWaitingAdapter.ContributorMyTempleListWaitingHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminMyTempleListViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ContributorMyTempleListWaitingHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_temple_list, parent, false)
-        return AdminMyTempleListViewHolder(view)
+        return ContributorMyTempleListWaitingHolder(view)
     }
 
     override fun getItemCount(): Int {
         return mTempleList.size
     }
 
-    override fun onBindViewHolder(holder: AdminMyTempleListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ContributorMyTempleListWaitingHolder, position: Int) {
         val temple = mTempleList[position]
 
         holder.mImage.clipToOutline = true
@@ -39,12 +42,13 @@ class AdminMyTempleListAdapter(private var mTempleList: ArrayList<Temple>) :
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, AdminMyTempleDetailActivity::class.java)
+            val intent = Intent(it.context, MyTempleDetailWaitingActivity::class.java)
             it.context.startActivity(intent)
         }
     }
 
-    inner class AdminMyTempleListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ContributorMyTempleListWaitingHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var mImage: ImageView = itemView.findViewById(R.id.image_item_temple_list)
         var mTextName: TextView = itemView.findViewById(R.id.text_item_temple_list_temple_name)
         var mTextVillageOffice: TextView =

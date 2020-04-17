@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name">Cari Pura</string>
 
     <!--    activity_admin_my_temple_list-->
     <string name="admin_my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+
+    <!--    activity_contributor_my_temple_list_approved-->
+    <string name="contributor_my_temple_list_approved_text_no_data">Belum ada pura yang disetujui</string>
+
+    <!--    activity_contributor_my_temple_list_waiting-->
+    <string name="contributor_my_temple_list_waiting_text_no_data">Belum ada pura yang menunggu persetujuan</string>
 
     <!--    activity_sign_up-->
     <string name="sign_up_text_already_have_a_contributor_account">Sudah punya akun kontributor?</string>
@@ -131,13 +137,21 @@
     <string name="menu_my_temple_detail_options_edit">Edit</string>
     <string name="menu_my_temple_detail_options_delete">Delete</string>
 
-    <!--    menu_temple_request_list-->
-    <string name="menu_temple_request_list_temple_request_history">Riwayat Pengajuan Pura</string>
+    <!--    menu_my_temple_detail_options_delete-->
+    <string name="dialog_delete_title">Hapus Pura</string>
+    <string name="dialog_delete_message">Anda yakin ingin menghapus pura ini?</string>
+    <string name="dialog_delete_positive_button" tools:ignore="ButtonCase">BATAL</string>
+    <string name="dialog_delete_negative_button">HAPUS</string>
+
+    <!--    menu_history-->
+    <string name="menu_history">Riwayat</string>
 
     <!--    view_pager-->
     <string name="view_pager_add_temple">Tambah Pura</string>
     <string name="view_pager_edit_temple">Ubah Pura</string>
     <string name="view_pager_delete_temple">Hapus Pura</string>
+    <string name="view_pager_approved">Disetujui</string>
+    <string name="view_pager_waiting">Menunggu Persetujuan</string>
 
     <!--    label-->
     <string name="label_my_temple_list">Daftar Pura Saya</string>
@@ -148,6 +162,9 @@
     <string name="label_temple_request_list">Daftar Pengajuan Pura</string>
     <string name="label_temple_request_history">Riwayat Pengajuan Pura</string>
     <string name="label_requested_by">Diajukan Oleh</string>
+    <string name="label_delete_temple_request">Ajukan Hapus Pura</string>
+    <string name="label_edit_temple_request">Ajukan Ubah Pura</string>
+    <string name="label_add_temple_request">Ajukan Tambah Pura</string>
 
     <!--    item_label-->
     <string name="item_label_request_add_temple">Pengajuan Tambah Pura</string>

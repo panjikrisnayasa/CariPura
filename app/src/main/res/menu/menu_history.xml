@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_temple_request_list_history"
+        android:id="@+id/menu_history"
         android:icon="@drawable/ic_history_dark_grey_20dp"
-        android:title="@string/menu_temple_request_list_temple_request_history"
+        android:title="@string/menu_history"
         app:showAsAction="ifRoom" />
 
 </menu>

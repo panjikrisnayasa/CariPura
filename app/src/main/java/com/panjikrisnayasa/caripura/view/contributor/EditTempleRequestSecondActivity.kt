@@ -1,11 +1,11 @@
-package com.panjikrisnayasa.caripura.view.admin
+package com.panjikrisnayasa.caripura.view.contributor
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.panjikrisnayasa.caripura.R
 
-class AddTempleSecondActivity : AppCompatActivity() {
+class EditTempleRequestSecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

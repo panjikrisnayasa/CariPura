@@ -1,29 +1,28 @@
-package com.panjikrisnayasa.caripura.view.admin
+package com.panjikrisnayasa.caripura.view.contributor
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.adapter.admin.TempleRequestListViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_temple_request_list.*
+import com.panjikrisnayasa.caripura.adapter.contributor.ContributorMyTempleListViewPagerAdapter
+import kotlinx.android.synthetic.main.activity_contributor_my_temple_list.*
 
-class TempleRequestListActivity : AppCompatActivity() {
+class ContributorMyTempleListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_temple_request_list)
+        setContentView(R.layout.activity_contributor_my_temple_list)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.elevation = 0f
 
-        view_pager_temple_request_list.adapter =
-            TempleRequestListViewPagerAdapter(
+        view_pager_contributor_my_temple_list.adapter =
+            ContributorMyTempleListViewPagerAdapter(
                 supportFragmentManager,
                 applicationContext
             )
-        tab_temple_request_list.setupWithViewPager(view_pager_temple_request_list)
+        tab_contributor_my_temple_list.setupWithViewPager(view_pager_contributor_my_temple_list)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,8 +34,8 @@ class TempleRequestListActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> finish()
             R.id.menu_history -> {
-                val intent = Intent(applicationContext, TempleRequestHistoryActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(applicationContext, MyTempleRequestHistoryActivity::class.java)
+//                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

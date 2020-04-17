@@ -1,15 +1,15 @@
-package com.panjikrisnayasa.caripura.view.admin
+package com.panjikrisnayasa.caripura.view.contributor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.panjikrisnayasa.caripura.R
 
-class AddTempleSecondActivity : AppCompatActivity() {
+class EditTempleRequestFirstActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_edit_temple_second)
+        setContentView(R.layout.activity_add_edit_temple_first)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

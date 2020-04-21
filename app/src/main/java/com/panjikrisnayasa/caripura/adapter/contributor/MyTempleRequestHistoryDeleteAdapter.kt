@@ -1,4 +1,4 @@
-package com.panjikrisnayasa.caripura.adapter.admin
+package com.panjikrisnayasa.caripura.adapter.contributor
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,19 +10,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
-import com.panjikrisnayasa.caripura.view.admin.TempleRequestHistoryDetailActivity
+import com.panjikrisnayasa.caripura.view.contributor.MyTempleRequestHistoryDetailActivity
 
-class TempleRequestHistoryDeleteAdapter(private var mTempleList: ArrayList<Temple>) :
-    RecyclerView.Adapter<TempleRequestHistoryDeleteAdapter.TempleRequestHistoryDeleteHolder>() {
+class MyTempleRequestHistoryDeleteAdapter(private var mTempleList: ArrayList<Temple>) :
+    RecyclerView.Adapter<MyTempleRequestHistoryDeleteAdapter.MyTempleRequestHistoryDeleteHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TempleRequestHistoryDeleteHolder {
+    ): MyTempleRequestHistoryDeleteHolder {
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_temple_list_with_label, parent, false)
-        return TempleRequestHistoryDeleteHolder(view)
+        return MyTempleRequestHistoryDeleteHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -30,7 +30,7 @@ class TempleRequestHistoryDeleteAdapter(private var mTempleList: ArrayList<Templ
     }
 
     override fun onBindViewHolder(
-        holder: TempleRequestHistoryDeleteHolder,
+        holder: MyTempleRequestHistoryDeleteHolder,
         position: Int
     ) {
         val temple = mTempleList[position]
@@ -49,12 +49,12 @@ class TempleRequestHistoryDeleteAdapter(private var mTempleList: ArrayList<Templ
         holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, TempleRequestHistoryDetailActivity::class.java)
+            val intent = Intent(it.context, MyTempleRequestHistoryDetailActivity::class.java)
             it.context.startActivity(intent)
         }
     }
 
-    inner class TempleRequestHistoryDeleteHolder(itemView: View) :
+    inner class MyTempleRequestHistoryDeleteHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var mImage: ImageView = itemView.findViewById(R.id.image_item_temple_list_with_label)
         var mTextName: TextView =

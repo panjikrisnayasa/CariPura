@@ -73,13 +73,23 @@
     <string name="requested_by_text_input_edit_text_phone_number">Phone Number</string>
     <string name="requested_by_text_input_edit_text_email">Email</string>
 
-
     <!--    activity_temple_request_detail-->
     <string name="temple_request_detail_edit_contributor_note">Contributor note</string>
     <string name="temple_request_detail_text_requested_by">Requested by</string>
     <string name="temple_request_detail_edit_note_for_contributor">Note for contributor</string>
     <string name="temple_request_detail_button_accept">Accept</string>
     <string name="temple_request_detail_button_reject">Reject</string>
+    <string name="temple_request_detail_edit_admin_note">Admin note</string>
+    <string name="temple_request_detail_edit_note_for_admin">Note for admin</string>
+
+    <!--    activity_delete_temple_request-->
+    <string name="delete_temple_request_text_input_edit_text_note_for_contributor">Note for contributor</string>
+    <string name="delete_temple_request_text_question">Are you sure want to delete this temple?</string>
+    <string name="delete_temple_request_button_delete">DELETE</string>
+    <string name="delete_temple_request_button_cancel" tools:ignore="ButtonCase">CANCEL</string>
+
+    <!--    activity_my_temple_detail_waiting-->
+    <string name="my_temple_detail_waiting_edit_note_for_admin">Note for admin</string>
 
     <!--    fragment_account_login-->
     <string name="account_login_edit_email">Email</string>
@@ -146,6 +156,17 @@
     <!--    menu_history-->
     <string name="menu_history">History</string>
 
+    <!--    menu_cancel-->
+    <string name="menu_cancel">Cancel</string>
+    <string name="dialog_cancel_title_add">Cancel Add Temple Request</string>
+    <string name="dialog_cancel_title_edit">Cancel Edit Temple Request</string>
+    <string name="dialog_cancel_title_delete">Cancel Delete Temple Request</string>
+    <string name="dialog_cancel_message_add">Are you sure want to cancel add temple request?</string>
+    <string name="dialog_cancel_message_edit">Are you sure want to cancel edit temple request?</string>
+    <string name="dialog_cancel_message_delete">Are you sure want to cancel delete temple request?</string>
+    <string name="dialog_cancel_positive_button" tools:ignore="ButtonCase">NO</string>
+    <string name="dialog_cancel_negative_button">YES</string>
+
     <!--    view_pager-->
     <string name="view_pager_add_temple">Add Temple</string>
     <string name="view_pager_edit_temple">Edit Temple</string>
@@ -165,6 +186,7 @@
     <string name="label_delete_temple_request">Delete Temple Request</string>
     <string name="label_edit_temple_request">Edit Temple Request</string>
     <string name="label_add_temple_request">Add Temple Request</string>
+    <string name="label_my_temple_request_history">My Temple Request History</string>
 
     <!--    item_label-->
     <string name="item_label_request_add_temple">Request Add Temple</string>

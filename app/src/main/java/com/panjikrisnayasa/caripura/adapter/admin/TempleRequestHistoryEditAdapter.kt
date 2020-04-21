@@ -1,5 +1,6 @@
 package com.panjikrisnayasa.caripura.adapter.admin
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
+import com.panjikrisnayasa.caripura.view.admin.TempleRequestHistoryDetailActivity
 
 class TempleRequestHistoryEditAdapter(private var mTempleList: ArrayList<Temple>) :
     RecyclerView.Adapter<TempleRequestHistoryEditAdapter.TempleRequestHistoryEditHolder>() {
@@ -46,10 +48,10 @@ class TempleRequestHistoryEditAdapter(private var mTempleList: ArrayList<Temple>
             holder.itemView.context.resources?.getString(R.string.item_label_accepted)
         holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
 
-//        holder.itemView.setOnClickListener {
-//            val intent = Intent(it.context, TempleRequestDetailAddActivity::class.java)
-//            it.context.startActivity(intent)
-//        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, TempleRequestHistoryDetailActivity::class.java)
+            it.context.startActivity(intent)
+        }
     }
 
     inner class TempleRequestHistoryEditHolder(itemView: View) :

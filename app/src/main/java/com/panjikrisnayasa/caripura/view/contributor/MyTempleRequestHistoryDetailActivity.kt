@@ -1,15 +1,15 @@
-package com.panjikrisnayasa.caripura.view.admin
+package com.panjikrisnayasa.caripura.view.contributor
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.panjikrisnayasa.caripura.R
 
-class TempleRequestHistoryDetailActivity : AppCompatActivity() {
+class MyTempleRequestHistoryDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_temple_request_history_detail)
+        setContentView(R.layout.activity_my_temple_request_history_detail)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

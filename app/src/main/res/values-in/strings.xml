@@ -75,11 +75,22 @@
     <string name="temple_request_detail_edit_note_for_contributor">Catatan untuk kontributor</string>
     <string name="temple_request_detail_button_accept">Terima</string>
     <string name="temple_request_detail_button_reject">Tolak</string>
+    <string name="temple_request_detail_edit_admin_note">Catatan admin</string>
+    <string name="temple_request_detail_edit_note_for_admin">Catatan untuk admin</string>
 
     <!--    activity_requested_by-->
     <string name="requested_by_text_input_edit_text_full_name">Nama Lengkap</string>
     <string name="requested_by_text_input_edit_text_phone_number">Nomor Telepon</string>
     <string name="requested_by_text_input_edit_text_email">Email</string>
+
+    <!--    activity_delete_temple_request-->
+    <string name="delete_temple_request_text_input_edit_text_note_for_contributor">Catatan untuk kontributor</string>
+    <string name="delete_temple_request_text_question">Anda yakin ingin menghapus pura ini?</string>
+    <string name="delete_temple_request_button_delete">HAPUS</string>
+    <string name="delete_temple_request_button_cancel">BATAL</string>
+
+    <!--    activity_my_temple_detail_waiting-->
+    <string name="my_temple_detail_waiting_edit_note_for_admin">Catatan untuk admin</string>
 
     <!--    fragment_account_login-->
     <string name="account_login_edit_email">Email</string>
@@ -146,6 +157,17 @@
     <!--    menu_history-->
     <string name="menu_history">Riwayat</string>
 
+    <!--    menu_cancel-->
+    <string name="menu_cancel">Batalkan</string>
+    <string name="dialog_cancel_title_add">Batal Pengajuan Tambah Pura</string>
+    <string name="dialog_cancel_title_edit">Batal Pengajuan Ubah Pura</string>
+    <string name="dialog_cancel_title_delete">Batal Pengajuan Hapus Pura</string>
+    <string name="dialog_cancel_message_add">Anda yakin ingin membatalkan pengajuan tambah pura ini?</string>
+    <string name="dialog_cancel_message_edit">Anda yakin ingin membatalkan pengajuan ubah pura ini?</string>
+    <string name="dialog_cancel_message_delete">Anda yakin ingin membatalkan pengajuan hapus pura ini?</string>
+    <string name="dialog_cancel_positive_button" tools:ignore="ButtonCase">NO</string>
+    <string name="dialog_cancel_negative_button">YES</string>
+
     <!--    view_pager-->
     <string name="view_pager_add_temple">Tambah Pura</string>
     <string name="view_pager_edit_temple">Ubah Pura</string>
@@ -165,6 +187,7 @@
     <string name="label_delete_temple_request">Ajukan Hapus Pura</string>
     <string name="label_edit_temple_request">Ajukan Ubah Pura</string>
     <string name="label_add_temple_request">Ajukan Tambah Pura</string>
+    <string name="label_my_temple_request_history">Riwayat Pengajuan Pura Saya</string>
 
     <!--    item_label-->
     <string name="item_label_request_add_temple">Pengajuan Tambah Pura</string>

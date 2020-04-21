@@ -2,5 +2,6 @@ package com.panjikrisnayasa.caripura.viewmodel.admin
 
 import androidx.lifecycle.ViewModel
 
-class EditTempleFirstViewModel: ViewModel() {
+class TempleRequestHistoryViewModel: ViewModel() {
+
 }

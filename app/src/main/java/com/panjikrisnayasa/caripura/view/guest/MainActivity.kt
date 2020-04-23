@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.view.admin.AdminLoggedInFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_main_bottom_navigation_account -> {
-                    replaceFragment(AdminLoggedInFragment())
+                    replaceFragment(AccountLoginFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }

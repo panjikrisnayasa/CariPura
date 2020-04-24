@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_account_box_grey_24dp"
             android:drawablePadding="16dp"
-            android:inputType="textPersonName"
+            android:inputType="textCapWords"
             android:paddingStart="24dp"
             android:paddingEnd="24dp" />
 
@@ -131,7 +131,7 @@
             android:layout_marginStart="4dp"
             android:layout_toEndOf="@id/text_sign_up_already_have_a_contributor_account"
             android:text="@string/sign_up_text_login_here"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
     </RelativeLayout>

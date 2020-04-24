@@ -196,6 +196,16 @@
     <string name="item_label_accepted">Diterima</string>
     <string name="item_label_rejected">Ditolak</string>
 
+    <!--    error message-->
+    <string name="error_message_fill_this_field">Isi kolom ini</string>
+    <string name="error_message_invalid_email">Email tidak valid</string>
+    <string name="error_message_password_length">Panjang kata sandi minimal 6 karakter</string>
+    <string name="error_message_verification_sent">Email verifikasi terkirim</string>
+    <string name="error_message_verification_failed">Gagal mengirim email verifikasi</string>
+    <string name="error_message_sign_up_failed">Gagal mendaftarkan akun, coba lagi</string>
+    <string name="error_message_verify_email">Verifikasi alamat email Anda terlebih dulu</string>
+    <string name="error_message_email_password_incorrect">Email atau password salah</string>
+
     <string name="google_maps_api_key">AIzaSyDmL95lQBtliz5QwfEV_gcaiWoEhFuNc84</string>
 
 </resources>

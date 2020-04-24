@@ -113,7 +113,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_toEndOf="@id/text_account_login_want_to_be_a_contributor"
                 android:text="@string/account_login_text_sign_up_here"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
         </RelativeLayout>

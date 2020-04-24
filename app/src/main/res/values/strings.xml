@@ -195,6 +195,16 @@
     <string name="item_label_accepted">Accepted</string>
     <string name="item_label_rejected">Rejected</string>
 
+    <!--    error message-->
+    <string name="error_message_fill_this_field">Fill this field</string>
+    <string name="error_message_invalid_email">Invalid email</string>
+    <string name="error_message_password_length">Password must be at least 6 characters length</string>
+    <string name="error_message_verification_sent">Verification email sent</string>
+    <string name="error_message_verification_failed">Failed to send verification email</string>
+    <string name="error_message_sign_up_failed">Sign up failed, please try again</string>
+    <string name="error_message_verify_email">You need to verify your email address</string>
+    <string name="error_message_email_password_incorrect">Email or password incorrect</string>
+
     <string name="google_maps_api_key">AIzaSyDmL95lQBtliz5QwfEV_gcaiWoEhFuNc84</string>
 
 </resources>

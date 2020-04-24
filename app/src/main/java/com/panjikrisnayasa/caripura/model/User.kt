@@ -9,5 +9,5 @@ class User(
     var fullName: String = "",
     var phoneNumber: String = "",
     var email: String = "",
-    var password: String = ""
+    var role: String = ""
 ) : Parcelable

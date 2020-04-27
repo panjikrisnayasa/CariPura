@@ -11,8 +11,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.panjikrisnayasa.caripura.R
+import com.panjikrisnayasa.caripura.view.SharedPrefManager
 import com.panjikrisnayasa.caripura.view.admin.AdminMyTempleListActivity
+import com.panjikrisnayasa.caripura.view.guest.AccountLoginFragment
 import kotlinx.android.synthetic.main.fragment_contributor_logged_in.*
 
 /**
@@ -20,11 +23,15 @@ import kotlinx.android.synthetic.main.fragment_contributor_logged_in.*
  */
 class ContributorLoggedInFragment : Fragment() {
 
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mSharedPref: SharedPrefManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        mAuth = FirebaseAuth.getInstance()
         val view = inflater.inflate(R.layout.fragment_contributor_logged_in, container, false)
         val toolbar =
             view.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_contributor_logged_in)
@@ -37,10 +44,16 @@ class ContributorLoggedInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         button_contributor_logged_in_my_temple_list.setOnClickListener {
             val intent = Intent(view.context, AdminMyTempleListActivity::class.java)
             startActivity(intent)
         }
+
+        mSharedPref = SharedPrefManager.getInstance(context)
+        text_input_edit_text_contributor_logged_in_full_name.setText(mSharedPref.getFullName())
+        text_input_edit_text_contributor_logged_in_email.setText(mSharedPref.getEmail())
+        text_input_edit_text_contributor_logged_in_phone_number.setText(mSharedPref.getPhoneNumber())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -52,10 +65,15 @@ class ContributorLoggedInFragment : Fragment() {
                     alertBuilder.setTitle(getString(R.string.dialog_logout_title))
                     alertBuilder.setMessage(getString(R.string.dialog_logout_message))
                     alertBuilder.setPositiveButton(getString(R.string.dialog_logout_positive_button)) { _, _ ->
-
                     }
                     alertBuilder.setNegativeButton(getString(R.string.dialog_logout_negative_button)) { _, _ ->
-
+                        mAuth.signOut()
+                        mSharedPref.logout()
+                        fragmentManager?.beginTransaction()?.replace(
+                            R.id.frame_layout_main,
+                            AccountLoginFragment(),
+                            AccountLoginFragment::class.java.simpleName
+                        )?.commit()
                     }
                     val alertDialog = alertBuilder.create()
                     alertDialog.show()

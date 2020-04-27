@@ -5,11 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.panjikrisnayasa.caripura.R
+import com.panjikrisnayasa.caripura.view.SharedPrefManager
+import com.panjikrisnayasa.caripura.view.admin.AdminLoggedInFragment
+import com.panjikrisnayasa.caripura.view.contributor.ContributorLoggedInFragment
 import com.panjikrisnayasa.caripura.viewmodel.guest.AccountLoginViewModel
 import kotlinx.android.synthetic.main.fragment_account_login.*
 import java.util.regex.Pattern
@@ -19,7 +25,8 @@ import java.util.regex.Pattern
  */
 class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
 
-    private lateinit var mAccountLoginViewModel: AccountLoginViewModel
+    private lateinit var mViewModel: AccountLoginViewModel
+    private lateinit var mSharedPref: SharedPrefManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +39,12 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mAccountLoginViewModel = AccountLoginViewModel(this.context)
+        mSharedPref = SharedPrefManager.getInstance(context)
+        checkLogin()
+
+        mViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            AccountLoginViewModel::class.java
+        )
         relative_account_login_sign_up_here.setOnClickListener(this)
         button_account_login.setOnClickListener(this)
         text_input_edit_text_account_login_password.addTextChangedListener(this)
@@ -76,7 +88,18 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
                 }
 
                 if (!isNull && !isEmailInvalid) {
-                    mAccountLoginViewModel.authentication(email, password)
+                    mViewModel.authentication(email, password, context)
+                        .observe(this, Observer { user ->
+                            if (user.role == "admin") {
+                                Log.d("hyperLoop", "view model admin")
+                                mSharedPref.setLogin(user)
+                                replaceFragment(AdminLoggedInFragment())
+                            } else {
+                                Log.d("hyperLoop", "view model contributor")
+                                mSharedPref.setLogin(user)
+                                replaceFragment(ContributorLoggedInFragment())
+                            }
+                        })
                 }
             }
         }
@@ -92,4 +115,21 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
     }
 
+    private fun replaceFragment(fragment: Fragment) {
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.frame_layout_main,
+            fragment,
+            fragment::class.java.simpleName
+        )?.commit()
+    }
+
+    private fun checkLogin() {
+        if (mSharedPref.isLoggedIn()) {
+            if (mSharedPref.getRole() == "admin") {
+                replaceFragment(AdminLoggedInFragment())
+            } else {
+                replaceFragment(ContributorLoggedInFragment())
+            }
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.panjikrisnayasa.caripura.view
+package com.panjikrisnayasa.caripura.util
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -23,7 +23,8 @@ class SharedPrefManager(private val mContext: Context?) {
         @Synchronized
         fun getInstance(context: Context?): SharedPrefManager {
             if (mInstance == null) {
-                mInstance = SharedPrefManager(context)
+                mInstance =
+                    SharedPrefManager(context)
             }
             return mInstance as SharedPrefManager
         }

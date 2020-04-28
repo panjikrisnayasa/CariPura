@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.view.SharedPrefManager
+import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.view.admin.AdminMyTempleListActivity
 import com.panjikrisnayasa.caripura.view.guest.AccountLoginFragment
 import kotlinx.android.synthetic.main.fragment_contributor_logged_in.*

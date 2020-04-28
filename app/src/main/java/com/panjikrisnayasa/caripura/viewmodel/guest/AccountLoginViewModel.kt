@@ -15,9 +15,9 @@ class AccountLoginViewModel : ViewModel() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabaseReference: DatabaseReference
-    val user = MutableLiveData<User>()
+    private val mUser = MutableLiveData<User>()
 
-    internal fun authentication(
+    internal fun authenticate(
         email: String,
         password: String,
         context: Context?
@@ -50,7 +50,7 @@ class AccountLoginViewModel : ViewModel() {
                                         return
                                     }
                                 }
-                                user.postValue(tUser)
+                                mUser.postValue(tUser)
                             }
                         }
                     })
@@ -63,6 +63,6 @@ class AccountLoginViewModel : ViewModel() {
                 ).show()
             }
         }
-        return user
+        return mUser
     }
 }

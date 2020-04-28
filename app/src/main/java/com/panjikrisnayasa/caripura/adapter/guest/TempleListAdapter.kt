@@ -12,8 +12,10 @@ import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.guest.TempleDetailActivity
 
-class TempleListAdapter(private var mTempleList: ArrayList<Temple>) :
+class TempleListAdapter() :
     RecyclerView.Adapter<TempleListAdapter.TempleHolder>() {
+
+    private var mTempleList = arrayListOf<Temple>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempleHolder {
         val view =
@@ -42,6 +44,12 @@ class TempleListAdapter(private var mTempleList: ArrayList<Temple>) :
             val intent = Intent(it.context, TempleDetailActivity::class.java)
             it.context.startActivity(intent)
         }
+    }
+
+    fun setData(templeList: ArrayList<Temple>) {
+        mTempleList.clear()
+        mTempleList.addAll(templeList)
+        notifyDataSetChanged()
     }
 
     inner class TempleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

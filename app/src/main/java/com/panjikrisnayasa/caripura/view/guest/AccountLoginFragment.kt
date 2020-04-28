@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.view.SharedPrefManager
+import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.view.admin.AdminLoggedInFragment
 import com.panjikrisnayasa.caripura.view.contributor.ContributorLoggedInFragment
 import com.panjikrisnayasa.caripura.viewmodel.guest.AccountLoginViewModel
@@ -88,7 +88,7 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
                 }
 
                 if (!isNull && !isEmailInvalid) {
-                    mViewModel.authentication(email, password, context)
+                    mViewModel.authenticate(email, password, context)
                         .observe(this, Observer { user ->
                             if (user.role == "admin") {
                                 Log.d("hyperLoop", "view model admin")

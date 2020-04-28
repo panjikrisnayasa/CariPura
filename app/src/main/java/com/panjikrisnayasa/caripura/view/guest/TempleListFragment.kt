@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.*
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.adapter.guest.TempleListAdapter
-import com.panjikrisnayasa.caripura.model.Temple
+import com.panjikrisnayasa.caripura.viewmodel.guest.TempleListViewModel
 import kotlinx.android.synthetic.main.fragment_temple_list.*
 
 /**
@@ -22,26 +23,8 @@ import kotlinx.android.synthetic.main.fragment_temple_list.*
 class TempleListFragment : Fragment() {
 
     private lateinit var mEditFindTemple: EditText
-    private lateinit var mDatabaseReference: DatabaseReference
-
-    private var mTempleList: ArrayList<Temple> = arrayListOf()
-    private val mChildEventListener = object : ChildEventListener {
-        override fun onCancelled(p0: DatabaseError) {}
-
-        override fun onChildMoved(p0: DataSnapshot, p1: String?) {}
-
-        override fun onChildChanged(p0: DataSnapshot, p1: String?) {}
-
-        override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-            val temple = p0.child("data").getValue(Temple::class.java)
-            if (temple != null) {
-                mTempleList.add(temple)
-                showRecyclerView()
-            }
-        }
-
-        override fun onChildRemoved(p0: DataSnapshot) {}
-    }
+    private lateinit var mViewModel: TempleListViewModel
+    private lateinit var mAdapter: TempleListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,10 +38,6 @@ class TempleListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val tActivity = this.activity
-
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
-        mDatabaseReference.addChildEventListener(mChildEventListener)
-
         if (tActivity != null)
             mEditFindTemple = tActivity.findViewById(R.id.edit_temple_list_find_temple)
         mEditFindTemple.requestFocus()
@@ -70,16 +49,26 @@ class TempleListFragment : Fragment() {
                 InputMethodManager.HIDE_IMPLICIT_ONLY
             )
         }
+
+        showRecyclerView()
+
+        mViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(TempleListViewModel::class.java)
+
+        mViewModel.getTemple().observe(this.viewLifecycleOwner, Observer { templeList ->
+            if (templeList != null) {
+                mAdapter.setData(templeList)
+            }
+        })
     }
 
     private fun showRecyclerView() {
         recycler_temple_list?.visibility = View.VISIBLE
         text_temple_list_no_data?.visibility = View.GONE
-        val templeAdapter =
-            TempleListAdapter(
-                mTempleList
-            )
+        mAdapter = TempleListAdapter()
         recycler_temple_list?.layoutManager = LinearLayoutManager(context)
-        recycler_temple_list?.adapter = templeAdapter
+        recycler_temple_list?.adapter = mAdapter
     }
 }

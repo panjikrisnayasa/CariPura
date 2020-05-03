@@ -36,7 +36,7 @@ class FindTempleViewModel : ViewModel() {
         private const val GOOGLE_API_KEY_PARAM = "key"
     }
 
-    internal fun setGeoQuery(lastLocation: Location?, context: Context?, googleMap: GoogleMap?) {
+    fun setGeoQuery(lastLocation: Location?, context: Context?, googleMap: GoogleMap?) {
         lateinit var geoQuery: GeoQuery
         val databaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
         val geoFire = GeoFire(databaseReference)
@@ -182,7 +182,7 @@ class FindTempleViewModel : ViewModel() {
         }
     }
 
-    internal fun getRoute(
+    fun getRoute(
         googleMap: GoogleMap?,
         lastLat: String,
         lastLng: String,

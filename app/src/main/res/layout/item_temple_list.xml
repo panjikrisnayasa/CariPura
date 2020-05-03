@@ -51,21 +51,10 @@
                 tools:text="Pisangcandi" />
 
             <TextView
-                android:id="@+id/text_item_temple_list_temple_distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_item_temple_list_temple_village_office"
-                android:layout_marginTop="4dp"
-                android:drawableStart="@drawable/ic_itinerary_purple_14dp"
-                android:drawablePadding="4dp"
-                android:textColor="@color/colorTextHint"
-                tools:text="1 km" />
-
-            <TextView
                 android:id="@+id/text_item_temple_list_pray_together"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_item_temple_list_temple_distance"
+                android:layout_below="@id/text_item_temple_list_temple_village_office"
                 android:layout_marginTop="16dp"
                 android:text="@string/item_temple_list_text_together_prayer"
                 android:textColor="@color/colorTextBlack" />

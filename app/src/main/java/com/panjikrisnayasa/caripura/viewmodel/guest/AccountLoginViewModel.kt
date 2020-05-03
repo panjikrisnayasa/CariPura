@@ -17,7 +17,7 @@ class AccountLoginViewModel : ViewModel() {
     private lateinit var mDatabaseReference: DatabaseReference
     private val mUser = MutableLiveData<User>()
 
-    internal fun authenticate(
+    fun authenticate(
         email: String,
         password: String,
         context: Context?

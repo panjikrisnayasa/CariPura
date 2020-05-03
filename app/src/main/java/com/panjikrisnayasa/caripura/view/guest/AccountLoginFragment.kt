@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,11 +90,9 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
                     mViewModel.authenticate(email, password, context)
                         .observe(this, Observer { user ->
                             if (user.role == "admin") {
-                                Log.d("hyperLoop", "view model admin")
                                 mSharedPref.setLogin(user)
                                 replaceFragment(AdminLoggedInFragment())
                             } else {
-                                Log.d("hyperLoop", "view model contributor")
                                 mSharedPref.setLogin(user)
                                 replaceFragment(ContributorLoggedInFragment())
                             }

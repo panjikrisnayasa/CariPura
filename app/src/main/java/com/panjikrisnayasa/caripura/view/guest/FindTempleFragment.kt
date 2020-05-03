@@ -23,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.panjikrisnayasa.caripura.R
+import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.guest.FindTempleViewModel
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -40,6 +41,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     private lateinit var mFusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var mLastLocation: Location
     private lateinit var mViewModel: FindTempleViewModel
+    private lateinit var mSharedPref: SharedPrefManager
 
     private var mGoogleMap: GoogleMap? = null
 
@@ -57,6 +59,8 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mSharedPref = SharedPrefManager.getInstance(context)
 
         mViewModel = ViewModelProvider(
             this,
@@ -128,6 +132,10 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         mFusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
                 mLastLocation = location
+                mSharedPref.setLastLocation(
+                    location.latitude.toString(),
+                    location.longitude.toString()
+                )
                 val currentLatLng = LatLng(location.latitude, location.longitude)
                 Log.d(
                     "hyperLoop",

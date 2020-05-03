@@ -1,6 +1,7 @@
 package com.panjikrisnayasa.caripura.adapter.guest
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.guest.TempleDetailActivity
 
-class TempleListAdapter() :
+class TempleListAdapter :
     RecyclerView.Adapter<TempleListAdapter.TempleHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
@@ -34,15 +35,14 @@ class TempleListAdapter() :
         Glide.with(holder.itemView.context).load(temple.photo).into(holder.mImage)
         holder.mTextName.text = temple.name
         holder.mTextVillageOffice.text = temple.villageOffice
-        holder.mTextDistance.text = temple.distance
         holder.mTextFullMoonPrayerStart.text = temple.fullMoonPrayerStart
         holder.mTextFullMoonPrayerEnd.text = temple.fullMoonPrayerEnd
         holder.mTextDeadMoonPrayerStart.text = temple.deadMoonPrayerStart
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, TempleDetailActivity::class.java)
-            it.context.startActivity(intent)
+            Log.d("hyperLoop", "temple adapter ${temple.id}")
+            moveToDetail(it, temple.id)
         }
     }
 
@@ -52,13 +52,18 @@ class TempleListAdapter() :
         notifyDataSetChanged()
     }
 
+    private fun moveToDetail(view: View, templeId: String) {
+        val viewContext = view.context
+        val intent = Intent(viewContext, TempleDetailActivity::class.java)
+        intent.putExtra(TempleDetailActivity.EXTRA_TEMPLE_ID, templeId)
+        viewContext.startActivity(intent)
+    }
+
     inner class TempleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var mImage: ImageView = itemView.findViewById(R.id.image_item_temple_list)
         var mTextName: TextView = itemView.findViewById(R.id.text_item_temple_list_temple_name)
         var mTextVillageOffice: TextView =
             itemView.findViewById(R.id.text_item_temple_list_temple_village_office)
-        var mTextDistance: TextView =
-            itemView.findViewById(R.id.text_item_temple_list_temple_distance)
         var mTextFullMoonPrayerStart: TextView =
             itemView.findViewById(R.id.text_item_temple_list_full_moon_prayer_start)
         var mTextFullMoonPrayerEnd: TextView =

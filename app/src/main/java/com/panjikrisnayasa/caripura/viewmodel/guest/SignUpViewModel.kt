@@ -15,7 +15,7 @@ class SignUpViewModel(private var mContext: Context) : ViewModel() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mUserDatabaseReference: DatabaseReference
 
-    internal fun signUp(fullName: String, phoneNumber: String, email: String, password: String) {
+    fun signUp(fullName: String, phoneNumber: String, email: String, password: String) {
         Log.d("hyperLoop", "signUp view model")
         mAuth = FirebaseAuth.getInstance()
         mUserDatabaseReference = FirebaseDatabase.getInstance().getReference("users")

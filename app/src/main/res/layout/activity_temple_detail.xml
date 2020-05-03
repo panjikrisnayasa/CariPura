@@ -14,15 +14,10 @@
         <com.synnapps.carouselview.CarouselView
             android:id="@+id/carousel_temple_detail_photo"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:fillColor="#FFFFFFFF"
+            android:layout_height="270dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:pageColor="#00000000"
-            app:radius="6dp"
-            app:slideInterval="3000"
-            app:strokeColor="#FF777777"
-            app:strokeWidth="1dp" />
+            app:slideInterval="10000" />
 
         <LinearLayout
             android:id="@+id/linear_temple_detail_layout_1"
@@ -35,7 +30,7 @@
             app:layout_constraintTop_toBottomOf="@id/carousel_temple_detail_photo">
 
             <TextView
-                android:id="@+id/text_temple_detail_temple_name"
+                android:id="@+id/text_temple_detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_bold"
@@ -44,7 +39,7 @@
                 tools:text="Pura Marga Sirsha" />
 
             <TextView
-                android:id="@+id/text_temple_detail_temple_address"
+                android:id="@+id/text_temple_detail_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -54,7 +49,7 @@
                 tools:text="Jl. Pisang Candi Barat No. 100 - 101, Pisang Candi, Sukun" />
 
             <TextView
-                android:id="@+id/text_temple_detail_temple_distance"
+                android:id="@+id/text_temple_detail_distance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -63,7 +58,7 @@
                 tools:text="1 km" />
 
             <TextView
-                android:id="@+id/text_temple_detail_temple_caretaker"
+                android:id="@+id/text_temple_detail_caretaker_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -72,7 +67,7 @@
                 tools:text="Pak Wayan" />
 
             <TextView
-                android:id="@+id/text_temple_detail_caretaker_phone_number"
+                android:id="@+id/text_temple_detail_caretaker_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -147,7 +142,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/text_temple_detail_temple_feast_day"
+                    android:id="@+id/text_temple_detail_feast_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -259,6 +254,7 @@
                 android:id="@+id/linear_temple_detail_galungan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -295,6 +291,7 @@
                 android:id="@+id/linear_temple_detail_kuningan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -331,6 +328,7 @@
                 android:id="@+id/linear_temple_detail_saraswati"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -367,6 +365,7 @@
                 android:id="@+id/linear_temple_detail_pagerwesi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -404,6 +403,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -439,6 +439,7 @@
                 android:id="@+id/linear_temple_detail_melukat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -475,6 +476,7 @@
                 android:id="@+id/text_temple_detail_melukat_information"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/ic_info_outline_grey_12dp"
                 android:drawablePadding="8dp"
@@ -492,6 +494,7 @@
             android:background="@android:color/white"
             android:orientation="vertical"
             android:padding="16dp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linear_temple_detail_layout_2">
 
@@ -509,7 +512,8 @@
                 android:drawableStart="@drawable/ic_check_box_purple_14dp"
                 android:drawablePadding="8dp"
                 android:text="@string/temple_detail_text_prayer_needs_seller"
-                android:textColor="@color/colorTextBlack" />
+                android:textColor="@color/colorTextBlack"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/text_temple_detail_text_food_drink_seller"
@@ -519,7 +523,8 @@
                 android:drawableStart="@drawable/ic_check_box_purple_14dp"
                 android:drawablePadding="8dp"
                 android:text="@string/temple_detail_text_food_drink_seller"
-                android:textColor="@color/colorTextBlack" />
+                android:textColor="@color/colorTextBlack"
+                android:visibility="gone" />
 
         </LinearLayout>
 

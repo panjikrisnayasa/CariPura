@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.adapter.guest.TempleListAdapter
+import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.guest.TempleListViewModel
 import kotlinx.android.synthetic.main.fragment_temple_list.*
 
@@ -25,6 +26,7 @@ class TempleListFragment : Fragment() {
     private lateinit var mEditFindTemple: EditText
     private lateinit var mViewModel: TempleListViewModel
     private lateinit var mAdapter: TempleListAdapter
+    private lateinit var mSharedPref: SharedPrefManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +38,8 @@ class TempleListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mSharedPref = SharedPrefManager.getInstance(context)
 
         val tActivity = this.activity
         if (tActivity != null)
@@ -57,11 +61,12 @@ class TempleListFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         ).get(TempleListViewModel::class.java)
 
-        mViewModel.getTemple().observe(this.viewLifecycleOwner, Observer { templeList ->
-            if (templeList != null) {
-                mAdapter.setData(templeList)
-            }
-        })
+        mViewModel.getTemple()
+            .observe(this.viewLifecycleOwner, Observer { templeList ->
+                if (templeList != null) {
+                    mAdapter.setData(templeList)
+                }
+            })
     }
 
     private fun showRecyclerView() {

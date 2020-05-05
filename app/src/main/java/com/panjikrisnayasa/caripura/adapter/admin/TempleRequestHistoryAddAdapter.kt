@@ -39,7 +39,6 @@ class TempleRequestHistoryAddAdapter(private var mTempleList: ArrayList<Temple>)
         Glide.with(holder.itemView.context).load(temple.photo).into(holder.mImage)
         holder.mTextName.text = temple.name
         holder.mTextVillageOffice.text = temple.villageOffice
-        holder.mTextDistance.text = temple.distance
         holder.mTextFullMoonPrayerStart.text = temple.fullMoonPrayerStart
         holder.mTextFullMoonPrayerEnd.text = temple.fullMoonPrayerEnd
         holder.mTextDeadMoonPrayerStart.text = temple.deadMoonPrayerStart
@@ -60,8 +59,6 @@ class TempleRequestHistoryAddAdapter(private var mTempleList: ArrayList<Temple>)
             itemView.findViewById(R.id.text_item_temple_list_with_label_temple_name)
         var mTextVillageOffice: TextView =
             itemView.findViewById(R.id.text_item_temple_list_with_label_temple_village_office)
-        var mTextDistance: TextView =
-            itemView.findViewById(R.id.text_item_temple_list_with_label_temple_distance)
         var mTextFullMoonPrayerStart: TextView =
             itemView.findViewById(R.id.text_item_temple_list_with_label_full_moon_prayer_start)
         var mTextFullMoonPrayerEnd: TextView =

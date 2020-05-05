@@ -40,8 +40,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_medium"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="16sp"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="20sp"
                     tools:text="Pura Marga Shirsa" />
 
                 <TextView
@@ -49,38 +49,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_item_temple_list_with_label_temple_name"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/ic_location_on_purple_14dp"
                     android:drawablePadding="8dp"
                     android:textColor="@color/colorTextHint"
+                    android:textSize="16sp"
                     tools:text="Pisangcandi" />
-
-                <TextView
-                    android:id="@+id/text_item_temple_list_with_label_temple_distance"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/text_item_temple_list_with_label_temple_village_office"
-                    android:layout_marginTop="4dp"
-                    android:drawableStart="@drawable/ic_itinerary_purple_14dp"
-                    android:drawablePadding="4dp"
-                    android:textColor="@color/colorTextHint"
-                    tools:text="1 km" />
 
                 <TextView
                     android:id="@+id/text_item_temple_list_with_label_pray_together"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/text_item_temple_list_with_label_temple_distance"
+                    android:layout_below="@id/text_item_temple_list_with_label_temple_village_office"
                     android:layout_marginTop="16dp"
                     android:text="@string/item_temple_list_text_together_prayer"
-                    android:textColor="@color/colorTextBlack" />
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:id="@+id/linear_item_temple_list_with_label_full_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_item_temple_list_with_label_pray_together"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -127,7 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/linear_item_temple_list_with_label_full_moon"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <TextView

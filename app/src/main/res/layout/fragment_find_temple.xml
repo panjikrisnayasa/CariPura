@@ -13,45 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_find_temple"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_search_dark_grey_16dp"
-                    tools:ignore="ContentDescription" />
-
-                <EditText
-                    android:id="@+id/edit_find_temple"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:focusableInTouchMode="false"
-                    android:hint="@string/find_temple_edit_find_temple"
-                    android:importantForAutofill="no"
-                    android:inputType="textCapWords" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_action_button_find_temple_my_location"
             android:layout_width="wrap_content"
@@ -72,6 +33,56 @@
             android:text="@string/find_temple_button_find_the_nearest_temple"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_find_temple_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/text_find_temple_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_medium"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="16sp"
+                    tools:text="Pura Marga Sirsha" />
+
+                <TextView
+                    android:id="@+id/text_find_temple_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/ic_itinerary_purple_14dp"
+                    android:drawablePadding="16dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="16sp"
+                    tools:text="5 km" />
+
+                <TextView
+                    android:id="@+id/text_find_temple_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/ic_motorcycle_purple_14dp"
+                    android:drawablePadding="16dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="16sp"
+                    tools:text="10 mins" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <fragment
             android:id="@+id/fragment_find_temple_map"

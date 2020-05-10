@@ -1,7 +1,6 @@
 package com.panjikrisnayasa.caripura.view.guest
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -10,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
+import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.guest.TempleDetailViewModel
 import kotlinx.android.synthetic.main.activity_temple_detail.*
 
@@ -28,10 +28,13 @@ class TempleDetailActivity : AppCompatActivity() {
         R.drawable.ic_launcher_background,
         R.drawable.ic_launcher_background
     )
+    private lateinit var mSharedPref: SharedPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_temple_detail)
+
+        mSharedPref = SharedPrefManager.getInstance(applicationContext)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -40,11 +43,18 @@ class TempleDetailActivity : AppCompatActivity() {
         )
 
         val templeId = intent.getStringExtra(EXTRA_TEMPLE_ID)
-        Log.d("hyperLoop", "temple detail $templeId")
 
         if (templeId != null) {
-            mViewModel.setTempleDetail(templeId)
-            mViewModel.getTempleDetail().observe(this, Observer { temple ->
+            mViewModel.getTempleDetail(templeId).observe(this, Observer { temple ->
+                mViewModel.getDistanceDuration(
+                    mSharedPref.getLastLat(),
+                    mSharedPref.getLastLng(),
+                    temple.lat,
+                    temple.lng
+                ).observe(this, Observer { distanceDuration ->
+                    text_temple_detail_distance.text = distanceDuration[0]
+                    text_temple_detail_duration.text = distanceDuration[1]
+                })
                 carousel_temple_detail_photo.setImageListener { _, imageView ->
                     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                     Glide.with(this).load(temple.photo).into(imageView)

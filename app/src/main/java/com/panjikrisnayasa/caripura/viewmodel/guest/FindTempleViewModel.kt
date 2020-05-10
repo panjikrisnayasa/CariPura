@@ -1,19 +1,15 @@
 package com.panjikrisnayasa.caripura.viewmodel.guest
 
-import android.content.Context
 import android.location.Location
 import android.net.Uri
-import android.util.Log
-import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.firebase.geofire.GeoFire
 import com.firebase.geofire.GeoLocation
 import com.firebase.geofire.GeoQuery
 import com.firebase.geofire.GeoQueryDataEventListener
-import com.firebase.geofire.util.GeoUtils
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -21,9 +17,7 @@ import com.google.maps.android.PolyUtil
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.panjikrisnayasa.caripura.BuildConfig
-import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
-import com.panjikrisnayasa.caripura.view.guest.FindTempleFragment
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 
@@ -36,19 +30,18 @@ class FindTempleViewModel : ViewModel() {
         private const val GOOGLE_API_KEY_PARAM = "key"
     }
 
-    fun setGeoQuery(lastLocation: Location?, context: Context?, googleMap: GoogleMap?) {
+    private val mTempleList = MutableLiveData<ArrayList<Temple>>()
+    private val mPath = MutableLiveData<MutableList<List<LatLng>>>()
+    private val mDistanceDuration = MutableLiveData<ArrayList<String>>()
+
+    fun getAllTemple(
+        lastLocation: Location?
+    ): LiveData<ArrayList<Temple>> {
         lateinit var geoQuery: GeoQuery
         val databaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
         val geoFire = GeoFire(databaseReference)
         val templeList = arrayListOf<Temple>()
-        val lastLat = lastLocation?.latitude.toString()
-        val lastLng = lastLocation?.longitude.toString()
-
         if (lastLocation != null) {
-            Log.d(
-                "hyperLoop",
-                "lastLocation lat = ${lastLocation.latitude}, long = ${lastLocation.longitude}"
-            )
             geoQuery = geoFire.queryAtLocation(
                 GeoLocation(
                     lastLocation.latitude,
@@ -58,88 +51,7 @@ class FindTempleViewModel : ViewModel() {
 
             geoQuery.addGeoQueryDataEventListener(object : GeoQueryDataEventListener {
                 override fun onGeoQueryReady() {
-                    Log.d("hyperLoop", "geo query ready")
-
-                    if (templeList.size > 0) {
-                        val distanceTemple2: Double
-                        val distanceTemple1 = GeoUtils.distance(
-                            templeList[0].lat.toDouble(),
-                            templeList[0].lng.toDouble(),
-                            lastLocation.latitude,
-                            lastLocation.longitude
-                        )
-
-                        if (templeList.size > 1) {
-                            distanceTemple2 = GeoUtils.distance(
-                                templeList[1].lat.toDouble(),
-                                templeList[1].lng.toDouble(),
-                                lastLocation.latitude,
-                                lastLocation.longitude
-                            )
-
-                            if (distanceTemple1 < distanceTemple2) {
-                                val latLng =
-                                    LatLng(
-                                        templeList[0].lat.toDouble(),
-                                        templeList[0].lng.toDouble()
-                                    )
-                                googleMap?.setInfoWindowAdapter(
-                                    FindTempleFragment.CustomInfoWindowAdapter(
-                                        context,
-                                        templeList[0].photo,
-                                        templeList[0].name
-                                    )
-                                )
-                                googleMap?.addMarker(
-                                    MarkerOptions().position(latLng)
-                                        .title(templeList[0].name)
-                                )?.showInfoWindow()
-                                getRoute(
-                                    googleMap,
-                                    lastLat,
-                                    lastLng,
-                                    templeList[0].lat,
-                                    templeList[0].lng
-                                )
-                                googleMap?.animateCamera(
-                                    CameraUpdateFactory.newLatLngZoom(
-                                        latLng,
-                                        18f
-                                    )
-                                )
-                            } else {
-                                val latLng =
-                                    LatLng(
-                                        templeList[1].lat.toDouble(),
-                                        templeList[1].lng.toDouble()
-                                    )
-                                googleMap?.setInfoWindowAdapter(
-                                    FindTempleFragment.CustomInfoWindowAdapter(
-                                        context,
-                                        templeList[1].photo,
-                                        templeList[1].name
-                                    )
-                                )
-                                googleMap?.addMarker(
-                                    MarkerOptions().position(latLng)
-                                        .title(templeList[1].name)
-                                )?.showInfoWindow()
-                                getRoute(
-                                    googleMap,
-                                    lastLat,
-                                    lastLng,
-                                    templeList[1].lat,
-                                    templeList[1].lng
-                                )
-                                googleMap?.animateCamera(
-                                    CameraUpdateFactory.newLatLngZoom(
-                                        latLng,
-                                        18f
-                                    )
-                                )
-                            }
-                        }
-                    }
+                    mTempleList.postValue(templeList)
                 }
 
                 override fun onDataExited(dataSnapshot: DataSnapshot?) {
@@ -151,22 +63,11 @@ class FindTempleViewModel : ViewModel() {
                 }
 
                 override fun onDataEntered(dataSnapshot: DataSnapshot?, location: GeoLocation?) {
-                    Log.d("hyperLoop", "key entered")
                     if (dataSnapshot != null && location != null) {
                         val data = dataSnapshot.child("data")
-                        Log.d(
-                            "hyperLoop",
-                            "$data entered: ${location.latitude}, ${location.longitude}"
-                        )
-
                         val temple = data.getValue(Temple::class.java)
                         if (temple != null) {
                             templeList.add(temple)
-                            Toast.makeText(
-                                context,
-                                "onDataEntered: ${temple.name} \n${temple.lat}, ${temple.lng}",
-                                Toast.LENGTH_SHORT
-                            ).show()
                         }
                     }
                 }
@@ -180,10 +81,10 @@ class FindTempleViewModel : ViewModel() {
                 }
             })
         }
+        return mTempleList
     }
 
-    fun getRoute(
-        googleMap: GoogleMap?,
+    fun setDirectionApi(
         lastLat: String,
         lastLng: String,
         destinationLat: String,
@@ -201,7 +102,6 @@ class FindTempleViewModel : ViewModel() {
             )
             .build()
         val url = builtUri.toString()
-        Log.d("hyperLoop", url)
         val path: MutableList<List<LatLng>> = ArrayList()
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
@@ -218,39 +118,21 @@ class FindTempleViewModel : ViewModel() {
                 val routes = responseObjectRoute.getJSONArray("routes")
                 val legs = routes.getJSONObject(0).getJSONArray("legs")
                 val steps = legs.getJSONObject(0).getJSONArray("steps")
+                val distance = legs.getJSONObject(0).getJSONObject("distance").getString("text")
+                val duration = legs.getJSONObject(0).getJSONObject("duration").getString("text")
+                val distanceDuration = arrayListOf<String>()
+                distanceDuration.add(distance)
+                distanceDuration.add(duration)
+
                 for (i in 0 until steps.length()) {
                     val points =
                         steps.getJSONObject(i).getJSONObject("polyline")
                             .getString("points")
                     path.add(PolyUtil.decode(points))
                 }
-                for (i in 0 until path.size) {
-                    when (i) {
-                        0 -> {
-                            googleMap?.addPolyline(
-                                PolylineOptions().addAll(path[i]).width(16f)
-                                    .startCap(CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.ic_route_start_end_white_8dp)))
-                                    .endCap(RoundCap()).jointType(JointType.ROUND)
-                                    .color(0xFF4285F4.toInt()).geodesic(true)
-                            )
-                        }
-                        path.size - 1 -> {
-                            googleMap?.addPolyline(
-                                PolylineOptions().addAll(path[i]).width(16f).startCap(RoundCap())
-                                    .endCap(CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.ic_route_start_end_white_8dp)))
-                                    .jointType(JointType.ROUND)
-                                    .color(0xFF4285F4.toInt()).geodesic(true)
-                            )
-                        }
-                        else -> {
-                            googleMap?.addPolyline(
-                                PolylineOptions().addAll(path[i]).width(16f).startCap(RoundCap())
-                                    .endCap(RoundCap()).jointType(JointType.ROUND)
-                                    .color(0xFF4285F4.toInt()).geodesic(true)
-                            )
-                        }
-                    }
-                }
+
+                mDistanceDuration.postValue(distanceDuration)
+                mPath.postValue(path)
             }
 
             override fun onFailure(
@@ -259,11 +141,16 @@ class FindTempleViewModel : ViewModel() {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                Log.d(
-                    "hyperLoop",
-                    "failed getting route \n${error?.printStackTrace()}"
-                )
+                error?.printStackTrace()
             }
         })
+    }
+
+    fun getDistanceDuration(): LiveData<ArrayList<String>> {
+        return mDistanceDuration
+    }
+
+    fun getPath(): LiveData<MutableList<List<LatLng>>> {
+        return mPath
     }
 }

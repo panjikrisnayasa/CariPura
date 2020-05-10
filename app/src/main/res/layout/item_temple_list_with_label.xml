@@ -24,7 +24,7 @@
                 android:id="@+id/image_item_temple_list_with_label"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:src="@color/colorAccent"
                 tools:ignore="ContentDescription" />
@@ -40,6 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_medium"
+                    android:maxLines="1"
                     android:textColor="@color/colorTextBlack"
                     android:textSize="20sp"
                     tools:text="Pura Marga Shirsa" />
@@ -52,6 +53,7 @@
                     android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/ic_location_on_purple_14dp"
                     android:drawablePadding="8dp"
+                    android:maxLines="1"
                     android:textColor="@color/colorTextHint"
                     android:textSize="16sp"
                     tools:text="Pisangcandi" />
@@ -63,8 +65,7 @@
                     android:layout_below="@id/text_item_temple_list_with_label_temple_village_office"
                     android:layout_marginTop="16dp"
                     android:text="@string/item_temple_list_text_together_prayer"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorTextBlack" />
 
                 <LinearLayout
                     android:id="@+id/linear_item_temple_list_with_label_full_moon"

@@ -5,26 +5,28 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="vertical"
-    android:padding="4dp">
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/image_info_window_custom"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         tools:background="@color/colorAccent"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/text_info_window_custom"
+        android:id="@+id/text_info_window_custom_temple_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/gotham_bold"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/gotham_medium"
         android:maxLines="1"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="16sp"
         tools:text="Pura Marga Sirsha" />
 
 </LinearLayout>

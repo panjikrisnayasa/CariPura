@@ -101,6 +101,7 @@
     <!--    fragment_find_temple-->
     <string name="find_temple_button_find_the_nearest_temple">Find Nearest Temple</string>
     <string name="find_temple_edit_find_temple">Find temple</string>
+    <string name="find_temple_button_temple_detail">Temple Detail</string>
 
     <!--    fragment_logged_in-->
     <string name="logged_in_text_input_edit_text_full_name">Full Name</string>

@@ -102,6 +102,7 @@
     <!--    fragment_find_temple-->
     <string name="find_temple_button_find_the_nearest_temple">Cari Pura Terdekat</string>
     <string name="find_temple_edit_find_temple">Cari pura</string>
+    <string name="find_temple_button_temple_detail">Detail Pura</string>
 
     <!--    fragment_logged_in-->
     <string name="logged_in_text_input_edit_text_full_name">Nama Lengkap</string>

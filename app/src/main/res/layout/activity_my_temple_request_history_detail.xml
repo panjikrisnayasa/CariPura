@@ -64,6 +64,7 @@
                 android:drawableStart="@drawable/ic_location_on_purple_14dp"
                 android:drawablePadding="18dp"
                 android:lineSpacingMultiplier="1.5"
+                android:textColor="@color/colorTextBlack"
                 android:textSize="16sp"
                 tools:text="Jl. Pisang Candi Barat No. 100 - 101, Pisang Candi, Sukun" />
 
@@ -74,8 +75,20 @@
                 android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/ic_itinerary_purple_14dp"
                 android:drawablePadding="16dp"
+                android:textColor="@color/colorTextBlack"
                 android:textSize="16sp"
                 tools:text="1 km" />
+
+            <TextView
+                android:id="@+id/text_my_temple_request_history_detail_temple_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_motorcycle_purple_14dp"
+                android:drawablePadding="16dp"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp"
+                tools:text="1 minute" />
 
             <TextView
                 android:id="@+id/text_my_temple_request_history_detail_temple_caretaker"
@@ -84,6 +97,7 @@
                 android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/ic_account_box_purple_14dp"
                 android:drawablePadding="16dp"
+                android:textColor="@color/colorTextBlack"
                 android:textSize="16sp"
                 tools:text="Pak Wayan" />
 
@@ -94,6 +108,7 @@
                 android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/ic_call_purple_14dp"
                 android:drawablePadding="16dp"
+                android:textColor="@color/colorTextBlack"
                 android:textSize="16sp"
                 tools:text="08214531xxxx" />
 
@@ -530,7 +545,7 @@
                 android:drawableStart="@drawable/ic_info_outline_grey_12dp"
                 android:drawablePadding="16dp"
                 android:lineSpacingMultiplier="1.5"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorNegativeButton"
                 android:textSize="16sp"
                 android:visibility="gone"
                 tools:text="Melukat dilaksanakan sebulan sekali pada hari Minggu pekan pertama bulan tersebut" />

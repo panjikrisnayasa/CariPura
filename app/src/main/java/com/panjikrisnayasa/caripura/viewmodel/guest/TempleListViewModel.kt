@@ -25,7 +25,7 @@ class TempleListViewModel : ViewModel() {
         mDatabaseReference.addChildEventListener(object : ChildEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
-                Log.d("hyperLoop", p0.message)
+                p0.message
             }
 
             override fun onChildMoved(p0: DataSnapshot, p1: String?) {
@@ -108,4 +108,5 @@ class TempleListViewModel : ViewModel() {
 //        Log.d("hyperLoop", "templeDistance $templeDistance")
 //        return templeDistance
 //    }
+
 }

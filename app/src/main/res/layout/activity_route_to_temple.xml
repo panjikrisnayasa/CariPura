@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RouteToTempleActivity">
+
+    <fragment
+        android:id="@+id/fragment_route_to_temple_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button_route_to_temple_my_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@android:color/white"
+        android:src="@drawable/ic_my_location_black_24dp"
+        android:visibility="gone"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@id/card_route_to_temple_bottom"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_route_to_temple_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_route_to_temple_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_medium"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp"
+                tools:text="Pura Marga Sirsha" />
+
+            <TextView
+                android:id="@+id/text_route_to_temple_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_itinerary_purple_14dp"
+                android:drawablePadding="16dp"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp"
+                tools:text="5 km" />
+
+            <TextView
+                android:id="@+id/text_route_to_temple_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_motorcycle_purple_14dp"
+                android:drawablePadding="16dp"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp"
+                tools:text="10 mins" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,9 @@
 
     <string name="app_name">Cari Pura</string>
 
+    <!--    activity_main-->
+    <string name="main_on_back_pressed">Press back again to exit</string>
+
     <!--    activity_admin_my_temple_list-->
     <string name="admin_my_temple_list_text_no_data">There are no registered temples yet</string>
 
@@ -102,6 +105,7 @@
     <string name="find_temple_button_find_the_nearest_temple">Find Nearest Temple</string>
     <string name="find_temple_edit_find_temple">Find temple</string>
     <string name="find_temple_button_temple_detail">Temple Detail</string>
+    <string name="find_temple_toast_no_temple">No temple around you</string>
 
     <!--    fragment_logged_in-->
     <string name="logged_in_text_input_edit_text_full_name">Full Name</string>
@@ -188,6 +192,7 @@
     <string name="label_edit_temple_request">Edit Temple Request</string>
     <string name="label_add_temple_request">Add Temple Request</string>
     <string name="label_my_temple_request_history">My Temple Request History</string>
+    <string name="label_route_to_temple">Route To Temple</string>
 
     <!--    item_label-->
     <string name="item_label_request_add_temple">Request Add Temple</string>

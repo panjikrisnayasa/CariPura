@@ -33,7 +33,7 @@ class AccountLoginViewModel : ViewModel() {
                     mDatabaseReference.addListenerForSingleValueEvent(object :
                         ValueEventListener {
                         override fun onCancelled(p0: DatabaseError) {
-                            Log.d("hyperLoop", p0.message)
+                            p0.message
                         }
 
                         override fun onDataChange(p0: DataSnapshot) {
@@ -47,6 +47,7 @@ class AccountLoginViewModel : ViewModel() {
                                             Toast.LENGTH_SHORT
                                         ).show()
                                         mAuth.signOut()
+                                        mUser.postValue(null)
                                         return
                                     }
                                 }
@@ -61,6 +62,7 @@ class AccountLoginViewModel : ViewModel() {
                     context?.getString(R.string.error_message_email_password_incorrect),
                     Toast.LENGTH_SHORT
                 ).show()
+                mUser.postValue(null)
             }
         }
         return mUser

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.panjikrisnayasa.caripura.R
+import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.guest.FindTempleViewModel
 import com.squareup.picasso.Callback
@@ -37,7 +39,53 @@ import kotlinx.android.synthetic.main.fragment_find_temple.*
 class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1
+
+        fun drawPolyline(googleMap: GoogleMap?, path: MutableList<List<LatLng>>) {
+            for (i in 0 until path.size) {
+                when (i) {
+                    0 -> {
+                        googleMap?.addPolyline(
+                            PolylineOptions().addAll(path[i]).width(16f)
+                                .startCap(
+                                    CustomCap(
+                                        BitmapDescriptorFactory.fromResource(
+                                            R.drawable.ic_route_start_end_white_8dp
+                                        )
+                                    )
+                                )
+                                .endCap(RoundCap())
+                                .jointType(JointType.ROUND)
+                                .color(0xFF4285F4.toInt()).geodesic(true)
+                        )
+                    }
+                    path.size - 1 -> {
+                        googleMap?.addPolyline(
+                            PolylineOptions().addAll(path[i]).width(16f)
+                                .startCap(RoundCap())
+                                .endCap(
+                                    CustomCap(
+                                        BitmapDescriptorFactory.fromResource(
+                                            R.drawable.ic_route_start_end_white_8dp
+                                        )
+                                    )
+                                )
+                                .jointType(JointType.ROUND)
+                                .color(0xFF4285F4.toInt()).geodesic(true)
+                        )
+                    }
+                    else -> {
+                        googleMap?.addPolyline(
+                            PolylineOptions().addAll(path[i]).width(16f)
+                                .startCap(RoundCap())
+                                .endCap(RoundCap())
+                                .jointType(JointType.ROUND)
+                                .color(0xFF4285F4.toInt()).geodesic(true)
+                        )
+                    }
+                }
+            }
+        }
     }
 
     private lateinit var mFusedLocationProviderClient: FusedLocationProviderClient
@@ -80,212 +128,43 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         }
 
         button_find_temple_find_the_closest_temple.setOnClickListener {
+            progress_find_temple.visibility = View.VISIBLE
             mViewModel.getAllTemple(mLastLocation)
                 .observe(this, Observer { templeList ->
-                    val lastLat = mLastLocation.latitude.toString()
-                    val lastLng = mLastLocation.longitude.toString()
+                    if (templeList == null) {
+                        Toast.makeText(
+                            context,
+                            getString(R.string.find_temple_toast_no_temple),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        val lastLat = mLastLocation.latitude.toString()
+                        val lastLng = mLastLocation.longitude.toString()
 
-                    if (templeList.size > 0) {
-                        val distanceTemple2: Double
-                        val distanceTemple1 = GeoUtils.distance(
-                            templeList[0].lat.toDouble(),
-                            templeList[0].lng.toDouble(),
-                            mLastLocation.latitude,
-                            mLastLocation.longitude
-                        )
-
-                        if (templeList.size > 1) {
-                            distanceTemple2 = GeoUtils.distance(
-                                templeList[1].lat.toDouble(),
-                                templeList[1].lng.toDouble(),
-                                mLastLocation.latitude,
-                                mLastLocation.longitude
+                        val closestTemple = getClosestTemple(templeList)
+                        if (closestTemple != null) {
+                            mTempleId = closestTemple.id
+                            val latLng =
+                                LatLng(
+                                    closestTemple.lat.toDouble(),
+                                    closestTemple.lng.toDouble()
+                                )
+                            mViewModel.setDirectionApi(
+                                lastLat,
+                                lastLng,
+                                closestTemple.lat,
+                                closestTemple.lng
                             )
-
-                            if (distanceTemple1 < distanceTemple2) {
-                                mTempleId = templeList[0].id
-                                val latLng =
-                                    LatLng(
-                                        templeList[0].lat.toDouble(),
-                                        templeList[0].lng.toDouble()
-                                    )
-                                mViewModel.setDirectionApi(
-                                    lastLat,
-                                    lastLng,
-                                    templeList[0].lat,
-                                    templeList[0].lng
-                                )
-                                mViewModel.getPath().observe(this, Observer { path ->
-                                    for (i in 0 until path.size) {
-                                        when (i) {
-                                            0 -> {
-                                                mGoogleMap?.addPolyline(
-                                                    PolylineOptions().addAll(path[i]).width(16f)
-                                                        .startCap(
-                                                            CustomCap(
-                                                                BitmapDescriptorFactory.fromResource(
-                                                                    R.drawable.ic_route_start_end_white_8dp
-                                                                )
-                                                            )
-                                                        )
-                                                        .endCap(RoundCap())
-                                                        .jointType(JointType.ROUND)
-                                                        .color(0xFF4285F4.toInt()).geodesic(true)
-                                                )
-                                            }
-                                            path.size - 1 -> {
-                                                mGoogleMap?.addPolyline(
-                                                    PolylineOptions().addAll(path[i]).width(16f)
-                                                        .startCap(RoundCap())
-                                                        .endCap(
-                                                            CustomCap(
-                                                                BitmapDescriptorFactory.fromResource(
-                                                                    R.drawable.ic_route_start_end_white_8dp
-                                                                )
-                                                            )
-                                                        )
-                                                        .jointType(JointType.ROUND)
-                                                        .color(0xFF4285F4.toInt()).geodesic(true)
-                                                )
-                                            }
-                                            else -> {
-                                                mGoogleMap?.addPolyline(
-                                                    PolylineOptions().addAll(path[i]).width(16f)
-                                                        .startCap(RoundCap())
-                                                        .endCap(RoundCap())
-                                                        .jointType(JointType.ROUND)
-                                                        .color(0xFF4285F4.toInt()).geodesic(true)
-                                                )
-                                            }
-                                        }
-                                    }
+                            mViewModel.getPath().observe(this, Observer { path ->
+                                drawPolyline(mGoogleMap, path)
+                            })
+                            mViewModel.getDistanceDuration()
+                                .observe(this, Observer { distanceDuration ->
+                                    showTemple(closestTemple, latLng, distanceDuration)
                                 })
-                                mViewModel.getDistanceDuration()
-                                    .observe(this, Observer { distanceDuration ->
-                                        mGoogleMap?.setInfoWindowAdapter(
-                                            CustomInfoWindowAdapter(
-                                                context,
-                                                templeList[0].photo,
-                                                templeList[0].name
-                                            )
-                                        )
-                                        mGoogleMap?.addMarker(
-                                            MarkerOptions().position(latLng)
-                                                .title(templeList[0].name)
-                                        )?.showInfoWindow()
-                                        mGoogleMap?.animateCamera(
-                                            CameraUpdateFactory.newLatLngZoom(
-                                                latLng,
-                                                18f
-                                            )
-                                        )
-                                        text_find_temple_name.text = templeList[0].name
-                                        text_find_temple_distance.text = distanceDuration[0]
-                                        text_find_temple_duration.text = distanceDuration[1]
-
-                                        val params =
-                                            floating_action_button_find_temple_my_location.layoutParams as ConstraintLayout.LayoutParams
-                                        params.bottomToTop = card_find_temple_bottom.id
-                                        floating_action_button_find_temple_my_location.requestLayout()
-
-                                        button_find_temple_find_the_closest_temple.visibility =
-                                            View.GONE
-                                        card_find_temple_bottom.visibility = View.VISIBLE
-                                    })
-                            } else {
-                                mTempleId = templeList[1].id
-                                val latLng =
-                                    LatLng(
-                                        templeList[1].lat.toDouble(),
-                                        templeList[1].lng.toDouble()
-                                    )
-                                mViewModel.setDirectionApi(
-                                    lastLat,
-                                    lastLng,
-                                    templeList[1].lat,
-                                    templeList[1].lng
-                                )
-                                mViewModel.getPath().observe(this, Observer { path ->
-                                    for (i in 0 until path.size) {
-                                        when (i) {
-                                            0 -> {
-                                                mGoogleMap?.addPolyline(
-                                                    PolylineOptions().addAll(path[i]).width(16f)
-                                                        .startCap(
-                                                            CustomCap(
-                                                                BitmapDescriptorFactory.fromResource(
-                                                                    R.drawable.ic_route_start_end_white_8dp
-                                                                )
-                                                            )
-                                                        )
-                                                        .endCap(RoundCap())
-                                                        .jointType(JointType.ROUND)
-                                                        .color(0xFF4285F4.toInt()).geodesic(true)
-                                                )
-                                            }
-                                            path.size - 1 -> {
-                                                mGoogleMap?.addPolyline(
-                                                    PolylineOptions().addAll(path[i]).width(16f)
-                                                        .startCap(RoundCap())
-                                                        .endCap(
-                                                            CustomCap(
-                                                                BitmapDescriptorFactory.fromResource(
-                                                                    R.drawable.ic_route_start_end_white_8dp
-                                                                )
-                                                            )
-                                                        )
-                                                        .jointType(JointType.ROUND)
-                                                        .color(0xFF4285F4.toInt()).geodesic(true)
-                                                )
-                                            }
-                                            else -> {
-                                                mGoogleMap?.addPolyline(
-                                                    PolylineOptions().addAll(path[i]).width(16f)
-                                                        .startCap(RoundCap())
-                                                        .endCap(RoundCap())
-                                                        .jointType(JointType.ROUND)
-                                                        .color(0xFF4285F4.toInt()).geodesic(true)
-                                                )
-                                            }
-                                        }
-                                    }
-                                })
-                                mViewModel.getDistanceDuration()
-                                    .observe(this, Observer { distanceDuration ->
-                                        mGoogleMap?.setInfoWindowAdapter(
-                                            CustomInfoWindowAdapter(
-                                                context,
-                                                templeList[0].photo,
-                                                templeList[0].name
-                                            )
-                                        )
-                                        mGoogleMap?.addMarker(
-                                            MarkerOptions().position(latLng)
-                                                .title(templeList[1].name)
-                                        )?.showInfoWindow()
-                                        mGoogleMap?.animateCamera(
-                                            CameraUpdateFactory.newLatLngZoom(
-                                                latLng,
-                                                18f
-                                            )
-                                        )
-
-                                        val params =
-                                            floating_action_button_find_temple_my_location.layoutParams as ConstraintLayout.LayoutParams
-                                        params.bottomToTop = card_find_temple_bottom.id
-                                        floating_action_button_find_temple_my_location.requestLayout()
-
-                                        button_find_temple_find_the_closest_temple.visibility =
-                                            View.GONE
-                                        card_find_temple_bottom.visibility = View.VISIBLE
-
-                                        text_find_temple_name.text = templeList[0].name
-                                        text_find_temple_distance.text = distanceDuration[0]
-                                        text_find_temple_duration.text = distanceDuration[1]
-                                    })
-                            }
                         }
                     }
+                    progress_find_temple.visibility = View.GONE
                 })
         }
 
@@ -339,7 +218,6 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
     override fun onMarkerClick(p0: Marker?): Boolean = false
 
-
     private fun setupMap() {
         val tContext = this.context
         val tActivity = this.activity
@@ -359,16 +237,69 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         }
     }
 
-    private fun getClosestTemple() {
+    private fun getClosestTemple(templeList: ArrayList<Temple>): Temple? {
+        var closestDistance = 0.0
+        var closestTemple: Temple? = null
+        for (i in 0 until templeList.size) {
+            val distance = GeoUtils.distance(
+                mLastLocation.latitude,
+                mLastLocation.longitude,
+                templeList[i].lat.toDouble(),
+                templeList[i].lng.toDouble()
+            )
+            if (i == 0) {
+                closestDistance = distance
+                closestTemple = templeList[i]
+            }
+            if (distance < closestDistance) {
+                closestDistance = distance
+                closestTemple = templeList[i]
+            }
+        }
+        return closestTemple
+    }
 
+    private fun showTemple(
+        templeList: Temple,
+        latLng: LatLng,
+        distanceDuration: ArrayList<String>
+    ) {
+        mGoogleMap?.setInfoWindowAdapter(
+            CustomInfoWindowAdapter(
+                context,
+                templeList.photo,
+                templeList.name
+            )
+        )
+        mGoogleMap?.addMarker(
+            MarkerOptions().position(latLng)
+                .title(templeList.name)
+        )?.showInfoWindow()
+        mGoogleMap?.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                latLng,
+                18f
+            )
+        )
+        text_find_temple_name.text = templeList.name
+        text_find_temple_distance.text = distanceDuration[0]
+        text_find_temple_duration.text = distanceDuration[1]
+
+        val params =
+            floating_action_button_find_temple_my_location.layoutParams as ConstraintLayout.LayoutParams
+        params.bottomToTop = card_find_temple_bottom.id
+        floating_action_button_find_temple_my_location.requestLayout()
+
+        button_find_temple_find_the_closest_temple.visibility =
+            View.GONE
+        card_find_temple_bottom.visibility = View.VISIBLE
     }
 
     internal class CustomInfoWindowAdapter(
         context: Context?,
         photoUrl: String,
         templeName: String
-    ) :
-        GoogleMap.InfoWindowAdapter {
+    ) : GoogleMap.InfoWindowAdapter {
 
         companion object {
             class MarkerCallback(private var mMarker: Marker?) : Callback {

@@ -3,6 +3,9 @@
 
     <string name="app_name">Cari Pura</string>
 
+    <!--    activity_main-->
+    <string name="main_on_back_pressed">Tekan tombol kembali untuk keluar</string>
+
     <!--    activity_admin_my_temple_list-->
     <string name="admin_my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
 
@@ -103,6 +106,7 @@
     <string name="find_temple_button_find_the_nearest_temple">Cari Pura Terdekat</string>
     <string name="find_temple_edit_find_temple">Cari pura</string>
     <string name="find_temple_button_temple_detail">Detail Pura</string>
+    <string name="find_temple_toast_no_temple">Tidak ada pura di sekitar Anda</string>
 
     <!--    fragment_logged_in-->
     <string name="logged_in_text_input_edit_text_full_name">Nama Lengkap</string>
@@ -189,6 +193,7 @@
     <string name="label_edit_temple_request">Ajukan Ubah Pura</string>
     <string name="label_add_temple_request">Ajukan Tambah Pura</string>
     <string name="label_my_temple_request_history">Riwayat Pengajuan Pura Saya</string>
+    <string name="label_route_to_temple">Rute Menuju Pura</string>
 
     <!--    item_label-->
     <string name="item_label_request_add_temple">Pengajuan Tambah Pura</string>

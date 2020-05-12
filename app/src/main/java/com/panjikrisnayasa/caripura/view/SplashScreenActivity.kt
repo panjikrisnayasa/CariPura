@@ -1,4 +1,4 @@
-package com.panjikrisnayasa.caripura.view.guest
+package com.panjikrisnayasa.caripura.view
 
 import android.content.Intent
 import android.os.Bundle

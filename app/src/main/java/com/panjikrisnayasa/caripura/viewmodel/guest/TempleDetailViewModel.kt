@@ -14,13 +14,6 @@ import org.json.JSONObject
 
 class TempleDetailViewModel : ViewModel() {
 
-    companion object {
-        private const val BASE_URL_ROUTE = "https://maps.googleapis.com/maps/api/directions/json"
-        private const val ORIGIN_PARAM = "origin"
-        private const val DESTINATION_PARAM = "destination"
-        private const val GOOGLE_API_KEY_PARAM = "key"
-    }
-
     private lateinit var mDatabaseReference: DatabaseReference
     private val mTempleDetail = MutableLiveData<Temple>()
     private val mDistanceDuration = MutableLiveData<ArrayList<String>>()
@@ -29,7 +22,7 @@ class TempleDetailViewModel : ViewModel() {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
         mDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
+                p0.message
             }
 
             override fun onDataChange(p0: DataSnapshot) {
@@ -54,11 +47,11 @@ class TempleDetailViewModel : ViewModel() {
         val client = AsyncHttpClient()
         val origin = "$lastLat,$lastLng"
         val destination = "$destinationLat,$destinationLng"
-        val builtUri = Uri.parse(BASE_URL_ROUTE).buildUpon()
-            .appendQueryParameter(ORIGIN_PARAM, origin)
-            .appendQueryParameter(DESTINATION_PARAM, destination)
+        val builtUri = Uri.parse(FindTempleViewModel.BASE_URL_ROUTE).buildUpon()
+            .appendQueryParameter(FindTempleViewModel.ORIGIN_PARAM, origin)
+            .appendQueryParameter(FindTempleViewModel.DESTINATION_PARAM, destination)
             .appendQueryParameter(
-                GOOGLE_API_KEY_PARAM,
+                FindTempleViewModel.GOOGLE_API_KEY_PARAM,
                 BuildConfig.GOOGLE_API_KEY
             )
             .build()

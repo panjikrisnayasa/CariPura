@@ -1,18 +1,20 @@
-package com.panjikrisnayasa.caripura.view.guest
+package com.panjikrisnayasa.caripura.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.panjikrisnayasa.caripura.R
+import com.panjikrisnayasa.caripura.view.guest.AccountLoginFragment
+import com.panjikrisnayasa.caripura.view.guest.FindTempleFragment
+import com.panjikrisnayasa.caripura.view.guest.TempleListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var mUserDatabaseReference: DatabaseReference
+    private var mBackPressedOnce = false
 
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +44,18 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation_view_main.setOnNavigationItemSelectedListener(
             mOnNavigationItemSelectedListener
         )
+    }
+
+    override fun onBackPressed() {
+        if (mBackPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        mBackPressedOnce = true
+        Toast.makeText(this, getString(R.string.main_on_back_pressed), Toast.LENGTH_SHORT).show()
+        Handler().postDelayed({
+            mBackPressedOnce = false
+        }, 2000)
     }
 
     private fun replaceFragment(fragment: Fragment) {

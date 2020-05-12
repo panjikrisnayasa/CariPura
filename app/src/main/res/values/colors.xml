@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#C7C7C7</color>
     <color name="colorAccent">#6200EA</color>
     <color name="colorLayoutBackground">#F3F5F9</color>
+    <color name="colorLayoutBackgroundDark">#55000000</color>
     <color name="colorUnpressedItem">#9F9F9F</color>
     <color name="colorTextHint">#808080</color>
     <color name="colorTextBlack">#424242</color>

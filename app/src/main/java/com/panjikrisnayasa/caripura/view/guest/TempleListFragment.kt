@@ -64,14 +64,15 @@ class TempleListFragment : Fragment() {
         mViewModel.getTemple()
             .observe(this.viewLifecycleOwner, Observer { templeList ->
                 if (templeList != null) {
+                    progress_temple_list.visibility = View.GONE
                     mAdapter.setData(templeList)
+                } else {
+                    text_temple_list_no_data.visibility = View.VISIBLE
                 }
             })
     }
 
     private fun showRecyclerView() {
-        recycler_temple_list?.visibility = View.VISIBLE
-        text_temple_list_no_data?.visibility = View.GONE
         mAdapter = TempleListAdapter()
         recycler_temple_list?.layoutManager = LinearLayoutManager(context)
         recycler_temple_list?.adapter = mAdapter

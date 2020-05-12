@@ -41,7 +41,6 @@ class TempleListAdapter :
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
 
         holder.itemView.setOnClickListener {
-            Log.d("hyperLoop", "temple adapter ${temple.id}")
             moveToDetail(it, temple.id)
         }
     }

@@ -1,22 +1,25 @@
 package com.panjikrisnayasa.caripura.viewmodel.guest
 
-import android.content.Context
-import android.util.Log
-import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.User
 
-class SignUpViewModel(private var mContext: Context) : ViewModel() {
+class SignUpViewModel() : ViewModel() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mUserDatabaseReference: DatabaseReference
+    private val mCode = MutableLiveData<Int>()
 
-    fun signUp(fullName: String, phoneNumber: String, email: String, password: String) {
-        Log.d("hyperLoop", "signUp view model")
+    fun signUp(
+        fullName: String,
+        phoneNumber: String,
+        email: String,
+        password: String
+    ): LiveData<Int> {
         mAuth = FirebaseAuth.getInstance()
         mUserDatabaseReference = FirebaseDatabase.getInstance().getReference("users")
 
@@ -29,31 +32,17 @@ class SignUpViewModel(private var mContext: Context) : ViewModel() {
 
                     cUser.sendEmailVerification().addOnCompleteListener { that ->
                         if (that.isSuccessful) {
-                            Toast.makeText(
-                                mContext,
-                                mContext.getString(R.string.error_message_verification_sent),
-                                Toast.LENGTH_LONG
-                            ).show()
-                            Log.d("hyperLoop", "verification email sent")
+                            mCode.postValue(1)
                             mAuth.signOut()
                         } else {
-                            Toast.makeText(
-                                mContext,
-                                mContext.getString(R.string.error_message_verification_failed),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.d("hyperLoop", "failed to send verification email")
+                            mCode.postValue(2)
                         }
                     }
                 } else {
-                    Toast.makeText(
-                        mContext,
-                        mContext.getString(R.string.error_message_sign_up_failed),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    Log.d("hyperLoop", "sign up failed")
+                    mCode.postValue(3)
                 }
             }
         }
+        return mCode
     }
 }

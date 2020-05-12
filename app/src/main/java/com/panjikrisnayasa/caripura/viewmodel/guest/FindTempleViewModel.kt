@@ -24,10 +24,10 @@ import org.json.JSONObject
 class FindTempleViewModel : ViewModel() {
 
     companion object {
-        private const val BASE_URL_ROUTE = "https://maps.googleapis.com/maps/api/directions/json"
-        private const val ORIGIN_PARAM = "origin"
-        private const val DESTINATION_PARAM = "destination"
-        private const val GOOGLE_API_KEY_PARAM = "key"
+        const val BASE_URL_ROUTE = "https://maps.googleapis.com/maps/api/directions/json"
+        const val ORIGIN_PARAM = "origin"
+        const val DESTINATION_PARAM = "destination"
+        const val GOOGLE_API_KEY_PARAM = "key"
     }
 
     private val mTempleList = MutableLiveData<ArrayList<Temple>>()
@@ -51,7 +51,11 @@ class FindTempleViewModel : ViewModel() {
 
             geoQuery.addGeoQueryDataEventListener(object : GeoQueryDataEventListener {
                 override fun onGeoQueryReady() {
-                    mTempleList.postValue(templeList)
+                    if (templeList.size == 0) {
+                        mTempleList.postValue(null)
+                    } else {
+                        mTempleList.postValue(templeList)
+                    }
                 }
 
                 override fun onDataExited(dataSnapshot: DataSnapshot?) {
@@ -77,7 +81,7 @@ class FindTempleViewModel : ViewModel() {
                 }
 
                 override fun onGeoQueryError(error: DatabaseError?) {
-                    TODO("Not yet implemented")
+                    error?.message
                 }
             })
         }

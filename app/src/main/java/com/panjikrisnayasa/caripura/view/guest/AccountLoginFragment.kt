@@ -1,6 +1,7 @@
 package com.panjikrisnayasa.caripura.view.guest
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -8,6 +9,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -87,14 +89,20 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
                 }
 
                 if (!isNull && !isEmailInvalid) {
+                    hideKeyboard()
+                    showLoading(true)
                     mViewModel.authenticate(email, password, context)
                         .observe(this, Observer { user ->
-                            if (user.role == "admin") {
-                                mSharedPref.setLogin(user)
-                                replaceFragment(AdminLoggedInFragment())
+                            if (user != null) {
+                                if (user.role == "admin") {
+                                    mSharedPref.setLogin(user)
+                                    replaceFragment(AdminLoggedInFragment())
+                                } else {
+                                    mSharedPref.setLogin(user)
+                                    replaceFragment(ContributorLoggedInFragment())
+                                }
                             } else {
-                                mSharedPref.setLogin(user)
-                                replaceFragment(ContributorLoggedInFragment())
+                                showLoading(false)
                             }
                         })
                 }
@@ -127,6 +135,24 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
             } else {
                 replaceFragment(ContributorLoggedInFragment())
             }
+        }
+    }
+
+    private fun hideKeyboard() {
+        val view = activity?.currentFocus
+        if (view != null) {
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            view_account_login_background.visibility = View.VISIBLE
+            progress_account_login.visibility = View.VISIBLE
+        } else {
+            view_account_login_background.visibility = View.GONE
+            progress_account_login.visibility = View.GONE
         }
     }
 }

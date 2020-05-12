@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -129,40 +128,32 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
         button_find_temple_find_the_closest_temple.setOnClickListener {
             progress_find_temple.visibility = View.VISIBLE
-            mViewModel.getAllTemple(mLastLocation)
+            mViewModel.setGeoQuery(mLastLocation)
                 .observe(this, Observer { templeList ->
-                    if (templeList == null) {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.find_temple_toast_no_temple),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        val lastLat = mLastLocation.latitude.toString()
-                        val lastLng = mLastLocation.longitude.toString()
+                    val lastLat = mLastLocation.latitude.toString()
+                    val lastLng = mLastLocation.longitude.toString()
 
-                        val closestTemple = getClosestTemple(templeList)
-                        if (closestTemple != null) {
-                            mTempleId = closestTemple.id
-                            val latLng =
-                                LatLng(
-                                    closestTemple.lat.toDouble(),
-                                    closestTemple.lng.toDouble()
-                                )
-                            mViewModel.setDirectionApi(
-                                lastLat,
-                                lastLng,
-                                closestTemple.lat,
-                                closestTemple.lng
+                    val closestTemple = getClosestTemple(templeList)
+                    if (closestTemple != null) {
+                        mTempleId = closestTemple.id
+                        val templeLatLng =
+                            LatLng(
+                                closestTemple.lat.toDouble(),
+                                closestTemple.lng.toDouble()
                             )
-                            mViewModel.getPath().observe(this, Observer { path ->
-                                drawPolyline(mGoogleMap, path)
+                        mViewModel.setDirectionApi(
+                            lastLat,
+                            lastLng,
+                            closestTemple.lat,
+                            closestTemple.lng
+                        )
+                        mViewModel.getPath().observe(this, Observer { path ->
+                            drawPolyline(mGoogleMap, path)
+                        })
+                        mViewModel.getDistanceDuration()
+                            .observe(this, Observer { distanceDuration ->
+                                showTemple(closestTemple, templeLatLng, distanceDuration)
                             })
-                            mViewModel.getDistanceDuration()
-                                .observe(this, Observer { distanceDuration ->
-                                    showTemple(closestTemple, latLng, distanceDuration)
-                                })
-                        }
                     }
                     progress_find_temple.visibility = View.GONE
                 })

@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.view.contributor.ContributorMyTempleListApprovedFragment
-import com.panjikrisnayasa.caripura.view.contributor.ContributorMyTempleListWaitingFragment
+import com.panjikrisnayasa.caripura.view.contributor.MyTempleListApprovedFragment
+import com.panjikrisnayasa.caripura.view.contributor.MyTempleListWaitingFragment
 
 class ContributorMyTempleListViewPagerAdapter(fm: FragmentManager, context: Context?) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
@@ -15,10 +15,10 @@ class ContributorMyTempleListViewPagerAdapter(fm: FragmentManager, context: Cont
 
     override fun getItem(position: Int): Fragment {
         when (position) {
-            0 -> return ContributorMyTempleListApprovedFragment()
-            1 -> return ContributorMyTempleListWaitingFragment()
+            0 -> return MyTempleListApprovedFragment()
+            1 -> return MyTempleListWaitingFragment()
         }
-        return ContributorMyTempleListApprovedFragment()
+        return MyTempleListApprovedFragment()
     }
 
     override fun getCount(): Int {

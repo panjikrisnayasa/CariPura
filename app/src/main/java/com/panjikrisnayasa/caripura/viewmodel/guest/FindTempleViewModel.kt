@@ -34,7 +34,7 @@ class FindTempleViewModel : ViewModel() {
     private val mPath = MutableLiveData<MutableList<List<LatLng>>>()
     private val mDistanceDuration = MutableLiveData<ArrayList<String>>()
 
-    fun getAllTemple(
+    fun setGeoQuery(
         lastLocation: Location?
     ): LiveData<ArrayList<Temple>> {
         lateinit var geoQuery: GeoQuery

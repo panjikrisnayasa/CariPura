@@ -13,7 +13,6 @@ class Temple(
     var subDistrict: String = "",
     var lat: String = "",
     var lng: String = "",
-    var distance: String = "",
     var caretakerName: String = "",
     var caretakerPhone: String = "",
     var feastDay: String = "",
@@ -37,5 +36,10 @@ class Temple(
     var melukatPrayerEnd: String = "",
     var melukatInformation: String = "",
     var prayerNeedsSellerChecked: Boolean = false,
-    var foodDrinkSellerChecked: Boolean = false
+    var foodDrinkSellerChecked: Boolean = false,
+    var adminNote: String = "",
+    var contributorNote: String = "",
+    var contributorId: String = "",
+    var contributorFullName: String = "",
+    var requestStatus: String = ""
 ) : Parcelable

@@ -110,6 +110,9 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        val ref = FirebaseDatabase.getInstance().getReference("geo_fire")
+//        val geoFire = GeoFire(ref)
+
         mSharedPref = SharedPrefManager.getInstance(context)
 
         mViewModel = ViewModelProvider(
@@ -159,7 +162,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
                 })
         }
 
-//        mGeoFire.setLocation(
+//        geoFire.setLocation(
 //            "temple_1", GeoLocation(-7.952918, 112.616029)
 //        ) { _, error ->
 //            if (error != null) {
@@ -168,7 +171,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 //                Log.d("hyperLoop", "setting temple_1 location success")
 //            }
 //        }
-//        mGeoFire.setLocation(
+//        geoFire.setLocation(
 //            "temple_2", GeoLocation(-7.952914, 112.616800)
 //        ) { _, error ->
 //            if (error != null) {

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_temple_list.*
  */
 class TempleListFragment : Fragment() {
 
-    private lateinit var mEditFindTemple: EditText
+//    private lateinit var mEditFindTemple: EditText
     private lateinit var mViewModel: TempleListViewModel
     private lateinit var mAdapter: TempleListAdapter
     private lateinit var mSharedPref: SharedPrefManager
@@ -41,18 +41,18 @@ class TempleListFragment : Fragment() {
 
         mSharedPref = SharedPrefManager.getInstance(context)
 
-        val tActivity = this.activity
-        if (tActivity != null)
-            mEditFindTemple = tActivity.findViewById(R.id.edit_temple_list_find_temple)
-        mEditFindTemple.requestFocus()
-        val bundle = arguments
-        if (bundle != null) {
-            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.toggleSoftInput(
-                InputMethodManager.SHOW_FORCED,
-                InputMethodManager.HIDE_IMPLICIT_ONLY
-            )
-        }
+//        val tActivity = this.activity
+//        if (tActivity != null)
+//            mEditFindTemple = tActivity.findViewById(R.id.edit_temple_list_find_temple)
+//        mEditFindTemple.requestFocus()
+//        val bundle = arguments
+//        if (bundle != null) {
+//            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//            imm.toggleSoftInput(
+//                InputMethodManager.SHOW_FORCED,
+//                InputMethodManager.HIDE_IMPLICIT_ONLY
+//            )
+//        }
 
         showRecyclerView()
 

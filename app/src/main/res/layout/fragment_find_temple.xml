@@ -7,7 +7,7 @@
     android:background="@color/colorLayoutBackground"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".view.guest.FindTempleFragment">
+    tools:context=".view.FindTempleFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

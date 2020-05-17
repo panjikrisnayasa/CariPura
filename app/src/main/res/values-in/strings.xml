@@ -6,14 +6,10 @@
     <!--    activity_main-->
     <string name="main_on_back_pressed">Tekan tombol kembali untuk keluar</string>
 
-    <!--    activity_admin_my_temple_list-->
-    <string name="admin_my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
-
-    <!--    activity_contributor_my_temple_list_approved-->
-    <string name="contributor_my_temple_list_approved_text_no_data">Belum ada pura yang disetujui</string>
-
-    <!--    activity_contributor_my_temple_list_waiting-->
-    <string name="contributor_my_temple_list_waiting_text_no_data">Belum ada pura yang menunggu persetujuan</string>
+    <!--    activity_my_temple_list-->
+    <string name="my_temple_list_text_no_data">There are no registered temples yet</string>
+    <string name="my_temple_list_approved_text_no_data">There are no approved temples yet</string>
+    <string name="my_temple_list_waiting_text_no_data">There are no temples waiting for approval</string>
 
     <!--    activity_sign_up-->
     <string name="sign_up_text_already_have_a_contributor_account">Sudah punya akun kontributor?</string>
@@ -113,13 +109,9 @@
     <string name="logged_in_text_input_edit_text_phone_number">Nomor Telepon</string>
     <string name="logged_in_text_input_edit_text_email">Email</string>
     <string name="logged_in_button_my_temple_list">Daftar Pura Saya</string>
-
-    <!--    fragment_admin_logged_in-->
-    <string name="admin_logged_in_text_admin">Admin</string>
-    <string name="admin_logged_in_button_temple_request_list">Daftar Pengajuan Pura</string>
-
-    <!--    fragment_contributor_logged_in-->
-    <string name="contributor_logged_in_text_contributor">Kontributor</string>
+    <string name="logged_in_text_admin">Admin</string>
+    <string name="logged_in_button_temple_request_list">Daftar Pengajuan Pura</string>
+    <string name="logged_in_text_contributor">Kontributor</string>
 
     <!--    fragment_temple_list-->
     <string name="temple_list_text_no_data">Belum ada pura yang terdaftar</string>
@@ -152,6 +144,7 @@
     <!--    menu_my_temple_detail_options-->
     <string name="menu_my_temple_detail_options_edit">Edit</string>
     <string name="menu_my_temple_detail_options_delete">Delete</string>
+    <string name="menu_my_temple_detail_options_cancel">Batal</string>
 
     <!--    menu_my_temple_detail_options_delete-->
     <string name="dialog_delete_title">Hapus Pura</string>

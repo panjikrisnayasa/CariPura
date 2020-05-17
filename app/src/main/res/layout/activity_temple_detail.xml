@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.guest.TempleDetailActivity">
+    tools:context=".view.TempleDetailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -548,7 +548,6 @@
                 android:background="@android:color/white"
                 android:orientation="vertical"
                 android:padding="16dp"
-                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_temple_detail_layout_2">
 
@@ -560,7 +559,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/text_temple_detail_prayer_needs_seller"
+                    android:id="@+id/text_temple_detail_prayer_equipment_seller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -568,11 +567,10 @@
                     android:drawablePadding="16dp"
                     android:text="@string/temple_detail_text_prayer_needs_seller"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/text_temple_detail_text_food_drink_seller"
+                    android:id="@+id/text_temple_detail_food_drink_seller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -580,8 +578,7 @@
                     android:drawablePadding="16dp"
                     android:text="@string/temple_detail_text_food_drink_seller"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

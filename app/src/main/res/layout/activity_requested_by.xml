@@ -8,7 +8,7 @@
     android:paddingTop="24dp"
     android:paddingEnd="16dp"
     android:paddingBottom="24dp"
-    tools:context=".view.admin.RequestedByActivity">
+    tools:context=".view.RequestedByActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

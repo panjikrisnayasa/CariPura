@@ -14,4 +14,11 @@
         android:title="@string/menu_my_temple_detail_options_delete"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/menu_my_temple_detail_options_cancel"
+        android:icon="@drawable/ic_cancel_dark_grey_16dp"
+        android:title="@string/menu_my_temple_detail_options_cancel"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
 </menu>

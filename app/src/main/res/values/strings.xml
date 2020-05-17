@@ -5,14 +5,10 @@
     <!--    activity_main-->
     <string name="main_on_back_pressed">Press back again to exit</string>
 
-    <!--    activity_admin_my_temple_list-->
-    <string name="admin_my_temple_list_text_no_data">There are no registered temples yet</string>
-
-    <!--    activity_contributor_my_temple_list_approved-->
-    <string name="contributor_my_temple_list_approved_text_no_data">There are no approved temples yet</string>
-
-    <!--    activity_contributor_my_temple_list_waiting-->
-    <string name="contributor_my_temple_list_waiting_text_no_data">There are no temples waiting for approval</string>
+    <!--    activity_my_temple_list-->
+    <string name="my_temple_list_text_no_data">There are no registered temples yet</string>
+    <string name="my_temple_list_approved_text_no_data">There are no approved temples yet</string>
+    <string name="my_temple_list_waiting_text_no_data">There are no temples waiting for approval</string>
 
     <!--    activity_sign_up-->
     <string name="sign_up_text_already_have_a_contributor_account">Already have a contributor account?</string>
@@ -112,13 +108,9 @@
     <string name="logged_in_text_input_edit_text_phone_number">Phone Number</string>
     <string name="logged_in_text_input_edit_text_email">Email</string>
     <string name="logged_in_button_my_temple_list">My Temple List</string>
-
-    <!--    fragment_admin_logged_in-->
-    <string name="admin_logged_in_text_admin">Admin</string>
-    <string name="admin_logged_in_button_temple_request_list">Temple Request List</string>
-
-    <!--    fragment_contributor_logged_in-->
-    <string name="contributor_logged_in_text_contributor">Contributor</string>
+    <string name="logged_in_text_admin">Admin</string>
+    <string name="logged_in_button_temple_request_list">Temple Request List</string>
+    <string name="logged_in_text_contributor">Contributor</string>
 
     <!--    fragment_temple_list-->
     <string name="temple_list_text_no_data">There are no registered temples yet</string>
@@ -151,6 +143,7 @@
     <!--    menu_my_temple_detail_options-->
     <string name="menu_my_temple_detail_options_edit">Edit</string>
     <string name="menu_my_temple_detail_options_delete">Delete</string>
+    <string name="menu_my_temple_detail_options_cancel">Cancel</string>
 
     <!--    menu_my_temple_detail_options_delete-->
     <string name="dialog_delete_title">Delete Temple</string>

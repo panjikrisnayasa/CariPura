@@ -35,7 +35,7 @@ class Temple(
     var melukatPrayerStart: String = "",
     var melukatPrayerEnd: String = "",
     var melukatInformation: String = "",
-    var prayerNeedsSellerChecked: Boolean = false,
+    var prayerEquipmentSellerChecked: Boolean = false,
     var foodDrinkSellerChecked: Boolean = false,
     var adminNote: String = "",
     var contributorNote: String = "",

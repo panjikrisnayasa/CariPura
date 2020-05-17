@@ -20,8 +20,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
-import com.panjikrisnayasa.caripura.view.guest.FindTempleFragment
-import com.panjikrisnayasa.caripura.viewmodel.guest.FindTempleViewModel
+import com.panjikrisnayasa.caripura.viewmodel.FindTempleViewModel
 import kotlinx.android.synthetic.main.activity_route_to_temple.*
 
 class RouteToTempleActivity : AppCompatActivity(), OnMapReadyCallback,

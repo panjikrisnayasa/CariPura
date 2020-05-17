@@ -7,9 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.view.guest.AccountLoginFragment
-import com.panjikrisnayasa.caripura.view.guest.FindTempleFragment
-import com.panjikrisnayasa.caripura.view.guest.TempleListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

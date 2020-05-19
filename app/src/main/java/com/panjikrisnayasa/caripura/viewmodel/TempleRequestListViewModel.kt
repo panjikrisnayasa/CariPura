@@ -31,9 +31,11 @@ class TempleRequestListViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    val addRequestChildren = p0.children
+                    for (data in addRequestChildren) {
+                        val temple = data.getValue(Temple::class.java)
+                        if (temple != null)
+                            templeList.add(temple)
                     }
                 }
                 mTempleList.postValue(templeList)
@@ -66,9 +68,11 @@ class TempleRequestListViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    val editRequestChildren = p0.children
+                    for (data in editRequestChildren) {
+                        val temple = data.getValue(Temple::class.java)
+                        if (temple != null)
+                            templeList.add(temple)
                     }
                 }
                 mTempleList.postValue(templeList)
@@ -101,9 +105,11 @@ class TempleRequestListViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    val deleteRequestChildren = p0.children
+                    for (data in deleteRequestChildren) {
+                        val temple = data.getValue(Temple::class.java)
+                        if (temple != null)
+                            templeList.add(temple)
                     }
                 }
                 mTempleList.postValue(templeList)

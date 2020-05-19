@@ -53,14 +53,15 @@ class MyTempleListApprovedFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         ).get(MyTempleListViewModel::class.java)
 
-        mViewModel.getTempleApprovedList(mSharedPref.getId()).observe(this, Observer { templeList ->
-            if (templeList != null) {
+        mViewModel.getTempleListApproved(mSharedPref.getId())
+            .observe(this, Observer { templeList ->
                 progress_my_temple_list_approved.visibility = View.GONE
-                mAdapter.setData(templeList)
-            } else {
-                text_my_temple_list_approved_no_data.visibility = View.VISIBLE
-            }
-        })
+                if (templeList != null) {
+                    mAdapter.setData(templeList)
+                } else {
+                    text_my_temple_list_approved_no_data.visibility = View.VISIBLE
+                }
+            })
     }
 
     private fun showRecyclerView() {

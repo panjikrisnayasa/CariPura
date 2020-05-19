@@ -46,11 +46,10 @@ class MyTempleListViewModel : ViewModel() {
         return mTempleList
     }
 
-    fun getTempleApprovedList(contributorId: String): LiveData<ArrayList<Temple>> {
+    fun getTempleListApproved(contributorId: String): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("temple").child("contributor_temple")
-                .child(contributorId)
         mDatabaseReference.addChildEventListener(object : ChildEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
@@ -67,9 +66,16 @@ class MyTempleListViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    if (p0.key == contributorId) {
+                        val contributorTemple = p0.children
+                        for (data in contributorTemple) {
+                            val temple = data.getValue(Temple::class.java)
+                            if (temple != null)
+                                templeList.add(temple)
+                        }
+                    } else {
+                        mTempleList.postValue(null)
+                        return
                     }
                 }
                 mTempleList.postValue(templeList)
@@ -82,10 +88,11 @@ class MyTempleListViewModel : ViewModel() {
         return mTempleList
     }
 
-    fun getTempleWaitingList(contributorId: String): LiveData<ArrayList<Temple>> {
+    fun getTempleListWaiting(contributorId: String): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("temple_request")
+
         mDatabaseReference.addChildEventListener(object : ChildEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
@@ -102,9 +109,20 @@ class MyTempleListViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    val contributor = p0.children
+                    for (data in contributor) {
+                        if (data.key == contributorId) {
+                            val contributorTemple = data.children
+                            for (tContributorTemple in contributorTemple) {
+                                val temple = tContributorTemple.getValue(Temple::class.java)
+                                if (temple != null) {
+                                    templeList.add(temple)
+                                }
+                            }
+                        } else {
+                            mTempleList.postValue(null)
+                            return
+                        }
                     }
                 }
                 mTempleList.postValue(templeList)

@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".view.MyTempleDetailWaitingActivity"
+            android:label="@string/label_temple_detail"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".view.RouteToTempleActivity"
             android:label="@string/label_route_to_temple"
             android:screenOrientation="portrait"
@@ -36,7 +41,11 @@
             android:label="@string/label_my_temple_list"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".view.TempleRequestHistoryDetailActivity" />
+        <activity
+            android:name=".view.TempleRequestHistoryDetailActivity"
+            android:label="@string/label_temple_detail"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".view.TempleRequestHistoryActivity"
             android:label="@string/label_temple_request_history"

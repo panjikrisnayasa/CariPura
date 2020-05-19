@@ -28,7 +28,7 @@ class AccountLoginViewModel : ViewModel() {
                 if (cUser != null) {
                     val cUid = cUser.uid
                     mDatabaseReference =
-                        FirebaseDatabase.getInstance().getReference("users").child(cUid)
+                        FirebaseDatabase.getInstance().getReference("user").child("contributor").child(cUid)
                     mDatabaseReference.addListenerForSingleValueEvent(object :
                         ValueEventListener {
                         override fun onCancelled(p0: DatabaseError) {

@@ -14,7 +14,7 @@ import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleDetailViewModel
-import kotlinx.android.synthetic.main.activity_temple_request_detail.*
+import kotlinx.android.synthetic.main.activity_temple_request_history_detail.*
 
 class TempleRequestHistoryDetailActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -36,7 +36,7 @@ class TempleRequestHistoryDetailActivity : AppCompatActivity(), View.OnClickList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_temple_request_detail)
+        setContentView(R.layout.activity_temple_request_history_detail)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -46,8 +46,8 @@ class TempleRequestHistoryDetailActivity : AppCompatActivity(), View.OnClickList
             TempleDetailViewModel::class.java
         )
 
-        button_temple_request_detail_call.setOnClickListener(this)
-        button_temple_request_detail_route.setOnClickListener(this)
+        button_temple_request_history_detail_call.setOnClickListener(this)
+        button_temple_request_history_detail_route.setOnClickListener(this)
 
         val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
         if (temple != null) {
@@ -64,12 +64,12 @@ class TempleRequestHistoryDetailActivity : AppCompatActivity(), View.OnClickList
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.button_temple_request_detail_call -> {
+            R.id.button_temple_request_history_detail_call -> {
                 val callIntent =
                     Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mTemple.caretakerPhone))
                 startActivity(callIntent)
             }
-            R.id.button_temple_request_detail_route -> {
+            R.id.button_temple_request_history_detail_route -> {
                 val routeIntent = Intent(this, RouteToTempleActivity::class.java)
                 routeIntent.putExtra(RouteToTempleActivity.EXTRA_TEMPLE, mTemple)
                 startActivity(routeIntent)
@@ -85,85 +85,96 @@ class TempleRequestHistoryDetailActivity : AppCompatActivity(), View.OnClickList
             temple.lat,
             temple.lng
         ).observe(this, Observer { distanceDuration ->
-            text_temple_request_detail_distance.text = distanceDuration[0]
-            text_temple_request_detail_duration.text = distanceDuration[1]
+            text_temple_request_history_detail_distance.text = distanceDuration[0]
+            text_temple_request_history_detail_duration.text = distanceDuration[1]
 
-            carousel_temple_request_detail_photo.setImageListener { _, imageView ->
+            if (temple.requestStatus == "accepted") {
+                text_temple_request_history_detail_label.text =
+                    getString(R.string.temple_request_detail_text_label_accepted)
+                text_temple_request_history_detail_label.background =
+                    getDrawable(R.color.colorGreen)
+            } else {
+                text_temple_request_history_detail_label.text =
+                    getString(R.string.temple_request_detail_text_label_declined)
+                text_temple_request_history_detail_label.background = getDrawable(R.color.colorRed)
+            }
+
+            carousel_temple_request_history_detail_photo.setImageListener { _, imageView ->
                 imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                 Glide.with(this).load(temple.photo).into(imageView)
             }
-            carousel_temple_request_detail_photo.pageCount = mSamplePhoto.count()
-            text_temple_request_detail_name.text = temple.name
-            text_temple_request_detail_address.text = String.format(
+            carousel_temple_request_history_detail_photo.pageCount = mSamplePhoto.count()
+            text_temple_request_history_detail_name.text = temple.name
+            text_temple_request_history_detail_address.text = String.format(
                 "%s, %s, %s",
                 temple.address,
                 temple.villageOffice,
                 temple.subDistrict
             )
-            text_temple_request_detail_caretaker_name.text = temple.caretakerName
-            text_temple_request_detail_caretaker_phone.text = temple.caretakerPhone
-            text_temple_request_detail_feast_day.text = temple.feastDay
-            text_temple_request_detail_feast_day_start.text = temple.feastDayPrayerStart
-            text_temple_request_detail_feast_day_end.text = temple.feastDayPrayerEnd
-            text_temple_request_detail_full_moon_prayer_start.text =
+            text_temple_request_history_detail_caretaker_name.text = temple.caretakerName
+            text_temple_request_history_detail_caretaker_phone.text = temple.caretakerPhone
+            text_temple_request_history_detail_feast_day.text = temple.feastDay
+            text_temple_request_history_detail_feast_day_start.text = temple.feastDayPrayerStart
+            text_temple_request_history_detail_feast_day_end.text = temple.feastDayPrayerEnd
+            text_temple_request_history_detail_full_moon_prayer_start.text =
                 temple.fullMoonPrayerStart
-            text_temple_request_detail_full_moon_prayer_end.text = temple.fullMoonPrayerEnd
-            text_temple_request_detail_dead_moon_prayer_start.text =
+            text_temple_request_history_detail_full_moon_prayer_end.text = temple.fullMoonPrayerEnd
+            text_temple_request_history_detail_dead_moon_prayer_start.text =
                 temple.deadMoonPrayerStart
-            text_temple_request_detail_dead_moon_prayer_end.text = temple.deadMoonPrayerEnd
+            text_temple_request_history_detail_dead_moon_prayer_end.text = temple.deadMoonPrayerEnd
             if (temple.galunganPrayerStart != "") {
-                linear_temple_request_detail_galungan.visibility = View.VISIBLE
-                text_temple_request_detail_galungan_prayer_start.text =
+                linear_temple_request_history_detail_galungan.visibility = View.VISIBLE
+                text_temple_request_history_detail_galungan_prayer_start.text =
                     temple.galunganPrayerStart
-                text_temple_request_detail_galungan_prayer_end.text =
+                text_temple_request_history_detail_galungan_prayer_end.text =
                     temple.galunganPrayerEnd
             }
             if (temple.kuninganPrayerStart != "") {
-                linear_temple_request_detail_kuningan.visibility = View.VISIBLE
-                text_temple_request_detail_kuningan_prayer_start.text =
+                linear_temple_request_history_detail_kuningan.visibility = View.VISIBLE
+                text_temple_request_history_detail_kuningan_prayer_start.text =
                     temple.kuninganPrayerStart
-                text_temple_request_detail_kuningan_prayer_end.text =
+                text_temple_request_history_detail_kuningan_prayer_end.text =
                     temple.kuninganPrayerEnd
             }
             if (temple.saraswatiPrayerStart != "") {
-                linear_temple_request_detail_saraswati.visibility = View.VISIBLE
-                text_temple_request_detail_saraswati_prayer_start.text =
+                linear_temple_request_history_detail_saraswati.visibility = View.VISIBLE
+                text_temple_request_history_detail_saraswati_prayer_start.text =
                     temple.saraswatiPrayerStart
-                text_temple_request_detail_saraswati_prayer_end.text =
+                text_temple_request_history_detail_saraswati_prayer_end.text =
                     temple.saraswatiPrayerEnd
             }
             if (temple.pagerwesiPrayerStart != "") {
-                linear_temple_request_detail_pagerwesi.visibility = View.VISIBLE
-                text_temple_request_detail_pagerwesi_prayer_start.text =
+                linear_temple_request_history_detail_pagerwesi.visibility = View.VISIBLE
+                text_temple_request_history_detail_pagerwesi_prayer_start.text =
                     temple.pagerwesiPrayerStart
-                text_temple_request_detail_pagerwesi_prayer_end.text =
+                text_temple_request_history_detail_pagerwesi_prayer_end.text =
                     temple.pagerwesiPrayerEnd
             }
             if (temple.pagerwesiPrayerStart != "") {
-                linear_temple_request_detail_pagerwesi.visibility = View.VISIBLE
-                text_temple_request_detail_pagerwesi_prayer_start.text =
+                linear_temple_request_history_detail_pagerwesi.visibility = View.VISIBLE
+                text_temple_request_history_detail_pagerwesi_prayer_start.text =
                     temple.pagerwesiPrayerStart
-                text_temple_request_detail_pagerwesi_prayer_end.text =
+                text_temple_request_history_detail_pagerwesi_prayer_end.text =
                     temple.pagerwesiPrayerEnd
             }
             if (temple.siwaratriPrayerStart != "") {
-                linear_temple_request_detail_siwaratri.visibility = View.VISIBLE
-                text_temple_request_detail_siwaratri_prayer_start.text =
+                linear_temple_request_history_detail_siwaratri.visibility = View.VISIBLE
+                text_temple_request_history_detail_siwaratri_prayer_start.text =
                     temple.siwaratriPrayerStart
-                text_temple_request_detail_siwaratri_prayer_end.text =
+                text_temple_request_history_detail_siwaratri_prayer_end.text =
                     temple.siwaratriPrayerEnd
             }
             if (temple.melukatPrayerStart != "") {
-                linear_temple_request_detail_melukat.visibility = View.VISIBLE
-                text_temple_request_detail_melukat_information.visibility = View.VISIBLE
-                text_temple_request_detail_melukat_prayer_start.text =
+                linear_temple_request_history_detail_melukat.visibility = View.VISIBLE
+                text_temple_request_history_detail_melukat_information.visibility = View.VISIBLE
+                text_temple_request_history_detail_melukat_prayer_start.text =
                     temple.melukatPrayerStart
-                text_temple_request_detail_melukat_prayer_end.text = temple.melukatPrayerEnd
-                text_temple_request_detail_melukat_information.text =
+                text_temple_request_history_detail_melukat_prayer_end.text = temple.melukatPrayerEnd
+                text_temple_request_history_detail_melukat_information.text =
                     temple.melukatInformation
             }
             if (!temple.prayerEquipmentSellerChecked) {
-                text_temple_request_detail_prayer_equipment_seller.setCompoundDrawablesWithIntrinsicBounds(
+                text_temple_request_history_detail_prayer_equipment_seller.setCompoundDrawablesWithIntrinsicBounds(
                     R.drawable.ic_close_grey_14dp,
                     0,
                     0,
@@ -171,15 +182,18 @@ class TempleRequestHistoryDetailActivity : AppCompatActivity(), View.OnClickList
                 )
             }
             if (!temple.foodDrinkSellerChecked) {
-                text_temple_request_detail_food_drink_seller.setCompoundDrawablesWithIntrinsicBounds(
+                text_temple_request_history_detail_food_drink_seller.setCompoundDrawablesWithIntrinsicBounds(
                     R.drawable.ic_close_grey_14dp,
                     0,
                     0,
                     0
                 )
             }
-            view_temple_request_detail_background.visibility = View.GONE
-            progress_temple_request_detail.visibility = View.GONE
+
+            edit_temple_request_history_detail_note_for_admin.setText(temple.contributorNote)
+            edit_temple_request_history_detail_admin_note.setText(temple.adminNote)
+            view_temple_request_history_detail_background.visibility = View.GONE
+            progress_temple_request_history_detail.visibility = View.GONE
         })
     }
 }

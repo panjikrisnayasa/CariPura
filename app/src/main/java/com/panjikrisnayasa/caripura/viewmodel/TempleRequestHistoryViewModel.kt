@@ -1,5 +1,6 @@
 package com.panjikrisnayasa.caripura.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -120,7 +121,6 @@ class TempleRequestHistoryViewModel : ViewModel() {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("add_request")
-                .child(contributorId)
         mDatabaseReference.addChildEventListener(object : ChildEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
@@ -137,9 +137,16 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.child("data").getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    if (p0.key == contributorId) {
+                        val contributorTemple = p0.children
+                        for (data in contributorTemple) {
+                            val temple = data.getValue(Temple::class.java)
+                            if (temple != null)
+                                templeList.add(temple)
+                        }
+                    } else {
+                        mTempleList.postValue(null)
+                        return
                     }
                 }
                 mTempleList.postValue(templeList)
@@ -156,7 +163,6 @@ class TempleRequestHistoryViewModel : ViewModel() {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("edit_request")
-                .child(contributorId)
         mDatabaseReference.addChildEventListener(object : ChildEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
@@ -173,9 +179,20 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.child("data").getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    if (p0.key == contributorId) {
+                        Log.d("hyperLoop", p0.key.toString())
+                        val contributorTemple = p0.children
+                        for (data in contributorTemple) {
+                            val temple = data.getValue(Temple::class.java)
+                            if (temple != null) {
+                                Log.d("hyperLoop", temple.id)
+                                templeList.add(temple)
+                            }
+                        }
+                    } else {
+                        Log.d("hyperLoop", "temple null")
+                        mTempleList.postValue(null)
+                        return
                     }
                 }
                 mTempleList.postValue(templeList)
@@ -192,7 +209,6 @@ class TempleRequestHistoryViewModel : ViewModel() {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("delete_request")
-                .child(contributorId)
         mDatabaseReference.addChildEventListener(object : ChildEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
@@ -209,9 +225,16 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 if (p0.exists()) {
-                    val temple = p0.child("data").getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    if (p0.key == contributorId) {
+                        val contributorTemple = p0.children
+                        for (data in contributorTemple) {
+                            val temple = data.getValue(Temple::class.java)
+                            if (temple != null)
+                                templeList.add(temple)
+                        }
+                    } else {
+                        mTempleList.postValue(null)
+                        return
                     }
                 }
                 mTempleList.postValue(templeList)

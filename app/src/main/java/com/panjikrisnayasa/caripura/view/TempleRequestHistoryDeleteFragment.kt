@@ -45,8 +45,8 @@ class TempleRequestHistoryDeleteFragment : Fragment() {
 
         if (mSharedPref.getRole() == "admin") {
             mViewModel.getDeleteTempleApprovalHistory().observe(this, Observer { templeList ->
+                progress_temple_request_history_delete.visibility = View.GONE
                 if (templeList != null) {
-                    progress_temple_request_history_delete.visibility = View.GONE
                     mAdapter.setData(templeList)
                 } else {
                     text_temple_request_history_delete_no_histories.visibility = View.VISIBLE
@@ -55,8 +55,8 @@ class TempleRequestHistoryDeleteFragment : Fragment() {
         } else {
             mViewModel.getDeleteTempleRequestHistory(mSharedPref.getId())
                 .observe(this, Observer { templeList ->
+                    progress_temple_request_history_delete.visibility = View.GONE
                     if (templeList != null) {
-                        progress_temple_request_history_delete.visibility = View.GONE
                         mAdapter.setData(templeList)
                     } else {
                         text_temple_request_history_delete_no_histories.visibility = View.VISIBLE

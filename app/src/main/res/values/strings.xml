@@ -34,8 +34,8 @@
     <string name="temple_detail_text_siwaratri">Siwaratri</string>
     <string name="temple_detail_text_melukat">Melukat</string>
     <string name="temple_detail_text_others">Others</string>
-    <string name="temple_detail_text_prayer_needs_seller">Prayer needs shop</string>
-    <string name="temple_detail_text_food_drink_seller"><![CDATA[Food & drink shop]]></string>
+    <string name="temple_detail_text_prayer_equipment_seller">Prayer equipment seller</string>
+    <string name="temple_detail_text_food_drink_seller"><![CDATA[Food & drink seller]]></string>
 
     <!--    activity_add_edit_temple_first-->
     <string name="add_edit_temple_first_text_time">00:00</string>
@@ -72,7 +72,9 @@
     <string name="requested_by_text_input_edit_text_phone_number">Phone Number</string>
     <string name="requested_by_text_input_edit_text_email">Email</string>
 
-    <!--    activity_temple_request_detail-->
+    <!--    activity_temple_request_history_detail-->
+    <string name="temple_request_detail_text_label_accepted">Accepted</string>
+    <string name="temple_request_detail_text_label_declined">Declined</string>
     <string name="temple_request_detail_edit_contributor_note">Contributor note</string>
     <string name="temple_request_detail_text_requested_by">Requested by</string>
     <string name="temple_request_detail_edit_note_for_contributor">Note for contributor</string>

@@ -565,7 +565,7 @@
                     android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/ic_check_box_purple_14dp"
                     android:drawablePadding="16dp"
-                    android:text="@string/temple_detail_text_prayer_needs_seller"
+                    android:text="@string/temple_detail_text_prayer_equipment_seller"
                     android:textColor="@color/colorTextBlack"
                     android:textSize="16sp" />
 
@@ -588,9 +588,9 @@
 
     <View
         android:id="@+id/view_temple_detail_background"
-        android:background="@color/colorLayoutBackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/colorLayoutBackground" />
 
     <ProgressBar
         android:id="@+id/progress_temple_detail"

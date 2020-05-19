@@ -8,10 +8,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.panjikrisnayasa.caripura.model.User
 
-class SignUpViewModel() : ViewModel() {
+class SignUpViewModel : ViewModel() {
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var mUserDatabaseReference: DatabaseReference
+    private lateinit var mDatabaseReference: DatabaseReference
     private val mCode = MutableLiveData<Int>()
 
     fun signUp(
@@ -21,14 +21,15 @@ class SignUpViewModel() : ViewModel() {
         password: String
     ): LiveData<Int> {
         mAuth = FirebaseAuth.getInstance()
-        mUserDatabaseReference = FirebaseDatabase.getInstance().getReference("users")
+        mDatabaseReference =
+            FirebaseDatabase.getInstance().getReference("user").child("contributor")
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
                 val cUser = mAuth.currentUser
                 if (cUser != null) {
                     val user = User(cUser.uid, fullName, phoneNumber, email, "contributor")
-                    mUserDatabaseReference.child(cUser.uid).setValue(user)
+                    mDatabaseReference.child(cUser.uid).setValue(user)
 
                     cUser.sendEmailVerification().addOnCompleteListener { that ->
                         if (that.isSuccessful) {

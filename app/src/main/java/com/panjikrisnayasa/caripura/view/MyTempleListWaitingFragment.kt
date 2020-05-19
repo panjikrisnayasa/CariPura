@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.adapter.MyTempleListAdapter
+import com.panjikrisnayasa.caripura.adapter.MyTempleListWaitingAdapter
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.MyTempleListViewModel
 import kotlinx.android.synthetic.main.fragment_my_temple_list_waiting.*
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_my_temple_list_waiting.*
 class MyTempleListWaitingFragment : Fragment() {
 
     private lateinit var mViewModel: MyTempleListViewModel
-    private lateinit var mAdapter: MyTempleListAdapter
+    private lateinit var mAdapter: MyTempleListWaitingAdapter
     private lateinit var mSharedPref: SharedPrefManager
 
     override fun onCreateView(
@@ -47,18 +47,19 @@ class MyTempleListWaitingFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         ).get(MyTempleListViewModel::class.java)
 
-        mViewModel.getTempleWaitingList(mSharedPref.getId()).observe(this, Observer { templeList ->
+        mViewModel.getTempleListWaiting(mSharedPref.getId()).observe(this, Observer { templeList ->
             if (templeList != null) {
                 progress_my_temple_list_waiting.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
+                progress_my_temple_list_waiting.visibility = View.GONE
                 text_my_temple_list_waiting_no_data.visibility = View.VISIBLE
             }
         })
     }
 
     private fun showRecyclerView() {
-        mAdapter = MyTempleListAdapter()
+        mAdapter = MyTempleListWaitingAdapter()
         recycler_my_temple_list_waiting?.layoutManager = LinearLayoutManager(context)
         recycler_my_temple_list_waiting?.adapter = mAdapter
     }

@@ -61,6 +61,7 @@
     <style name="ButtonTheme.Small.Secondary" parent="Widget.AppCompat.Button">
         <item name="android:layout_height">40dp</item>
         <item name="android:background">@null</item>
+        <item name="android:drawablePadding">8dp</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:fontFamily">@font/gotham_medium</item>
         <item name="android:textSize">16sp</item>

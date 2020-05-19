@@ -51,6 +51,7 @@ class TempleRequestListAdapter :
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, TempleRequestDetailActivity::class.java)
+            intent.putExtra(TempleRequestDetailActivity.EXTRA_TEMPLE, temple)
             it.context.startActivity(intent)
         }
     }

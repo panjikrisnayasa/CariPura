@@ -45,8 +45,8 @@ class TempleRequestHistoryEditFragment : Fragment() {
 
         if (mSharedPref.getRole() == "admin") {
             mViewModel.getEditTempleApprovalHistory().observe(this, Observer { templeList ->
+                progress_temple_request_history_edit.visibility = View.GONE
                 if (templeList != null) {
-                    progress_temple_request_history_edit.visibility = View.GONE
                     mAdapter.setData(templeList)
                 } else {
                     text_temple_request_history_edit_no_histories.visibility = View.VISIBLE
@@ -55,8 +55,8 @@ class TempleRequestHistoryEditFragment : Fragment() {
         } else {
             mViewModel.getEditTempleRequestHistory(mSharedPref.getId())
                 .observe(this, Observer { templeList ->
+                    progress_temple_request_history_edit.visibility = View.GONE
                     if (templeList != null) {
-                        progress_temple_request_history_edit.visibility = View.GONE
                         mAdapter.setData(templeList)
                     } else {
                         text_temple_request_history_edit_no_histories.visibility = View.VISIBLE

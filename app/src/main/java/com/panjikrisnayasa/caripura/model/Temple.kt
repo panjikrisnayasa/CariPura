@@ -41,5 +41,6 @@ class Temple(
     var contributorNote: String = "",
     var contributorId: String = "",
     var contributorFullName: String = "",
-    var requestStatus: String = ""
+    var requestStatus: String = "",
+    var requestType: String = ""
 ) : Parcelable

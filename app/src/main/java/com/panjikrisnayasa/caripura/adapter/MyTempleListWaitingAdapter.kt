@@ -10,31 +10,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
-import com.panjikrisnayasa.caripura.view.TempleRequestHistoryDetailActivity
+import com.panjikrisnayasa.caripura.view.MyTempleDetailWaitingActivity
 
-class TempleRequestHistoryAdapter :
-    RecyclerView.Adapter<TempleRequestHistoryAdapter.TempleRequestHistoryViewHolder>() {
+class MyTempleListWaitingAdapter :
+    RecyclerView.Adapter<MyTempleListWaitingAdapter.MyTempleListWaitingViewHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TempleRequestHistoryViewHolder {
+    ): MyTempleListWaitingViewHolder {
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_temple_list_with_label, parent, false)
-        return TempleRequestHistoryViewHolder(view)
+        return MyTempleListWaitingViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return mTempleList.size
     }
 
-    override fun onBindViewHolder(
-        holder: TempleRequestHistoryViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: MyTempleListWaitingViewHolder, position: Int) {
         val temple = mTempleList[position]
 
         holder.mImage.clipToOutline = true
@@ -45,19 +42,27 @@ class TempleRequestHistoryAdapter :
         holder.mTextFullMoonPrayerEnd.text = temple.fullMoonPrayerEnd
         holder.mTextDeadMoonPrayerStart.text = temple.deadMoonPrayerStart
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
-        if (temple.requestStatus == "accepted") {
-            holder.mTextLabel.text =
-                holder.itemView.context.resources?.getString(R.string.item_label_accepted)
-            holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
-        } else {
-            holder.mTextLabel.text =
-                holder.itemView.context.resources?.getString(R.string.item_label_rejected)
-            holder.mTextLabel.setBackgroundResource(R.color.colorRed)
+        when {
+            temple.requestType == "add" -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.item_label_request_add_temple)
+                holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
+            }
+            temple.requestType == "edit" -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.item_label_request_edit_temple)
+                holder.mTextLabel.setBackgroundResource(R.color.colorOrange)
+            }
+            else -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.item_label_request_delete_temple)
+                holder.mTextLabel.setBackgroundResource(R.color.colorRed)
+            }
         }
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, TempleRequestHistoryDetailActivity::class.java)
-            intent.putExtra(TempleRequestHistoryDetailActivity.EXTRA_TEMPLE, temple)
+            val intent = Intent(it.context, MyTempleDetailWaitingActivity::class.java)
+            intent.putExtra(MyTempleDetailWaitingActivity.EXTRA_TEMPLE, temple)
             it.context.startActivity(intent)
         }
     }
@@ -68,7 +73,7 @@ class TempleRequestHistoryAdapter :
         notifyDataSetChanged()
     }
 
-    inner class TempleRequestHistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyTempleListWaitingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var mImage: ImageView = itemView.findViewById(R.id.image_item_temple_list_with_label)
         var mTextName: TextView =
             itemView.findViewById(R.id.text_item_temple_list_with_label_temple_name)

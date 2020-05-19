@@ -90,6 +90,19 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
             text_temple_request_detail_distance.text = distanceDuration[0]
             text_temple_request_detail_duration.text = distanceDuration[1]
 
+            if (temple.requestType == "add") {
+                text_temple_request_detail_label.text = getString(R.string.label_add_temple_request)
+                text_temple_request_detail_label.background = getDrawable(R.color.colorGreen)
+            } else if (temple.requestType == "edit") {
+                text_temple_request_detail_label.text =
+                    getString(R.string.label_edit_temple_request)
+                text_temple_request_detail_label.background = getDrawable(R.color.colorOrange)
+            } else {
+                text_temple_request_detail_label.text =
+                    getString(R.string.label_delete_temple_request)
+                text_temple_request_detail_label.background = getDrawable(R.color.colorRed)
+            }
+
             carousel_temple_request_detail_photo.setImageListener { _, imageView ->
                 imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                 Glide.with(this).load(temple.photo).into(imageView)
@@ -180,6 +193,8 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
                     0
                 )
             }
+
+            edit_temple_request_detail_contributor_note.setText(temple.contributorNote)
             view_temple_request_detail_background.visibility = View.GONE
             progress_temple_request_detail.visibility = View.GONE
         })

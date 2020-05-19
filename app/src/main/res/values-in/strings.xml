@@ -7,9 +7,9 @@
     <string name="main_on_back_pressed">Tekan tombol kembali untuk keluar</string>
 
     <!--    activity_my_temple_list-->
-    <string name="my_temple_list_text_no_data">There are no registered temples yet</string>
-    <string name="my_temple_list_approved_text_no_data">There are no approved temples yet</string>
-    <string name="my_temple_list_waiting_text_no_data">There are no temples waiting for approval</string>
+    <string name="my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+    <string name="my_temple_list_approved_text_no_data">Belum ada pura yang disetujui</string>
+    <string name="my_temple_list_waiting_text_no_data">Belum ada pura yang menunggu persetujuan</string>
 
     <!--    activity_sign_up-->
     <string name="sign_up_text_already_have_a_contributor_account">Sudah punya akun kontributor?</string>
@@ -35,13 +35,13 @@
     <string name="temple_detail_text_siwaratri">Siwaratri</string>
     <string name="temple_detail_text_melukat">Melukat</string>
     <string name="temple_detail_text_others">Lain-lain</string>
-    <string name="temple_detail_text_prayer_needs_seller">Penjual perlengkapan persembahyangan</string>
+    <string name="temple_detail_text_prayer_equipment_seller">Penjual perlengkapan persembahyangan</string>
     <string name="temple_detail_text_food_drink_seller"><![CDATA[Penjual makanan & minuman]]></string>
 
     <!--    activity_add_edit_temple_first-->
     <string name="add_edit_temple_first_text_time">00:00</string>
     <string name="add_edit_temple_first_text_dash">-</string>
-    <string name="add_edit_temple_first_edit_temple_name">Temple name</string>
+    <string name="add_edit_temple_first_edit_temple_name">Nama pura</string>
     <string name="add_edit_temple_first_edit_temple_address">Alamat pura</string>
     <string name="add_edit_temple_first_edit_village_office">Kelurahan</string>
     <string name="add_edit_temple_first_edit_sub_district">Kecamatan</string>
@@ -68,7 +68,9 @@
     <string name="add_edit_temple_second_text_others">Lain-Lain</string>
     <string name="add_edit_temple_second_button_add">Tambah</string>
 
-    <!--    activity_temple_request_detail-->
+    <!--    activity_temple_request_history_detail-->
+    <string name="temple_request_detail_text_label_accepted">Diterima</string>
+    <string name="temple_request_detail_text_label_declined">Ditolak</string>
     <string name="temple_request_detail_edit_contributor_note">Catatan kontributor</string>
     <string name="temple_request_detail_text_requested_by">Diajukan oleh</string>
     <string name="temple_request_detail_edit_note_for_contributor">Catatan untuk kontributor</string>
@@ -118,10 +120,10 @@
     <string name="temple_list_edit_find_temple">Find temple</string>
 
     <!--    fragment_temple_request_list -->
-    <string name="temple_request_list_no_requests">Belum ada pengajuan yang diajukan</string>
+    <string name="temple_request_list_no_requests">Belum ada pengajuan pura yang diajukan</string>
 
     <!--    fragment_temple_request_history-->
-    <string name="temple_request_list_no_histories">Belum ada riwayat pengajuan</string>
+    <string name="temple_request_list_no_histories">Belum ada riwayat pengajuan pura</string>
 
     <!--    item_temple_list-->
     <string name="item_temple_list_text_dash">-</string>

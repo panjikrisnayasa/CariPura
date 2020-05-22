@@ -42,13 +42,13 @@ class MyTempleListWaitingAdapter :
         holder.mTextFullMoonPrayerEnd.text = temple.fullMoonPrayerEnd
         holder.mTextDeadMoonPrayerStart.text = temple.deadMoonPrayerStart
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
-        when {
-            temple.requestType == "add" -> {
+        when (temple.requestType) {
+            "add" -> {
                 holder.mTextLabel.text =
                     holder.itemView.context.resources?.getString(R.string.item_label_request_add_temple)
                 holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
             }
-            temple.requestType == "edit" -> {
+            "edit" -> {
                 holder.mTextLabel.text =
                     holder.itemView.context.resources?.getString(R.string.item_label_request_edit_temple)
                 holder.mTextLabel.setBackgroundResource(R.color.colorOrange)

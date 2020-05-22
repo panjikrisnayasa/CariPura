@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.TempleRequestHistoryDetailActivity">
+    tools:context=".view.TempleRequestHistoryDetailAdminActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:background="@color/colorLayoutBackground">
 
             <com.synnapps.carouselview.CarouselView
-                android:id="@+id/carousel_temple_request_history_detail_photo"
+                android:id="@+id/carousel_temple_request_history_detail_admin_photo"
                 android:layout_width="match_parent"
                 android:layout_height="216dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
                 app:slideInterval="10000" />
 
             <TextView
-                android:id="@+id/text_temple_request_history_detail_label"
+                android:id="@+id/text_temple_request_history_detail_admin_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorGreen"
@@ -35,21 +35,21 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/carousel_temple_request_history_detail_photo"
+                app:layout_constraintTop_toBottomOf="@id/carousel_temple_request_history_detail_admin_photo"
                 tools:text="Accepted" />
 
             <LinearLayout
-                android:id="@+id/linear_temple_request_history_detail_layout_1"
+                android:id="@+id/linear_temple_request_history_detail_admin_layout_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_temple_request_history_detail_label">
+                app:layout_constraintTop_toBottomOf="@id/text_temple_request_history_detail_admin_label">
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_name"
+                    android:id="@+id/text_temple_request_history_detail_admin_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_bold"
@@ -58,7 +58,7 @@
                     tools:text="Pura Marga Sirsha" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_address"
+                    android:id="@+id/text_temple_request_history_detail_admin_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -70,7 +70,7 @@
                     tools:text="Jl. Pisang Candi Barat No. 100 - 101, Pisang Candi, Sukun" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_distance"
+                    android:id="@+id/text_temple_request_history_detail_admin_distance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -81,7 +81,7 @@
                     tools:text="1 km" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_duration"
+                    android:id="@+id/text_temple_request_history_detail_admin_duration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -92,7 +92,7 @@
                     tools:text="1 minute" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_caretaker_name"
+                    android:id="@+id/text_temple_request_history_detail_admin_caretaker_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -103,7 +103,7 @@
                     tools:text="Pak Wayan" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_caretaker_phone"
+                    android:id="@+id/text_temple_request_history_detail_admin_caretaker_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -127,7 +127,7 @@
                         android:background="@drawable/background_rounded">
 
                         <Button
-                            android:id="@+id/button_temple_request_history_detail_route"
+                            android:id="@+id/button_temple_request_history_detail_admin_route"
                             style="@style/ButtonTheme.Small.Primary"
                             android:layout_width="wrap_content"
                             android:drawableStart="@drawable/ic_directions_white_14dp"
@@ -143,7 +143,7 @@
                         android:background="@drawable/background_rounded_stroke">
 
                         <Button
-                            android:id="@+id/button_temple_request_history_detail_call"
+                            android:id="@+id/button_temple_request_history_detail_admin_call"
                             style="@style/ButtonTheme.Small.Secondary"
                             android:layout_width="wrap_content"
                             android:drawableStart="@drawable/ic_call_purple_14dp"
@@ -156,7 +156,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_temple_request_history_detail_layout_2"
+                android:id="@+id/linear_temple_request_history_detail_admin_layout_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -164,7 +164,7 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_layout_1">
+                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_admin_layout_1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -180,7 +180,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_feast_day"
+                        android:id="@+id/text_temple_request_history_detail_admin_feast_day"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -189,7 +189,7 @@
                         tools:text="Purnama Kapat" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_feast_day_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_feast_day_start"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -200,7 +200,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_feast_day_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_feast_day_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -221,7 +221,7 @@
                     android:textSize="16sp" />
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_full_moon"
+                    android:id="@+id/linear_temple_request_history_detail_admin_full_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -236,7 +236,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_full_moon_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_full_moon_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -247,7 +247,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_full_moon_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_full_moon_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -260,7 +260,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_dead_moon"
+                    android:id="@+id/linear_temple_request_history_detail_admin_dead_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -275,7 +275,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_dead_moon_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_dead_moon_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -286,7 +286,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_dead_moon_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_dead_moon_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -299,7 +299,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_galungan"
+                    android:id="@+id/linear_temple_request_history_detail_admin_galungan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -315,7 +315,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_galungan_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_galungan_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -326,7 +326,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_galungan_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_galungan_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -339,7 +339,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_kuningan"
+                    android:id="@+id/linear_temple_request_history_detail_admin_kuningan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -355,7 +355,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_kuningan_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_kuningan_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -366,7 +366,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_kuningan_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_kuningan_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -379,7 +379,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_saraswati"
+                    android:id="@+id/linear_temple_request_history_detail_admin_saraswati"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -395,7 +395,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_saraswati_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_saraswati_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -406,7 +406,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_saraswati_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_saraswati_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -419,7 +419,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_pagerwesi"
+                    android:id="@+id/linear_temple_request_history_detail_admin_pagerwesi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -435,7 +435,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_pagerwesi_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_pagerwesi_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -446,7 +446,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_pagerwesi_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_pagerwesi_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -459,7 +459,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_siwaratri"
+                    android:id="@+id/linear_temple_request_history_detail_admin_siwaratri"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -475,7 +475,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_siwaratri_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_siwaratri_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -486,7 +486,7 @@
                         tools:text="18.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_siwaratri_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_siwaratri_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -499,7 +499,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_melukat"
+                    android:id="@+id/linear_temple_request_history_detail_admin_melukat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -515,7 +515,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_melukat_prayer_start"
+                        android:id="@+id/text_temple_request_history_detail_admin_melukat_prayer_start"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -526,7 +526,7 @@
                         tools:text="07.00" />
 
                     <TextView
-                        android:id="@+id/text_temple_request_history_detail_melukat_prayer_end"
+                        android:id="@+id/text_temple_request_history_detail_admin_melukat_prayer_end"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -539,7 +539,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_melukat_information"
+                    android:id="@+id/text_temple_request_history_detail_admin_melukat_information"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -554,7 +554,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_temple_request_history_detail_layout_3"
+                android:id="@+id/linear_temple_request_history_detail_admin_layout_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -562,7 +562,7 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_layout_2">
+                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_admin_layout_2">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -572,7 +572,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_prayer_equipment_seller"
+                    android:id="@+id/text_temple_request_history_detail_admin_prayer_equipment_seller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -583,7 +583,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/text_temple_request_history_detail_food_drink_seller"
+                    android:id="@+id/text_temple_request_history_detail_admin_food_drink_seller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -596,7 +596,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_temple_request_history_detail_layout_4"
+                android:id="@+id/linear_temple_request_history_detail_admin_layout_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -604,7 +604,7 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_layout_3">
+                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_admin_layout_3">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -612,20 +612,40 @@
                     android:textColorHint="@color/colorAccent">
 
                     <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/edit_temple_request_history_detail_note_for_admin"
+                        android:id="@+id/edit_temple_request_history_detail_admin_contributor_note"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:hint="@string/temple_request_detail_edit_note_for_admin"
+                        android:hint="@string/temple_request_detail_edit_contributor_note"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/temple_request_detail_text_requested_by"
+                    android:textColor="@color/colorNegativeButton"
+                    android:textSize="16sp"
+                    tools:ignore="TooManyViews" />
+
+                <TextView
+                    android:id="@+id/text_temple_request_history_detail_admin_requested_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    tools:text="I Putu Panji Krisnayasa" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_temple_request_history_detail_layout_5"
+                android:id="@+id/linear_temple_request_history_detail_admin_layout_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -633,7 +653,7 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_layout_4">
+                app:layout_constraintTop_toBottomOf="@id/linear_temple_request_history_detail_admin_layout_4">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -641,12 +661,12 @@
                     android:textColorHint="@color/colorAccent">
 
                     <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/edit_temple_request_history_detail_admin_note"
+                        android:id="@+id/edit_temple_request_history_detail_admin_note_for_contributor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:hint="@string/temple_request_detail_edit_admin_note"
+                        android:hint="@string/temple_request_detail_edit_note_for_contributor"
                         android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -658,13 +678,13 @@
     </ScrollView>
 
     <View
-        android:id="@+id/view_temple_request_history_detail_background"
+        android:id="@+id/view_temple_request_history_detail_admin_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorLayoutBackground" />
 
     <ProgressBar
-        android:id="@+id/progress_temple_request_history_detail"
+        android:id="@+id/progress_temple_request_history_detail_admin"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

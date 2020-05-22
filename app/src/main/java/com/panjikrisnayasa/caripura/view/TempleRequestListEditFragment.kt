@@ -43,8 +43,8 @@ class TempleRequestListEditFragment : Fragment() {
         ).get(TempleRequestListViewModel::class.java)
 
         mViewModel.getEditTempleRequestList().observe(this, Observer { templeList ->
+            progress_temple_request_list_edit.visibility = View.GONE
             if (templeList != null) {
-                progress_temple_request_list_edit.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
                 text_temple_request_list_edit_no_requests.visibility = View.VISIBLE

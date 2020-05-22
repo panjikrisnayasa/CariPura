@@ -58,8 +58,8 @@ class MyTempleListActivity : AppCompatActivity() {
             showRecyclerView()
 
             mViewModel.getAdminTempleList().observe(this, Observer { templeList ->
+                progress_my_temple_list.visibility = View.GONE
                 if (templeList != null) {
-                    progress_my_temple_list.visibility = View.GONE
                     mAdapter.setData(templeList)
                 } else {
                     text_my_temple_list_no_data.visibility = View.VISIBLE

@@ -68,7 +68,7 @@
     <string name="add_edit_temple_second_text_others">Lain-Lain</string>
     <string name="add_edit_temple_second_button_add">Tambah</string>
 
-    <!--    activity_temple_request_history_detail-->
+    <!--    activity_temple_request_history_detail_contributor-->
     <string name="temple_request_detail_text_label_accepted">Diterima</string>
     <string name="temple_request_detail_text_label_declined">Ditolak</string>
     <string name="temple_request_detail_edit_contributor_note">Catatan kontributor</string>
@@ -78,6 +78,8 @@
     <string name="temple_request_detail_button_reject">Tolak</string>
     <string name="temple_request_detail_edit_admin_note">Catatan admin</string>
     <string name="temple_request_detail_edit_note_for_admin">Catatan untuk admin</string>
+    <string name="temple_request_detail_toast_accepted">Pengajuan diterima</string>
+    <string name="temple_request_detail_toast_rejected">Pengajuan ditolak</string>
 
     <!--    activity_requested_by-->
     <string name="requested_by_text_input_edit_text_full_name">Nama Lengkap</string>

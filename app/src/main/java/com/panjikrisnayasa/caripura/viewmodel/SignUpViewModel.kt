@@ -12,7 +12,7 @@ class SignUpViewModel : ViewModel() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabaseReference: DatabaseReference
-    private val mCode = MutableLiveData<Int>()
+    private var mCode = MutableLiveData<Int>()
 
     fun signUp(
         fullName: String,
@@ -22,7 +22,7 @@ class SignUpViewModel : ViewModel() {
     ): LiveData<Int> {
         mAuth = FirebaseAuth.getInstance()
         mDatabaseReference =
-            FirebaseDatabase.getInstance().getReference("user").child("contributor")
+            FirebaseDatabase.getInstance().getReference("user")
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {

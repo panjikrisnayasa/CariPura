@@ -46,8 +46,8 @@ class TempleListFragment : Fragment() {
 
         mViewModel.getTemple()
             .observe(this, Observer { templeList ->
+                progress_temple_list.visibility = View.GONE
                 if (templeList != null) {
-                    progress_temple_list.visibility = View.GONE
                     mAdapter.setData(templeList)
                 } else {
                     text_temple_list_no_data.visibility = View.VISIBLE

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -38,12 +39,14 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mViewModel =
+            ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+                AccountLoginViewModel::class.java
+            )
+
         mSharedPref = SharedPrefManager.getInstance(context)
         checkLogin()
 
-        mViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
-            AccountLoginViewModel::class.java
-        )
         relative_account_login_sign_up_here.setOnClickListener(this)
         button_account_login.setOnClickListener(this)
         text_input_edit_text_account_login_password.addTextChangedListener(this)
@@ -56,6 +59,7 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
                 startActivity(intent)
             }
             R.id.button_account_login -> {
+                showLoading(true)
                 var isNull = false
                 var isEmailInvalid = false
 
@@ -88,14 +92,34 @@ class AccountLoginFragment : Fragment(), View.OnClickListener, TextWatcher {
 
                 if (!isNull && !isEmailInvalid) {
                     hideKeyboard()
-                    showLoading(true)
-                    mViewModel.authenticate(email, password, context)
-                        .observe(this, Observer { user ->
-                            if (user != null) {
-                                mSharedPref.setLogin(user)
-                                replaceFragment(LoggedInFragment())
-                            } else {
-                                showLoading(false)
+                    mViewModel.authenticate(email, password)
+                        .observe(this, Observer { code ->
+                            showLoading(false)
+                            if (code != null) {
+                                when (code) {
+                                    1 -> {
+                                        mViewModel.getCurrentUser().observe(this, Observer { user ->
+                                            if (user != null) {
+                                                mSharedPref.setLogin(user)
+                                                replaceFragment(LoggedInFragment())
+                                            }
+                                        })
+                                    }
+                                    2 -> {
+                                        Toast.makeText(
+                                            context,
+                                            getString(R.string.error_message_verify_email),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                    3 -> {
+                                        Toast.makeText(
+                                            context,
+                                            getString(R.string.error_message_email_password_incorrect),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
                             }
                         })
                 }

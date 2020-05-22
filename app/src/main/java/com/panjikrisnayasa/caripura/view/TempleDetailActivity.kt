@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.activity_temple_detail.*
 class TempleDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
-        //        const val EXTRA_TEMPLE_ID = "temple_id"
         const val EXTRA_TEMPLE = "temple"
     }
 
@@ -50,15 +49,7 @@ class TempleDetailActivity : AppCompatActivity(), View.OnClickListener {
         button_temple_detail_route.setOnClickListener(this)
         button_temple_detail_call.setOnClickListener(this)
 
-//        val templeId = intent.getStringExtra(EXTRA_TEMPLE_ID)
-
         val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
-
-//        if (templeId != null) {
-//            mViewModel.getTempleDetail(templeId).observe(this, Observer { temple ->
-//                showTempleDetail(temple)
-//            })
-//        }
 
         if (temple != null) {
             showTempleDetail(temple)

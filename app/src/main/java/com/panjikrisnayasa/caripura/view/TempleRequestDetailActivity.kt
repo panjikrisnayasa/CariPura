@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -48,6 +49,9 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         button_temple_request_detail_route.setOnClickListener(this)
         button_temple_request_detail_call.setOnClickListener(this)
+        text_temple_request_detail_requested_by.setOnClickListener(this)
+        button_temple_request_detail_accept.setOnClickListener(this)
+        button_temple_request_detail_reject.setOnClickListener(this)
 
         val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
         if (temple != null) {
@@ -76,6 +80,44 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
                     Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mTemple.caretakerPhone))
                 startActivity(callIntent)
             }
+            R.id.text_temple_request_detail_requested_by -> {
+                val requestedByIntent = Intent(this, RequestedByActivity::class.java)
+                requestedByIntent.putExtra(
+                    RequestedByActivity.EXTRA_CONTRIBUTOR_ID,
+                    mTemple.contributorId
+                )
+                startActivity(requestedByIntent)
+            }
+            R.id.button_temple_request_detail_accept -> {
+                val noteForContributor =
+                    edit_temple_request_detail_note_for_contributor.text?.trim().toString()
+                if (noteForContributor.isNotBlank()) {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.temple_request_detail_toast_accepted),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                } else {
+                    edit_temple_request_detail_note_for_contributor.error =
+                        getString(R.string.error_message_fill_this_field)
+                }
+            }
+            R.id.button_temple_request_detail_reject -> {
+                val noteForContributor =
+                    edit_temple_request_detail_note_for_contributor.text?.trim().toString()
+                if (noteForContributor.isNotBlank()) {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.temple_request_detail_toast_rejected),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                } else {
+                    edit_temple_request_detail_note_for_contributor.error =
+                        getString(R.string.error_message_fill_this_field)
+                }
+            }
         }
     }
 
@@ -90,17 +132,22 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
             text_temple_request_detail_distance.text = distanceDuration[0]
             text_temple_request_detail_duration.text = distanceDuration[1]
 
-            if (temple.requestType == "add") {
-                text_temple_request_detail_label.text = getString(R.string.label_add_temple_request)
-                text_temple_request_detail_label.background = getDrawable(R.color.colorGreen)
-            } else if (temple.requestType == "edit") {
-                text_temple_request_detail_label.text =
-                    getString(R.string.label_edit_temple_request)
-                text_temple_request_detail_label.background = getDrawable(R.color.colorOrange)
-            } else {
-                text_temple_request_detail_label.text =
-                    getString(R.string.label_delete_temple_request)
-                text_temple_request_detail_label.background = getDrawable(R.color.colorRed)
+            when (temple.requestType) {
+                "add" -> {
+                    text_temple_request_detail_label.text =
+                        getString(R.string.item_label_request_add_temple)
+                    text_temple_request_detail_label.background = getDrawable(R.color.colorGreen)
+                }
+                "edit" -> {
+                    text_temple_request_detail_label.text =
+                        getString(R.string.item_label_request_edit_temple)
+                    text_temple_request_detail_label.background = getDrawable(R.color.colorOrange)
+                }
+                else -> {
+                    text_temple_request_detail_label.text =
+                        getString(R.string.item_label_request_delete_temple)
+                    text_temple_request_detail_label.background = getDrawable(R.color.colorRed)
+                }
             }
 
             carousel_temple_request_detail_photo.setImageListener { _, imageView ->
@@ -194,6 +241,7 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
                 )
             }
 
+            text_temple_request_detail_requested_by.text = temple.contributorFullName
             edit_temple_request_detail_contributor_note.setText(temple.contributorNote)
             view_temple_request_detail_background.visibility = View.GONE
             progress_temple_request_detail.visibility = View.GONE

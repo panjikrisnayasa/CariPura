@@ -9,7 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.adapter.TempleRequestHistoryAdapter
+import com.panjikrisnayasa.caripura.adapter.TempleRequestHistoryAdminAdapter
+import com.panjikrisnayasa.caripura.adapter.TempleRequestHistoryContributorAdapter
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleRequestHistoryViewModel
 import kotlinx.android.synthetic.main.fragment_temple_request_history_edit.*
@@ -20,8 +21,9 @@ import kotlinx.android.synthetic.main.fragment_temple_request_history_edit.*
 class TempleRequestHistoryEditFragment : Fragment() {
 
     private lateinit var mViewModel: TempleRequestHistoryViewModel
-    private lateinit var mAdapter: TempleRequestHistoryAdapter
     private lateinit var mSharedPref: SharedPrefManager
+    private lateinit var mAdminAdapter: TempleRequestHistoryAdminAdapter
+    private lateinit var mContributorAdapter: TempleRequestHistoryContributorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,28 +38,28 @@ class TempleRequestHistoryEditFragment : Fragment() {
 
         mSharedPref = SharedPrefManager.getInstance(context)
 
-        showRecyclerView()
-
         mViewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
         ).get(TempleRequestHistoryViewModel::class.java)
 
         if (mSharedPref.getRole() == "admin") {
+            showRecyclerViewAdmin()
             mViewModel.getEditTempleApprovalHistory().observe(this, Observer { templeList ->
                 progress_temple_request_history_edit.visibility = View.GONE
                 if (templeList != null) {
-                    mAdapter.setData(templeList)
+                    mAdminAdapter.setData(templeList)
                 } else {
                     text_temple_request_history_edit_no_histories.visibility = View.VISIBLE
                 }
             })
         } else {
+            showRecyclerViewContributor()
             mViewModel.getEditTempleRequestHistory(mSharedPref.getId())
                 .observe(this, Observer { templeList ->
                     progress_temple_request_history_edit.visibility = View.GONE
                     if (templeList != null) {
-                        mAdapter.setData(templeList)
+                        mContributorAdapter.setData(templeList)
                     } else {
                         text_temple_request_history_edit_no_histories.visibility = View.VISIBLE
                     }
@@ -65,9 +67,15 @@ class TempleRequestHistoryEditFragment : Fragment() {
         }
     }
 
-    private fun showRecyclerView() {
-        mAdapter = TempleRequestHistoryAdapter()
+    private fun showRecyclerViewAdmin() {
+        mAdminAdapter = TempleRequestHistoryAdminAdapter()
         recycler_temple_request_history_edit?.layoutManager = LinearLayoutManager(context)
-        recycler_temple_request_history_edit?.adapter = mAdapter
+        recycler_temple_request_history_edit?.adapter = mAdminAdapter
+    }
+
+    private fun showRecyclerViewContributor() {
+        mContributorAdapter = TempleRequestHistoryContributorAdapter()
+        recycler_temple_request_history_edit?.layoutManager = LinearLayoutManager(context)
+        recycler_temple_request_history_edit?.adapter = mContributorAdapter
     }
 }

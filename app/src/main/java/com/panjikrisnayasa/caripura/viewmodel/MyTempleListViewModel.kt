@@ -15,32 +15,26 @@ class MyTempleListViewModel : ViewModel() {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("temple").child("admin_temple")
-        mDatabaseReference.addChildEventListener(object : ChildEventListener {
+        mDatabaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
             }
 
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+            override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
-                    val temple = p0.getValue(Temple::class.java)
-                    if (temple != null) {
-                        templeList.add(temple)
+                    templeList.clear()
+                    val templeId = p0.children
+                    for (tTempleId in templeId) {
+                        val temple = tTempleId.getValue(Temple::class.java)
+                        if (temple != null) {
+                            templeList.add(temple)
+                        }
                     }
+                    mTempleList.postValue(templeList)
+                } else {
+                    mTempleList.postValue(null)
                 }
-                mTempleList.postValue(templeList)
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("Not yet implemented")
             }
         })
         return mTempleList
@@ -50,39 +44,26 @@ class MyTempleListViewModel : ViewModel() {
         val templeList = arrayListOf<Temple>()
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("temple").child("contributor_temple")
-        mDatabaseReference.addChildEventListener(object : ChildEventListener {
+                .child(contributorId)
+        mDatabaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
             }
 
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+            override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
-                    if (p0.key == contributorId) {
-                        val contributorTemple = p0.children
-                        for (data in contributorTemple) {
-                            val temple = data.getValue(Temple::class.java)
-                            if (temple != null)
-                                templeList.add(temple)
-                        }
-                    } else {
-                        mTempleList.postValue(null)
-                        return
+                    templeList.clear()
+                    val templeId = p0.children
+                    for (tTempleId in templeId) {
+                        val temple = tTempleId.getValue(Temple::class.java)
+                        if (temple != null)
+                            templeList.add(temple)
                     }
+                    mTempleList.postValue(templeList)
+                } else {
+                    mTempleList.postValue(null)
                 }
-                mTempleList.postValue(templeList)
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("Not yet implemented")
             }
         })
         return mTempleList
@@ -93,43 +74,33 @@ class MyTempleListViewModel : ViewModel() {
         mDatabaseReference =
             FirebaseDatabase.getInstance().getReference("temple_request")
 
-        mDatabaseReference.addChildEventListener(object : ChildEventListener {
+        mDatabaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
             }
 
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+            override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
-                    val contributor = p0.children
-                    for (data in contributor) {
-                        if (data.key == contributorId) {
-                            val contributorTemple = data.children
-                            for (tContributorTemple in contributorTemple) {
-                                val temple = tContributorTemple.getValue(Temple::class.java)
-                                if (temple != null) {
-                                    templeList.add(temple)
+                    templeList.clear()
+                    val templeRequestChildren = p0.children
+                    for (tTempleRequestChildren in templeRequestChildren) {
+                        val contributor = tTempleRequestChildren.children
+                        for (tContributor in contributor) {
+                            if (tContributor.key == contributorId) {
+                                val templeId = tContributor.children
+                                for (tTempleId in templeId) {
+                                    val temple = tTempleId.getValue(Temple::class.java)
+                                    if (temple != null)
+                                        templeList.add(temple)
                                 }
                             }
-                        } else {
-                            mTempleList.postValue(null)
-                            return
                         }
                     }
+                    mTempleList.postValue(templeList)
+                } else {
+                    mTempleList.postValue(null)
                 }
-                mTempleList.postValue(templeList)
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("Not yet implemented")
             }
         })
         return mTempleList

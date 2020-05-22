@@ -1,26 +1,24 @@
 package com.panjikrisnayasa.caripura.viewmodel
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.User
+import com.panjikrisnayasa.caripura.util.SingleLiveEvent
 
 class AccountLoginViewModel : ViewModel() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabaseReference: DatabaseReference
     private val mUser = MutableLiveData<User>()
+    private var mCode = SingleLiveEvent<Int>()
 
     fun authenticate(
         email: String,
-        password: String,
-        context: Context?
-    ): LiveData<User> {
+        password: String
+    ): LiveData<Int> {
         mAuth = FirebaseAuth.getInstance()
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             val cUser = mAuth.currentUser
@@ -28,41 +26,57 @@ class AccountLoginViewModel : ViewModel() {
                 if (cUser != null) {
                     val cUid = cUser.uid
                     mDatabaseReference =
-                        FirebaseDatabase.getInstance().getReference("user").child("contributor").child(cUid)
-                    mDatabaseReference.addListenerForSingleValueEvent(object :
-                        ValueEventListener {
+                        FirebaseDatabase.getInstance().getReference("user").child(cUid)
+                    mDatabaseReference.addValueEventListener(object : ValueEventListener {
+
                         override fun onCancelled(p0: DatabaseError) {
                             p0.message
                         }
 
                         override fun onDataChange(p0: DataSnapshot) {
                             if (p0.exists()) {
-                                val tUser = p0.getValue(User::class.java)
-                                if (tUser?.role == "contributor") {
-                                    if (!cUser.isEmailVerified) {
-                                        Toast.makeText(
-                                            context,
-                                            context?.getString(R.string.error_message_verify_email),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        mAuth.signOut()
-                                        mUser.postValue(null)
-                                        return
+                                val user = p0.getValue(User::class.java)
+                                if (user != null) {
+                                    if (user.role == "contributor") {
+                                        if (!cUser.isEmailVerified) {
+                                            mCode.postValue(2)
+                                            mAuth.signOut()
+                                            return
+                                        }
                                     }
+                                    mCode.postValue(1)
                                 }
-                                mUser.postValue(tUser)
                             }
                         }
                     })
+
                 }
             } else {
-                Toast.makeText(
-                    context,
-                    context?.getString(R.string.error_message_email_password_incorrect),
-                    Toast.LENGTH_SHORT
-                ).show()
-                mUser.postValue(null)
+                mCode.postValue(3)
             }
+        }
+        return mCode
+    }
+
+    fun getCurrentUser(): LiveData<User> {
+        mAuth = FirebaseAuth.getInstance()
+        val cUser = mAuth.currentUser
+        if (cUser != null) {
+            val cUid = cUser.uid
+            mDatabaseReference = FirebaseDatabase.getInstance().getReference("user").child(cUid)
+            mDatabaseReference.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                    p0.message
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                    if (p0.exists()) {
+                        val user = p0.getValue(User::class.java)
+                        if (user != null)
+                            mUser.postValue(user)
+                    }
+                }
+            })
         }
         return mUser
     }

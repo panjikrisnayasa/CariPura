@@ -48,11 +48,10 @@ class MyTempleListWaitingFragment : Fragment() {
         ).get(MyTempleListViewModel::class.java)
 
         mViewModel.getTempleListWaiting(mSharedPref.getId()).observe(this, Observer { templeList ->
+            progress_my_temple_list_waiting.visibility = View.GONE
             if (templeList != null) {
-                progress_my_temple_list_waiting.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
-                progress_my_temple_list_waiting.visibility = View.GONE
                 text_my_temple_list_waiting_no_data.visibility = View.VISIBLE
             }
         })

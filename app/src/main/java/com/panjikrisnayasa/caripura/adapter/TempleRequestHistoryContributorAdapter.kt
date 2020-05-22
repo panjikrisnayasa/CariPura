@@ -10,21 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
-import com.panjikrisnayasa.caripura.view.TempleRequestHistoryDetailActivity
+import com.panjikrisnayasa.caripura.view.TempleRequestHistoryDetailContributorActivity
 
-class TempleRequestHistoryAdapter :
-    RecyclerView.Adapter<TempleRequestHistoryAdapter.TempleRequestHistoryViewHolder>() {
+class TempleRequestHistoryContributorAdapter :
+    RecyclerView.Adapter<TempleRequestHistoryContributorAdapter.TempleRequestHistoryContributorViewHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TempleRequestHistoryViewHolder {
+    ): TempleRequestHistoryContributorViewHolder {
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_temple_list_with_label, parent, false)
-        return TempleRequestHistoryViewHolder(view)
+        return TempleRequestHistoryContributorViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +32,7 @@ class TempleRequestHistoryAdapter :
     }
 
     override fun onBindViewHolder(
-        holder: TempleRequestHistoryViewHolder,
+        holder: TempleRequestHistoryContributorViewHolder,
         position: Int
     ) {
         val temple = mTempleList[position]
@@ -56,8 +56,9 @@ class TempleRequestHistoryAdapter :
         }
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, TempleRequestHistoryDetailActivity::class.java)
-            intent.putExtra(TempleRequestHistoryDetailActivity.EXTRA_TEMPLE, temple)
+            val intent =
+                Intent(it.context, TempleRequestHistoryDetailContributorActivity::class.java)
+            intent.putExtra(TempleRequestHistoryDetailContributorActivity.EXTRA_TEMPLE, temple)
             it.context.startActivity(intent)
         }
     }
@@ -68,7 +69,8 @@ class TempleRequestHistoryAdapter :
         notifyDataSetChanged()
     }
 
-    inner class TempleRequestHistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class TempleRequestHistoryContributorViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         var mImage: ImageView = itemView.findViewById(R.id.image_item_temple_list_with_label)
         var mTextName: TextView =
             itemView.findViewById(R.id.text_item_temple_list_with_label_temple_name)

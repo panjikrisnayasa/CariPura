@@ -72,7 +72,7 @@
     <string name="requested_by_text_input_edit_text_phone_number">Phone Number</string>
     <string name="requested_by_text_input_edit_text_email">Email</string>
 
-    <!--    activity_temple_request_history_detail-->
+    <!--    activity_temple_request_history_detail_contributor-->
     <string name="temple_request_detail_text_label_accepted">Accepted</string>
     <string name="temple_request_detail_text_label_declined">Declined</string>
     <string name="temple_request_detail_edit_contributor_note">Contributor note</string>
@@ -82,6 +82,8 @@
     <string name="temple_request_detail_button_reject">Reject</string>
     <string name="temple_request_detail_edit_admin_note">Admin note</string>
     <string name="temple_request_detail_edit_note_for_admin">Note for admin</string>
+    <string name="temple_request_detail_toast_accepted">Request accepted</string>
+    <string name="temple_request_detail_toast_rejected">Request rejected</string>
 
     <!--    activity_delete_temple_request-->
     <string name="delete_temple_request_text_input_edit_text_note_for_contributor">Note for contributor</string>

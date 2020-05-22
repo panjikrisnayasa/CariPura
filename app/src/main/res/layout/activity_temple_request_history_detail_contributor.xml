@@ -221,7 +221,6 @@
                     android:textSize="16sp" />
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_contributor_full_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -260,7 +259,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_temple_request_history_detail_contributor_dead_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -625,7 +623,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_temple_request_history_detail_contributor_layout_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

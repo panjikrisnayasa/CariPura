@@ -133,18 +133,22 @@ class MyTempleDetailWaitingActivity : AppCompatActivity(), View.OnClickListener 
             text_my_temple_detail_waiting_distance.text = distanceDuration[0]
             text_my_temple_detail_waiting_duration.text = distanceDuration[1]
 
-            if (temple.requestType == "add") {
-                text_my_temple_detail_waiting_label.text =
-                    getString(R.string.item_label_request_add_temple)
-                text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorGreen)
-            } else if (temple.requestType == "edit") {
-                text_my_temple_detail_waiting_label.text =
-                    getString(R.string.item_label_request_edit_temple)
-                text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorOrange)
-            } else {
-                text_my_temple_detail_waiting_label.text =
-                    getString(R.string.item_label_request_delete_temple)
-                text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorRed)
+            when (temple.requestType) {
+                "add" -> {
+                    text_my_temple_detail_waiting_label.text =
+                        getString(R.string.item_label_request_add_temple)
+                    text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorGreen)
+                }
+                "edit" -> {
+                    text_my_temple_detail_waiting_label.text =
+                        getString(R.string.item_label_request_edit_temple)
+                    text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorOrange)
+                }
+                else -> {
+                    text_my_temple_detail_waiting_label.text =
+                        getString(R.string.item_label_request_delete_temple)
+                    text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorRed)
+                }
             }
 
             carousel_my_temple_detail_waiting_photo.setImageListener { _, imageView ->

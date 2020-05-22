@@ -24,17 +24,6 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="EditTextTheme" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/background_rounded</item>
-        <item name="android:backgroundTint">@color/colorEditTextBackground</item>
-        <item name="android:drawablePadding">16dp</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:paddingStart">24dp</item>
-        <item name="android:paddingEnd">24dp</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:scrollHorizontally">true</item>
-    </style>
-
     <style name="TextInputLayoutTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxCornerRadiusBottomEnd">24dp</item>
         <item name="boxCornerRadiusBottomStart">24dp</item>

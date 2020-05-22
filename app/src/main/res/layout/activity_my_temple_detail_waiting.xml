@@ -221,7 +221,6 @@
                     android:textSize="16sp" />
 
                 <LinearLayout
-                    android:id="@+id/linear_my_temple_detail_waiting_full_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -260,7 +259,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_my_temple_detail_waiting_dead_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -596,7 +594,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_my_temple_detail_waiting_layout_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

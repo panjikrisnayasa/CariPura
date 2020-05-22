@@ -23,7 +23,6 @@
     <!--    activity_temple_detail-->
     <string name="temple_detail_button_route">Rute</string>
     <string name="temple_detail_button_call">Hubungi</string>
-    <string name="temple_detail_text_dash">-</string>
     <string name="temple_detail_text_temple_feast_day">Piodalan pura</string>
     <string name="temple_detail_text_together_prayer">Persembahyangan bersama</string>
     <string name="temple_detail_text_full_moon">Purnama</string>
@@ -84,7 +83,6 @@
     <!--    activity_requested_by-->
     <string name="requested_by_text_input_edit_text_full_name">Nama Lengkap</string>
     <string name="requested_by_text_input_edit_text_phone_number">Nomor Telepon</string>
-    <string name="requested_by_text_input_edit_text_email">Email</string>
 
     <!--    activity_delete_temple_request-->
     <string name="delete_temple_request_text_input_edit_text_note_for_contributor">Catatan untuk kontributor</string>
@@ -104,9 +102,6 @@
 
     <!--    fragment_find_temple-->
     <string name="find_temple_button_find_the_nearest_temple">Cari Pura Terdekat</string>
-    <string name="find_temple_edit_find_temple">Cari pura</string>
-    <string name="find_temple_button_temple_detail">Detail Pura</string>
-    <string name="find_temple_toast_no_temple">Tidak ada pura di sekitar Anda</string>
 
     <!--    fragment_logged_in-->
     <string name="logged_in_text_input_edit_text_full_name">Nama Lengkap</string>
@@ -189,7 +184,6 @@
     <string name="label_delete_temple_request">Ajukan Hapus Pura</string>
     <string name="label_edit_temple_request">Ajukan Ubah Pura</string>
     <string name="label_add_temple_request">Ajukan Tambah Pura</string>
-    <string name="label_my_temple_request_history">Riwayat Pengajuan Pura Saya</string>
     <string name="label_route_to_temple">Rute Menuju Pura</string>
 
     <!--    item_label-->

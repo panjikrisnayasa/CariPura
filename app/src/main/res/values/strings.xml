@@ -22,7 +22,6 @@
     <!--    activity_temple_detail-->
     <string name="temple_detail_button_route">Route</string>
     <string name="temple_detail_button_call">Call</string>
-    <string name="temple_detail_text_dash">-</string>
     <string name="temple_detail_text_temple_feast_day">Temple feast day</string>
     <string name="temple_detail_text_together_prayer">Together prayer</string>
     <string name="temple_detail_text_full_moon">Purnama</string>
@@ -70,7 +69,6 @@
     <!--    activity_requested_by-->
     <string name="requested_by_text_input_edit_text_full_name">Full Name</string>
     <string name="requested_by_text_input_edit_text_phone_number">Phone Number</string>
-    <string name="requested_by_text_input_edit_text_email">Email</string>
 
     <!--    activity_temple_request_history_detail_contributor-->
     <string name="temple_request_detail_text_label_accepted">Accepted</string>
@@ -103,9 +101,6 @@
 
     <!--    fragment_find_temple-->
     <string name="find_temple_button_find_the_nearest_temple">Find Nearest Temple</string>
-    <string name="find_temple_edit_find_temple">Find temple</string>
-    <string name="find_temple_button_temple_detail">Temple Detail</string>
-    <string name="find_temple_toast_no_temple">No temple around you</string>
 
     <!--    fragment_logged_in-->
     <string name="logged_in_text_input_edit_text_full_name">Full Name</string>
@@ -188,7 +183,6 @@
     <string name="label_delete_temple_request">Delete Temple Request</string>
     <string name="label_edit_temple_request">Edit Temple Request</string>
     <string name="label_add_temple_request">Add Temple Request</string>
-    <string name="label_my_temple_request_history">My Temple Request History</string>
     <string name="label_route_to_temple">Route To Temple</string>
 
     <!--    item_label-->

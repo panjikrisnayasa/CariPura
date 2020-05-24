@@ -11,11 +11,13 @@ import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.TempleDetailActivity
+import java.util.*
 
 class TempleListAdapter :
     RecyclerView.Adapter<TempleListAdapter.TempleListViewHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
+    private var mTempTempleList = arrayListOf<Temple>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempleListViewHolder {
         val view =
@@ -47,6 +49,21 @@ class TempleListAdapter :
     fun setData(templeList: ArrayList<Temple>) {
         mTempleList.clear()
         mTempleList.addAll(templeList)
+        mTempTempleList.addAll(templeList)
+        notifyDataSetChanged()
+    }
+
+    fun filter(query: String) {
+        mTempleList.clear()
+        if (query.isEmpty()) {
+            mTempleList.addAll(mTempTempleList)
+        } else {
+            for (temple in mTempTempleList) {
+                if (temple.name.trim().toLowerCase(Locale.getDefault()).contains(query)) {
+                    mTempleList.add(temple)
+                }
+            }
+        }
         notifyDataSetChanged()
     }
 

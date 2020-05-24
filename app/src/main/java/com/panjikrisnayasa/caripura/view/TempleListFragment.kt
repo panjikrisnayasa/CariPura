@@ -2,6 +2,8 @@ package com.panjikrisnayasa.caripura.view
 
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +16,12 @@ import com.panjikrisnayasa.caripura.adapter.TempleListAdapter
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleListViewModel
 import kotlinx.android.synthetic.main.fragment_temple_list.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class TempleListFragment : Fragment() {
+class TempleListFragment : Fragment(), TextWatcher {
 
     private lateinit var mViewModel: TempleListViewModel
     private lateinit var mAdapter: TempleListAdapter
@@ -49,15 +52,30 @@ class TempleListFragment : Fragment() {
                 progress_temple_list.visibility = View.GONE
                 if (templeList != null) {
                     mAdapter.setData(templeList)
+                    edit_temple_list_find_temple.isEnabled = true
+                    edit_temple_list_find_temple.addTextChangedListener(this)
                 } else {
                     text_temple_list_no_data.visibility = View.VISIBLE
                 }
             })
+
     }
 
     private fun showRecyclerView() {
         mAdapter = TempleListAdapter()
         recycler_temple_list?.layoutManager = LinearLayoutManager(context)
         recycler_temple_list?.adapter = mAdapter
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+    }
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        val query = edit_temple_list_find_temple.text.trim().toString()
+            .toLowerCase(Locale.getDefault())
+        mAdapter.filter(query)
     }
 }

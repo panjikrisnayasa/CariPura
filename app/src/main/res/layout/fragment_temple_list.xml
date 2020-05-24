@@ -37,9 +37,11 @@
                     tools:ignore="ContentDescription" />
 
                 <EditText
+                    android:id="@+id/edit_temple_list_find_temple"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:enabled="false"
                     android:hint="@string/temple_list_edit_find_temple"
                     android:importantForAutofill="no"
                     android:inputType="textCapWords" />

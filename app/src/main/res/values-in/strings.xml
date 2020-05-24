@@ -114,7 +114,7 @@
 
     <!--    fragment_temple_list-->
     <string name="temple_list_text_no_data">Belum ada pura yang terdaftar</string>
-    <string name="temple_list_edit_find_temple">Find temple</string>
+    <string name="temple_list_edit_find_temple">Cari pura</string>
 
     <!--    fragment_temple_request_list -->
     <string name="temple_request_list_no_requests">Belum ada pengajuan pura yang diajukan</string>

@@ -40,7 +40,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_medium"
-                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
                     android:textColor="@color/colorTextBlack"
                     android:textSize="20sp"
                     tools:text="Pura Marga Shirsa" />
@@ -53,9 +54,9 @@
                     android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/ic_location_on_purple_14dp"
                     android:drawablePadding="8dp"
-                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
                     android:textColor="@color/colorTextHint"
-                    android:textSize="16sp"
                     tools:text="Pisangcandi" />
 
                 <TextView
@@ -65,8 +66,9 @@
                     android:layout_below="@id/text_item_temple_list_with_label_temple_village_office"
                     android:layout_marginTop="16dp"
                     android:text="@string/item_temple_list_text_together_prayer"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp" />
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/colorTextBlack" />
 
                 <LinearLayout
                     android:id="@+id/linear_item_temple_list_with_label_full_moon"
@@ -81,8 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/item_temple_list_text_full_moon"
-                        android:textColor="@color/colorTextHint"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextHint" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -97,7 +98,6 @@
                         android:layout_marginStart="4dp"
                         android:layout_weight="0.6"
                         android:gravity="center"
-                        android:textSize="16sp"
                         tools:text="00.00" />
 
                     <TextView
@@ -105,8 +105,7 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
                         android:paddingEnd="4dp"
-                        android:text="@string/item_temple_list_text_dash"
-                        android:textSize="16sp" />
+                        android:text="@string/item_temple_list_text_dash" />
 
                     <TextView
                         android:id="@+id/text_item_temple_list_with_label_full_moon_prayer_end"
@@ -114,7 +113,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="0.6"
                         android:gravity="center"
-                        android:textSize="16sp"
                         tools:text="00.00" />
 
                 </LinearLayout>
@@ -131,8 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/item_temple_list_text_dead_moon"
-                        android:textColor="@color/colorTextHint"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextHint" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -147,7 +144,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:gravity="center"
-                        android:textSize="16sp"
                         tools:text="00.00" />
 
                     <TextView
@@ -155,8 +151,7 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="4dp"
                         android:paddingEnd="4dp"
-                        android:text="@string/item_temple_list_text_dash"
-                        android:textSize="16sp" />
+                        android:text="@string/item_temple_list_text_dash" />
 
                     <TextView
                         android:id="@+id/text_item_temple_list_with_label_dead_moon_prayer_end"
@@ -164,7 +159,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:gravity="center"
-                        android:textSize="16sp"
                         tools:text="00.00" />
 
                 </LinearLayout>
@@ -178,9 +172,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:padding="4dp"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
             tools:background="@color/colorGreen"
             tools:text="Pengajuan Tambah Pura" />
 

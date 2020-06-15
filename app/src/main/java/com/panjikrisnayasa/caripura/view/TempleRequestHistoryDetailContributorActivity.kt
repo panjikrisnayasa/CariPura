@@ -20,6 +20,9 @@ class TempleRequestHistoryDetailContributorActivity : AppCompatActivity(), View.
 
     companion object {
         const val EXTRA_TEMPLE = "temple"
+        const val EXTRA_REQUEST_TYPE = "request_type"
+        const val EXTRA_CONTRIBUTOR_ID = "contributor_id"
+        const val EXTRA_TEMPLE_ID = "temple_id"
     }
 
     private lateinit var mSharedPref: SharedPrefManager
@@ -52,6 +55,20 @@ class TempleRequestHistoryDetailContributorActivity : AppCompatActivity(), View.
         val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
         if (temple != null) {
             showTempleDetail(temple)
+        } else {
+            val requestType = intent.extras?.getString(EXTRA_REQUEST_TYPE)
+            val contributorId = intent.extras?.getString(EXTRA_CONTRIBUTOR_ID)
+            val templeId = intent.extras?.getString(EXTRA_TEMPLE_ID)
+            if (requestType != null && contributorId != null && templeId != null)
+                mViewModel.getTempleRequestHistoryDetailContributor(
+                    requestType,
+                    contributorId,
+                    templeId
+                )
+                    .observe(this, Observer {
+                        if (it != null)
+                            showTempleDetail(it)
+                    })
         }
     }
 
@@ -88,16 +105,31 @@ class TempleRequestHistoryDetailContributorActivity : AppCompatActivity(), View.
             text_temple_request_history_detail_contributor_distance.text = distanceDuration[0]
             text_temple_request_history_detail_contributor_duration.text = distanceDuration[1]
 
-            if (temple.requestStatus == "accepted") {
-                text_temple_request_history_detail_contributor_label.text =
-                    getString(R.string.temple_request_detail_text_label_accepted)
-                text_temple_request_history_detail_contributor_label.background =
-                    getDrawable(R.color.colorGreen)
-            } else {
-                text_temple_request_history_detail_contributor_label.text =
-                    getString(R.string.temple_request_detail_text_label_declined)
-                text_temple_request_history_detail_contributor_label.background =
-                    getDrawable(R.color.colorRed)
+            when (temple.requestStatus) {
+                "accepted" -> {
+                    text_temple_request_history_detail_contributor_label.text =
+                        getString(R.string.temple_request_detail_text_label_accepted)
+                    text_temple_request_history_detail_contributor_label.background =
+                        getDrawable(R.color.colorGreen)
+                }
+                "rejected" -> {
+                    text_temple_request_history_detail_contributor_label.text =
+                        getString(R.string.temple_request_detail_text_label_rejected)
+                    text_temple_request_history_detail_contributor_label.background =
+                        getDrawable(R.color.colorRed)
+                }
+                "deleted_by_admin" -> {
+                    text_temple_request_history_detail_contributor_label.text =
+                        getString(R.string.temple_request_detail_text_label_deleted_by_admin)
+                    text_temple_request_history_detail_contributor_label.background =
+                        getDrawable(R.color.colorOrange)
+                }
+                "edited_by_admin" -> {
+                    text_temple_request_history_detail_contributor_label.text =
+                        getString(R.string.temple_request_detail_text_label_edited_by_admin)
+                    text_temple_request_history_detail_contributor_label.background =
+                        getDrawable(R.color.colorOrange)
+                }
             }
 
             carousel_temple_request_history_detail_contributor_photo.setImageListener { _, imageView ->
@@ -200,8 +232,14 @@ class TempleRequestHistoryDetailContributorActivity : AppCompatActivity(), View.
                 )
             }
 
-            edit_temple_request_history_detail_contributor_note_for_admin.setText(temple.contributorNote)
-            edit_temple_request_history_detail_contributor_admin_note.setText(temple.adminNote)
+            if (temple.contributorNote != "")
+                edit_temple_request_history_detail_contributor_note_for_admin.setText(temple.contributorNote)
+            else
+                edit_temple_request_history_detail_contributor_note_for_admin.setText("-")
+            if (temple.adminNote != "")
+                edit_temple_request_history_detail_contributor_admin_note.setText(temple.adminNote)
+            else
+                edit_temple_request_history_detail_contributor_admin_note.setText("-")
             view_temple_request_history_detail_contributor_background.visibility = View.GONE
             progress_temple_request_history_detail_contributor.visibility = View.GONE
         })

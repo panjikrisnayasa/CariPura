@@ -1,18 +1,21 @@
 package com.panjikrisnayasa.caripura.adapter
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.MyTempleDetailActivity
 
-class MyTempleListAdapter :
+
+class MyTempleListAdapter(private val fragment: Fragment?) :
     RecyclerView.Adapter<MyTempleListAdapter.MyTempleListViewHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
@@ -41,8 +44,20 @@ class MyTempleListAdapter :
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, MyTempleDetailActivity::class.java)
-            intent.putExtra(MyTempleDetailActivity.EXTRA_TEMPLE, temple)
-            it.context.startActivity(intent)
+            intent.putExtra(MyTempleDetailActivity.EXTRA_POSITION, position)
+            if (fragment != null) {
+                intent.putExtra(MyTempleDetailActivity.EXTRA_TEMPLE, temple)
+                fragment.startActivityForResult(
+                    intent,
+                    MyTempleDetailActivity.REQUEST_UPDATE_CONTRIBUTOR
+                )
+            } else {
+                intent.putExtra(MyTempleDetailActivity.EXTRA_TEMPLE_ID, temple.id)
+                (it.context as Activity).startActivityForResult(
+                    intent,
+                    MyTempleDetailActivity.REQUEST_UPDATE_ADMIN
+                )
+            }
         }
     }
 
@@ -50,6 +65,12 @@ class MyTempleListAdapter :
         mTempleList.clear()
         mTempleList.addAll(templeList)
         notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int) {
+        mTempleList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, mTempleList.size)
     }
 
     inner class MyTempleListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -5,10 +5,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class LoggedInViewModel : ViewModel() {
 
-    private lateinit var mAuth: FirebaseAuth
-
     fun signOut() {
-        mAuth = FirebaseAuth.getInstance()
-        mAuth.signOut()
+        val auth = FirebaseAuth.getInstance()
+        auth.signOut()
     }
 }

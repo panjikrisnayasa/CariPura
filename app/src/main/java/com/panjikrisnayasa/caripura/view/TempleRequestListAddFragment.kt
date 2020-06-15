@@ -1,5 +1,6 @@
 package com.panjikrisnayasa.caripura.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,18 +43,31 @@ class TempleRequestListAddFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         ).get(TempleRequestListViewModel::class.java)
 
-        mViewModel.getAddTempleRequestList().observe(this, Observer {templeList ->
+        mViewModel.getAddTempleRequestList().observe(this, Observer { templeList ->
             progress_temple_request_list_add.visibility = View.GONE
             if (templeList != null) {
+                recycler_temple_request_list_add.visibility = View.VISIBLE
+                text_temple_request_list_add_no_requests.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
+                recycler_temple_request_list_add.visibility = View.GONE
                 text_temple_request_list_add_no_requests.visibility = View.VISIBLE
             }
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null)
+            if (requestCode == TempleRequestDetailActivity.REQUEST_APPROVAL)
+                if (resultCode == TempleRequestDetailActivity.RESULT_APPROVAL) {
+                    val position = data.getIntExtra(TempleRequestDetailActivity.EXTRA_POSITION, 0)
+                    mAdapter.removeItem(position)
+                }
+    }
+
     private fun showRecyclerView() {
-        mAdapter = TempleRequestListAdapter()
+        mAdapter = TempleRequestListAdapter(this)
         recycler_temple_request_list_add?.layoutManager = LinearLayoutManager(context)
         recycler_temple_request_list_add?.adapter = mAdapter
     }

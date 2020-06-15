@@ -3,19 +3,21 @@ package com.panjikrisnayasa.caripura.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.panjikrisnayasa.caripura.model.Temple
 
 class TempleRequestHistoryViewModel : ViewModel() {
 
-    private lateinit var mDatabaseReference: DatabaseReference
     private val mTempleList = MutableLiveData<ArrayList<Temple>>()
 
     fun getAddTempleApprovalHistory(): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference =
+        val databaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("add_request")
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
@@ -44,9 +46,9 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
     fun getEditTempleApprovalHistory(): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference =
+        val databaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("edit_request")
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
@@ -75,9 +77,9 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
     fun getDeleteTempleApprovalHistory(): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference =
+        val databaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("delete_request")
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
@@ -106,10 +108,10 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
     fun getAddTempleRequestHistory(contributorId: String): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference =
+        val databaseReference =
             FirebaseDatabase.getInstance().getReference("history").child("add_request")
                 .child(contributorId)
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
@@ -135,9 +137,10 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
     fun getEditTempleRequestHistory(contributorId: String): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference =
-            FirebaseDatabase.getInstance().getReference("history").child("edit_request").child(contributorId)
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        val databaseReference =
+            FirebaseDatabase.getInstance().getReference("history").child("edit_request")
+                .child(contributorId)
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message
@@ -163,9 +166,10 @@ class TempleRequestHistoryViewModel : ViewModel() {
 
     fun getDeleteTempleRequestHistory(contributorId: String): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference =
-            FirebaseDatabase.getInstance().getReference("history").child("delete_request").child(contributorId)
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        val databaseReference =
+            FirebaseDatabase.getInstance().getReference("history").child("delete_request")
+                .child(contributorId)
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message

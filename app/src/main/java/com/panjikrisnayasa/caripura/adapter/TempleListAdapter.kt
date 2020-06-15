@@ -1,11 +1,15 @@
 package com.panjikrisnayasa.caripura.adapter
 
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
@@ -13,7 +17,7 @@ import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.TempleDetailActivity
 import java.util.*
 
-class TempleListAdapter :
+class TempleListAdapter(private val mContext: Context) :
     RecyclerView.Adapter<TempleListAdapter.TempleListViewHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
@@ -42,7 +46,19 @@ class TempleListAdapter :
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
 
         holder.itemView.setOnClickListener {
-            moveToDetail(it, temple)
+            if (ContextCompat.checkSelfPermission(
+                    mContext,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                Toast.makeText(
+                    mContext,
+                    mContext.getString(R.string.toast_message_location_permission),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                moveToDetail(it, temple)
+            }
         }
     }
 
@@ -59,7 +75,10 @@ class TempleListAdapter :
             mTempleList.addAll(mTempTempleList)
         } else {
             for (temple in mTempTempleList) {
-                if (temple.name.trim().toLowerCase(Locale.getDefault()).contains(query)) {
+                if (temple.name.trim().toLowerCase(Locale.getDefault())
+                        .contains(query) || temple.villageOffice.trim()
+                        .toLowerCase(Locale.getDefault()).contains(query)
+                ) {
                     mTempleList.add(temple)
                 }
             }

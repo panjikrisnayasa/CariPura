@@ -8,13 +8,12 @@ import com.panjikrisnayasa.caripura.model.User
 
 class RequestedByViewModel : ViewModel() {
 
-    private lateinit var mDatabaseReference: DatabaseReference
     private val mUser = MutableLiveData<User>()
 
     fun getUserData(contributorId: String): LiveData<User> {
-        mDatabaseReference =
+        val databaseReference =
             FirebaseDatabase.getInstance().getReference("user").child(contributorId)
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message

@@ -16,11 +16,19 @@ import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleDetailViewModel
 import kotlinx.android.synthetic.main.activity_temple_request_detail.*
+import org.json.JSONException
+import org.json.JSONObject
 
 class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
         const val EXTRA_TEMPLE = "temple"
+        const val EXTRA_TEMPLE_ID = "temple_id"
+        const val EXTRA_CONTRIBUTOR_ID = "contributor_id"
+        const val EXTRA_REQUEST_TYPE = "request_type"
+        const val EXTRA_POSITION = "position"
+        const val REQUEST_APPROVAL = 5
+        const val RESULT_APPROVAL = 501
     }
 
     private lateinit var mSharedPref: SharedPrefManager
@@ -56,6 +64,21 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
         val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
         if (temple != null) {
             showTempleDetail(temple)
+        } else {
+            val requestType = intent.extras?.getString(EXTRA_REQUEST_TYPE)
+            val contributorId = intent.extras?.getString(EXTRA_CONTRIBUTOR_ID)
+            val templeId = intent.extras?.getString(EXTRA_TEMPLE_ID)
+            if (requestType != null && contributorId != null && templeId != null)
+                mViewModel.getTempleRequestDetail(requestType, contributorId, templeId)
+                    .observe(this, Observer {
+                        if (it != null)
+                            showTempleDetail(it)
+                        else {
+                            text_temple_request_detail_temple_request_cancelled.visibility =
+                                View.VISIBLE
+                            progress_temple_request_detail.visibility = View.GONE
+                        }
+                    })
         }
     }
 
@@ -70,12 +93,12 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.button_temple_detail_route -> {
+            R.id.button_temple_request_detail_route -> {
                 val routeIntent = Intent(this, RouteToTempleActivity::class.java)
                 routeIntent.putExtra(RouteToTempleActivity.EXTRA_TEMPLE, mTemple)
                 startActivity(routeIntent)
             }
-            R.id.button_temple_detail_call -> {
+            R.id.button_temple_request_detail_call -> {
                 val callIntent =
                     Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mTemple.caretakerPhone))
                 startActivity(callIntent)
@@ -90,33 +113,208 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.button_temple_request_detail_accept -> {
                 val noteForContributor =
-                    edit_temple_request_detail_note_for_contributor.text?.trim().toString()
-                if (noteForContributor.isNotBlank()) {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.temple_request_detail_toast_accepted),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    finish()
-                } else {
-                    edit_temple_request_detail_note_for_contributor.error =
-                        getString(R.string.error_message_fill_this_field)
+                    edit_temple_request_detail_note_for_contributor.text.toString()
+                mTemple.adminNote = noteForContributor
+                when (mTemple.requestType) {
+                    "add" -> {
+                        mViewModel.addRequestAccepted(mTemple).observe(this, Observer {
+                            if (it != null) {
+                                val topic = "/topics/approval_" + mTemple.contributorId
+                                val notification = JSONObject()
+                                val notificationBody = JSONObject()
+                                try {
+                                    notificationBody.put(
+                                        "title", "Tambah Pura Disetujui"
+                                    )
+                                    notificationBody.put(
+                                        "message",
+                                        String.format(
+                                            "Pengajuan tambah pura Anda untuk ${mTemple.name} telah disetujui"
+                                        )
+                                    )
+                                    notificationBody.put("requestType", "history_add_request")
+                                    notificationBody.put("contributorId", mTemple.contributorId)
+                                    notificationBody.put("templeId", mTemple.id)
+                                    notification.put("to", topic)
+                                    notification.put("data", notificationBody)
+                                } catch (e: JSONException) {
+                                    e.message
+                                }
+                                mViewModel.sendNotification(notification, applicationContext)
+                            }
+                        })
+                    }
+                    "edit" -> {
+                        mViewModel.editRequestAccepted(mTemple).observe(this, Observer {
+                            if (it != null) {
+                                val topic = "/topics/approval_" + mTemple.contributorId
+                                val notification = JSONObject()
+                                val notificationBody = JSONObject()
+                                try {
+                                    notificationBody.put(
+                                        "title", "Ubah Pura Disetujui"
+                                    )
+                                    notificationBody.put(
+                                        "message",
+                                        String.format(
+                                            "Pengajuan ubah pura Anda untuk ${mTemple.name} telah disetujui"
+                                        )
+                                    )
+                                    notificationBody.put("requestType", "history_edit_request")
+                                    notificationBody.put("contributorId", mTemple.contributorId)
+                                    notificationBody.put("templeId", it)
+                                    notification.put("to", topic)
+                                    notification.put("data", notificationBody)
+                                } catch (e: JSONException) {
+                                    e.message
+                                }
+                                mViewModel.sendNotification(notification, applicationContext)
+                            }
+                        })
+                    }
+                    "delete" -> {
+                        mViewModel.deleteRequestAccepted(mTemple).observe(this, Observer {
+                            if (it != null) {
+                                val topic = "/topics/approval_" + mTemple.contributorId
+                                val notification = JSONObject()
+                                val notificationBody = JSONObject()
+                                try {
+                                    notificationBody.put(
+                                        "title", "Hapus Pura Disetujui"
+                                    )
+                                    notificationBody.put(
+                                        "message",
+                                        String.format(
+                                            "Pengajuan hapus pura Anda untuk ${mTemple.name} telah disetujui"
+                                        )
+                                    )
+                                    notificationBody.put(
+                                        "requestType",
+                                        "history_delete_request"
+                                    )
+                                    notificationBody.put("contributorId", mTemple.contributorId)
+                                    notificationBody.put("templeId", it)
+                                    notification.put("to", topic)
+                                    notification.put("data", notificationBody)
+                                } catch (e: JSONException) {
+                                    e.message
+                                }
+                                mViewModel.sendNotification(notification, applicationContext)
+                            }
+                        })
+                    }
                 }
+                Toast.makeText(
+                    this,
+                    getString(R.string.temple_request_detail_toast_accepted),
+                    Toast.LENGTH_SHORT
+                ).show()
+                val resultIntent = Intent()
+                setResult(RESULT_APPROVAL, resultIntent)
+                finish()
+
             }
             R.id.button_temple_request_detail_reject -> {
                 val noteForContributor =
-                    edit_temple_request_detail_note_for_contributor.text?.trim().toString()
-                if (noteForContributor.isNotBlank()) {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.temple_request_detail_toast_rejected),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    finish()
-                } else {
-                    edit_temple_request_detail_note_for_contributor.error =
-                        getString(R.string.error_message_fill_this_field)
+                    edit_temple_request_detail_note_for_contributor.text.toString()
+                mTemple.adminNote = noteForContributor
+                when (mTemple.requestType) {
+                    "add" -> {
+                        mViewModel.addRequestRejected(mTemple).observe(this, Observer {
+                            if (it != null) {
+                                val topic = "/topics/approval_" + mTemple.contributorId
+                                val notification = JSONObject()
+                                val notificationBody = JSONObject()
+                                try {
+                                    notificationBody.put(
+                                        "title", "Tambah Pura Ditolak"
+                                    )
+                                    notificationBody.put(
+                                        "message",
+                                        String.format(
+                                            "Pengajuan tambah pura Anda untuk ${mTemple.name} telah ditolak"
+                                        )
+                                    )
+                                    notificationBody.put("requestType", "history_add_request")
+                                    notificationBody.put("contributorId", mTemple.contributorId)
+                                    notificationBody.put("templeId", mTemple.id)
+                                    notification.put("to", topic)
+                                    notification.put("data", notificationBody)
+                                } catch (e: JSONException) {
+                                    e.message
+                                }
+                                mViewModel.sendNotification(notification, applicationContext)
+                            }
+                        })
+                    }
+                    "edit" -> {
+                        mViewModel.editRequestRejected(mTemple).observe(this, Observer {
+                            if (it != null) {
+                                val topic = "/topics/approval_" + mTemple.contributorId
+                                val notification = JSONObject()
+                                val notificationBody = JSONObject()
+                                try {
+                                    notificationBody.put(
+                                        "title", "Ubah Pura Ditolak"
+                                    )
+                                    notificationBody.put(
+                                        "message",
+                                        String.format(
+                                            "Pengajuan ubah pura Anda untuk ${mTemple.name} telah ditolak"
+                                        )
+                                    )
+                                    notificationBody.put("requestType", "history_edit_request")
+                                    notificationBody.put("contributorId", mTemple.contributorId)
+                                    notificationBody.put("templeId", it)
+                                    notification.put("to", topic)
+                                    notification.put("data", notificationBody)
+                                } catch (e: JSONException) {
+                                    e.message
+                                }
+                                mViewModel.sendNotification(notification, applicationContext)
+                            }
+                        })
+                    }
+                    "delete" -> {
+                        mViewModel.deleteRequestRejected(mTemple).observe(this, Observer {
+                            if (it != null) {
+                                val topic = "/topics/approval_" + mTemple.contributorId
+                                val notification = JSONObject()
+                                val notificationBody = JSONObject()
+                                try {
+                                    notificationBody.put(
+                                        "title", "Hapus Pura Ditolak"
+                                    )
+                                    notificationBody.put(
+                                        "message",
+                                        String.format(
+                                            "Pengajuan hapus pura Anda untuk ${mTemple.name} telah ditolak"
+                                        )
+                                    )
+                                    notificationBody.put(
+                                        "requestType",
+                                        "history_delete_request"
+                                    )
+                                    notificationBody.put("contributorId", mTemple.contributorId)
+                                    notificationBody.put("templeId", it)
+                                    notification.put("to", topic)
+                                    notification.put("data", notificationBody)
+                                } catch (e: JSONException) {
+                                    e.message
+                                }
+                                mViewModel.sendNotification(notification, applicationContext)
+                            }
+                        })
+                    }
                 }
+                Toast.makeText(
+                    this,
+                    getString(R.string.temple_request_detail_toast_rejected),
+                    Toast.LENGTH_SHORT
+                ).show()
+                val resultIntent = Intent()
+                setResult(RESULT_APPROVAL, resultIntent)
+                finish()
             }
         }
     }
@@ -242,7 +440,10 @@ class TempleRequestDetailActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             text_temple_request_detail_requested_by.text = temple.contributorFullName
-            edit_temple_request_detail_contributor_note.setText(temple.contributorNote)
+            if (temple.contributorNote != "")
+                edit_temple_request_detail_contributor_note.setText(temple.contributorNote)
+            else
+                edit_temple_request_detail_contributor_note.setText("-")
             view_temple_request_detail_background.visibility = View.GONE
             progress_temple_request_detail.visibility = View.GONE
         })

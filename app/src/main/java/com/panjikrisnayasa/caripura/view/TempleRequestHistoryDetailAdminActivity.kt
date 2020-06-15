@@ -98,16 +98,31 @@ class TempleRequestHistoryDetailAdminActivity : AppCompatActivity(), View.OnClic
             text_temple_request_history_detail_admin_distance.text = distanceDuration[0]
             text_temple_request_history_detail_admin_duration.text = distanceDuration[1]
 
-            if (temple.requestStatus == "accepted") {
-                text_temple_request_history_detail_admin_label.text =
-                    getString(R.string.temple_request_detail_text_label_accepted)
-                text_temple_request_history_detail_admin_label.background =
-                    getDrawable(R.color.colorGreen)
-            } else {
-                text_temple_request_history_detail_admin_label.text =
-                    getString(R.string.temple_request_detail_text_label_declined)
-                text_temple_request_history_detail_admin_label.background =
-                    getDrawable(R.color.colorRed)
+            when (temple.requestStatus) {
+                "accepted" -> {
+                    text_temple_request_history_detail_admin_label.text =
+                        getString(R.string.temple_request_detail_text_label_accepted)
+                    text_temple_request_history_detail_admin_label.background =
+                        getDrawable(R.color.colorGreen)
+                }
+                "rejected" -> {
+                    text_temple_request_history_detail_admin_label.text =
+                        getString(R.string.temple_request_detail_text_label_rejected)
+                    text_temple_request_history_detail_admin_label.background =
+                        getDrawable(R.color.colorRed)
+                }
+                "deleted_by_admin" -> {
+                    text_temple_request_history_detail_admin_label.text =
+                        getString(R.string.temple_request_detail_text_label_deleted_by_admin)
+                    text_temple_request_history_detail_admin_label.background =
+                        getDrawable(R.color.colorOrange)
+                }
+                "edited_by_admin" -> {
+                    text_temple_request_history_detail_admin_label.text =
+                        getString(R.string.temple_request_detail_text_label_edited_by_admin)
+                    text_temple_request_history_detail_admin_label.background =
+                        getDrawable(R.color.colorOrange)
+                }
             }
 
             carousel_temple_request_history_detail_admin_photo.setImageListener { _, imageView ->
@@ -211,8 +226,14 @@ class TempleRequestHistoryDetailAdminActivity : AppCompatActivity(), View.OnClic
             }
 
             text_temple_request_history_detail_admin_requested_by.text = temple.contributorFullName
-            edit_temple_request_history_detail_admin_contributor_note.setText(temple.contributorNote)
-            edit_temple_request_history_detail_admin_note_for_contributor.setText(temple.adminNote)
+            if (temple.contributorNote != "")
+                edit_temple_request_history_detail_admin_contributor_note.setText(temple.contributorNote)
+            else
+                edit_temple_request_history_detail_admin_contributor_note.setText("-")
+            if (temple.adminNote != "")
+                edit_temple_request_history_detail_admin_note_for_contributor.setText(temple.adminNote)
+            else
+                edit_temple_request_history_detail_admin_note_for_contributor.setText("-")
             view_temple_request_history_detail_admin_background.visibility = View.GONE
             progress_temple_request_history_detail_admin.visibility = View.GONE
         })

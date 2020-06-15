@@ -1,5 +1,6 @@
 package com.panjikrisnayasa.caripura.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,15 +51,28 @@ class MyTempleListWaitingFragment : Fragment() {
         mViewModel.getTempleListWaiting(mSharedPref.getId()).observe(this, Observer { templeList ->
             progress_my_temple_list_waiting.visibility = View.GONE
             if (templeList != null) {
+                recycler_my_temple_list_waiting.visibility = View.VISIBLE
+                text_my_temple_list_waiting_no_data.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
                 text_my_temple_list_waiting_no_data.visibility = View.VISIBLE
+                recycler_my_temple_list_waiting.visibility = View.GONE
             }
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null)
+            if (requestCode == MyTempleDetailWaitingActivity.REQUEST_CANCEL)
+                if (resultCode == MyTempleDetailWaitingActivity.RESULT_CANCEL) {
+                    val position = data.getIntExtra(MyTempleDetailWaitingActivity.EXTRA_POSITION, 0)
+                    mAdapter.removeItem(position)
+                }
+    }
+
     private fun showRecyclerView() {
-        mAdapter = MyTempleListWaitingAdapter()
+        mAdapter = MyTempleListWaitingAdapter(this)
         recycler_my_temple_list_waiting?.layoutManager = LinearLayoutManager(context)
         recycler_my_temple_list_waiting?.adapter = mAdapter
     }

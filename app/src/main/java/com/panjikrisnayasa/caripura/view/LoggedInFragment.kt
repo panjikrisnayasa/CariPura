@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.messaging.FirebaseMessaging
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.LoggedInViewModel
@@ -48,6 +50,21 @@ class LoggedInFragment : Fragment() {
         if (mSharedPref.getRole() == "contributor") {
             text_logged_in_toolbar_title.text = getString(R.string.logged_in_text_contributor)
             button_logged_in_temple_request_list.visibility = View.GONE
+
+            val topic = "/topics/approval_" + mSharedPref.getId()
+            FirebaseMessaging.getInstance().subscribeToTopic(topic)
+                .addOnSuccessListener {
+                    Log.d("hyperLoop", "success subscribe to $topic")
+                }.addOnFailureListener {
+                    Log.d("hyperLoop", "failed subscribe to $topic")
+                }
+        } else if (mSharedPref.getRole() == "admin") {
+            FirebaseMessaging.getInstance().subscribeToTopic("/topics/request")
+                .addOnSuccessListener {
+                    Log.d("hyperLoop", "success subscribe to /topics/request")
+                }.addOnFailureListener {
+                    Log.d("hyperLoop", "failed subscribe to /topics/request")
+                }
         }
 
         mViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
@@ -100,6 +117,22 @@ class LoggedInFragment : Fragment() {
     }
 
     private fun signOut() {
+        if (mSharedPref.getRole() == "contributor") {
+            val topic = "/topics/approval_" + mSharedPref.getId()
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(topic)
+                .addOnSuccessListener {
+                    Log.d("hyperLoop", "success unsubscribe to $topic")
+                }.addOnFailureListener {
+                    Log.d("hyperLoop", "failed unsubscribe to $topic")
+                }
+        } else if (mSharedPref.getRole() == "admin") {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("/topics/request")
+                .addOnSuccessListener {
+                    Log.d("hyperLoop", "success unsubscribe to /topics/request")
+                }.addOnFailureListener {
+                    Log.d("hyperLoop", "failed unsubscribe to /topics/request")
+                }
+        }
         mViewModel.signOut()
         mSharedPref.logout()
         fragmentManager?.beginTransaction()?.replace(

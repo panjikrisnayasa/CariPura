@@ -10,8 +10,6 @@ import com.panjikrisnayasa.caripura.util.SingleLiveEvent
 
 class AccountLoginViewModel : ViewModel() {
 
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var mDatabaseReference: DatabaseReference
     private val mUser = MutableLiveData<User>()
     private var mCode = SingleLiveEvent<Int>()
 
@@ -19,15 +17,15 @@ class AccountLoginViewModel : ViewModel() {
         email: String,
         password: String
     ): LiveData<Int> {
-        mAuth = FirebaseAuth.getInstance()
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-            val cUser = mAuth.currentUser
+        val auth = FirebaseAuth.getInstance()
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            val cUser = auth.currentUser
             if (it.isSuccessful) {
                 if (cUser != null) {
                     val cUid = cUser.uid
-                    mDatabaseReference =
+                    val databaseReference =
                         FirebaseDatabase.getInstance().getReference("user").child(cUid)
-                    mDatabaseReference.addValueEventListener(object : ValueEventListener {
+                    databaseReference.addValueEventListener(object : ValueEventListener {
 
                         override fun onCancelled(p0: DatabaseError) {
                             p0.message
@@ -40,7 +38,7 @@ class AccountLoginViewModel : ViewModel() {
                                     if (user.role == "contributor") {
                                         if (!cUser.isEmailVerified) {
                                             mCode.postValue(2)
-                                            mAuth.signOut()
+                                            auth.signOut()
                                             return
                                         }
                                     }
@@ -59,12 +57,12 @@ class AccountLoginViewModel : ViewModel() {
     }
 
     fun getCurrentUser(): LiveData<User> {
-        mAuth = FirebaseAuth.getInstance()
-        val cUser = mAuth.currentUser
+        val auth = FirebaseAuth.getInstance()
+        val cUser = auth.currentUser
         if (cUser != null) {
             val cUid = cUser.uid
-            mDatabaseReference = FirebaseDatabase.getInstance().getReference("user").child(cUid)
-            mDatabaseReference.addValueEventListener(object : ValueEventListener {
+            val databaseReference = FirebaseDatabase.getInstance().getReference("user").child(cUid)
+            databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                     p0.message
                 }

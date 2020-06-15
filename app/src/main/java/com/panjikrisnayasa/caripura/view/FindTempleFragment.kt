@@ -1,6 +1,7 @@
 package com.panjikrisnayasa.caripura.view
 
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -32,9 +34,6 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_find_temple.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     companion object {
@@ -110,9 +109,6 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val ref = FirebaseDatabase.getInstance().getReference("geo_fire")
-//        val geoFire = GeoFire(ref)
-
         mSharedPref = SharedPrefManager.getInstance(context)
 
         mViewModel = ViewModelProvider(
@@ -120,9 +116,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             ViewModelProvider.NewInstanceFactory()
         ).get(FindTempleViewModel::class.java)
 
-        val mapFragment =
-            childFragmentManager.findFragmentById(R.id.fragment_find_temple_map) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
+        setupMap()
 
         floating_action_button_find_temple_my_location.setOnClickListener {
             val tLatLng = LatLng(mLastLocation.latitude, mLastLocation.longitude)
@@ -133,57 +127,45 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             progress_find_temple.visibility = View.VISIBLE
             mViewModel.setGeoQuery(mLastLocation)
                 .observe(this, Observer { templeList ->
-                    val lastLat = mLastLocation.latitude.toString()
-                    val lastLng = mLastLocation.longitude.toString()
+                    if (templeList != null) {
+                        val lastLat = mLastLocation.latitude.toString()
+                        val lastLng = mLastLocation.longitude.toString()
 
-                    val closestTemple = getClosestTemple(templeList)
-                    if (closestTemple != null) {
-                        mTemple = closestTemple
-                        val templeLatLng =
-                            LatLng(
-                                closestTemple.lat.toDouble(),
-                                closestTemple.lng.toDouble()
+                        val closestTemple = getClosestTemple(templeList)
+                        if (closestTemple != null) {
+                            mTemple = closestTemple
+                            val templeLatLng =
+                                LatLng(
+                                    closestTemple.lat.toDouble(),
+                                    closestTemple.lng.toDouble()
+                                )
+                            mViewModel.setDirectionApi(
+                                lastLat,
+                                lastLng,
+                                closestTemple.lat,
+                                closestTemple.lng
                             )
-                        mViewModel.setDirectionApi(
-                            lastLat,
-                            lastLng,
-                            closestTemple.lat,
-                            closestTemple.lng
-                        )
-                        mViewModel.getPath().observe(this, Observer { path ->
-                            drawPolyline(
-                                mGoogleMap,
-                                path
-                            )
-                        })
-                        mViewModel.getDistanceDuration()
-                            .observe(this, Observer { distanceDuration ->
-                                showTemple(closestTemple, templeLatLng, distanceDuration)
+                            mViewModel.getPath().observe(this, Observer { path ->
+                                drawPolyline(
+                                    mGoogleMap,
+                                    path
+                                )
                             })
+                            mViewModel.getDistanceDuration()
+                                .observe(this, Observer { distanceDuration ->
+                                    showTemple(closestTemple, templeLatLng, distanceDuration)
+                                })
+                        }
+                    } else {
+                        Toast.makeText(
+                            context,
+                            getString(R.string.toast_message_no_temple_nearby),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     progress_find_temple.visibility = View.GONE
                 })
         }
-
-//        geoFire.setLocation(
-//            "temple_1", GeoLocation(-7.952918, 112.616029)
-//        ) { _, error ->
-//            if (error != null) {
-//                Log.d("hyperLoop", "setting temple_1 location error: \n$error")
-//            } else {
-//                Log.d("hyperLoop", "setting temple_1 location success")
-//            }
-//        }
-//        geoFire.setLocation(
-//            "temple_2", GeoLocation(-7.952914, 112.616800)
-//        ) { _, error ->
-//            if (error != null) {
-//                Log.d("hyperLoop", "setting temple_2 location error: \n$error")
-//            } else {
-//                Log.d("hyperLoop", "setting temple_2 location success")
-//            }
-//        }
-
     }
 
     override fun onMapReady(p0: GoogleMap) {
@@ -194,9 +176,17 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             intent.putExtra(TempleDetailActivity.EXTRA_TEMPLE, mTemple)
             startActivity(intent)
         }
-
-        setupMap()
-
+        if (this.context != null)
+            if (ActivityCompat.checkSelfPermission(
+                    this.context!!,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this.context!!,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return
+            }
         mGoogleMap?.isMyLocationEnabled = true
         mGoogleMap?.uiSettings?.isMyLocationButtonEnabled = false
 
@@ -208,7 +198,12 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
                     location.longitude.toString()
                 )
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-                mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 16f))
+                mGoogleMap?.moveCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        currentLatLng,
+                        16f
+                    )
+                )
             }
         }
     }
@@ -221,15 +216,32 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         if (tContext != null && tActivity != null) {
             if (ActivityCompat.checkSelfPermission(
                     tContext,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                    Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                ActivityCompat.requestPermissions(
-                    tActivity,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                requestPermissions(
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     LOCATION_PERMISSION_REQUEST_CODE
                 )
-                return
+            } else {
+                val mapFragment =
+                    childFragmentManager.findFragmentById(R.id.fragment_find_temple_map) as SupportMapFragment?
+                mapFragment?.getMapAsync(this)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                val mapFragment =
+                    childFragmentManager.findFragmentById(R.id.fragment_find_temple_map) as SupportMapFragment?
+                mapFragment?.getMapAsync(this)
             }
         }
     }
@@ -342,4 +354,3 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         }
     }
 }
-

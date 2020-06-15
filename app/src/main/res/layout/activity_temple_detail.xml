@@ -40,6 +40,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_bold"
+                    android:lineSpacingMultiplier="1.25"
+                    
                     android:textColor="@color/colorTextBlack"
                     android:textSize="20sp"
                     tools:text="Pura Marga Sirsha" />
@@ -51,9 +53,9 @@
                     android:layout_marginTop="16dp"
                     android:drawableStart="@drawable/ic_location_on_purple_14dp"
                     android:drawablePadding="18dp"
-                    android:lineSpacingMultiplier="1.5"
+                    android:lineSpacingMultiplier="1.25"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
+
                     tools:text="Jl. Pisang Candi Barat No. 100 - 101, Pisang Candi, Sukun" />
 
                 <TextView
@@ -64,7 +66,7 @@
                     android:drawableStart="@drawable/ic_itinerary_purple_14dp"
                     android:drawablePadding="16dp"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
+
                     tools:text="1 km" />
 
                 <TextView
@@ -75,7 +77,7 @@
                     android:drawableStart="@drawable/ic_motorcycle_purple_14dp"
                     android:drawablePadding="16dp"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
+
                     tools:text="1 minute" />
 
                 <TextView
@@ -86,7 +88,7 @@
                     android:drawableStart="@drawable/ic_account_box_purple_14dp"
                     android:drawablePadding="16dp"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
+
                     tools:text="Pak Wayan" />
 
                 <TextView
@@ -97,7 +99,7 @@
                     android:drawableStart="@drawable/ic_call_purple_14dp"
                     android:drawablePadding="16dp"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
+
                     tools:text="08214531xxxx" />
 
                 <LinearLayout
@@ -157,8 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/temple_detail_text_temple_feast_day"
-                    android:textColor="@color/colorNegativeButton"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorNegativeButton" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -170,9 +171,9 @@
                         android:id="@+id/text_temple_detail_feast_day"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
+                        android:lineSpacingMultiplier="1.25"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
                         tools:text="Purnama Kapat" />
 
                     <TextView
@@ -183,18 +184,16 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
                         tools:text="18.00" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_feast_day_end"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -204,8 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/temple_detail_text_together_prayer"
-                    android:textColor="@color/colorNegativeButton"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorNegativeButton" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -216,10 +214,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_full_moon"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_full_moon_prayer_start"
@@ -229,7 +226,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -240,7 +237,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -254,10 +251,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_dead_moon"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_dead_moon_prayer_start"
@@ -267,7 +263,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -278,7 +274,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -294,10 +290,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_galungan"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_galungan_prayer_start"
@@ -307,7 +302,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -318,7 +313,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -334,10 +329,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_kuningan"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_kuningan_prayer_start"
@@ -347,7 +341,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -358,7 +352,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -374,10 +368,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_saraswati"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_saraswati_prayer_start"
@@ -387,7 +380,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -398,7 +391,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -414,10 +407,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_pagerwesi"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_pagerwesi_prayer_start"
@@ -427,7 +419,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -438,7 +430,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -454,10 +446,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_siwaratri"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_siwaratri_prayer_start"
@@ -467,7 +458,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="18.00" />
 
                     <TextView
@@ -478,7 +469,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="21.00" />
 
                 </LinearLayout>
@@ -494,10 +485,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="2.5"
                         android:text="@string/temple_detail_text_melukat"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp" />
+                        android:textColor="@color/colorTextBlack" />
 
                     <TextView
                         android:id="@+id/text_temple_detail_melukat_prayer_start"
@@ -507,7 +497,7 @@
                         android:drawableStart="@drawable/ic_schedule_purple_14dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="07.00" />
 
                     <TextView
@@ -518,7 +508,7 @@
                         android:drawableStart="@drawable/ic_dash_dark_grey_4dp"
                         android:gravity="center"
                         android:textColor="@color/colorTextBlack"
-                        android:textSize="16sp"
+
                         tools:text="10.00" />
 
                 </LinearLayout>
@@ -530,9 +520,9 @@
                     android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/ic_info_outline_grey_12dp"
                     android:drawablePadding="16dp"
-                    android:lineSpacingMultiplier="1.5"
+                    android:lineSpacingMultiplier="1.25"
                     android:textColor="@color/colorNegativeButton"
-                    android:textSize="16sp"
+
                     android:visibility="gone"
                     tools:text="Melukat dilaksanakan sebulan sekali pada hari Minggu pekan pertama bulan tersebut" />
 
@@ -552,8 +542,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/temple_detail_text_others"
-                    android:textColor="@color/colorNegativeButton"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorNegativeButton" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_prayer_equipment_seller"
@@ -561,21 +550,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/ic_check_box_purple_14dp"
+                    android:lineSpacingMultiplier="1.25"
                     android:drawablePadding="16dp"
                     android:text="@string/temple_detail_text_prayer_equipment_seller"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorTextBlack" />
 
                 <TextView
                     android:id="@+id/text_temple_detail_food_drink_seller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:lineSpacingMultiplier="1.25"
                     android:drawableStart="@drawable/ic_check_box_purple_14dp"
                     android:drawablePadding="16dp"
                     android:text="@string/temple_detail_text_food_drink_seller"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorTextBlack" />
 
             </LinearLayout>
 

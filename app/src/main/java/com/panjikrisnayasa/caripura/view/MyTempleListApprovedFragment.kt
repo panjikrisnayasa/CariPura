@@ -43,7 +43,7 @@ class MyTempleListApprovedFragment : Fragment() {
 
         floating_action_button_my_temple_list_approved_add_temple.setOnClickListener {
             val addIntent = Intent(context, AddTempleFirstActivity::class.java)
-            startActivity(addIntent)
+            startActivityForResult(addIntent, AddTempleFirstActivity.REQUEST_ADD)
         }
 
         showRecyclerView()
@@ -57,15 +57,18 @@ class MyTempleListApprovedFragment : Fragment() {
             .observe(this, Observer { templeList ->
                 progress_my_temple_list_approved.visibility = View.GONE
                 if (templeList != null) {
+                    recycler_my_temple_list_approved.visibility = View.VISIBLE
+                    text_my_temple_list_approved_no_data.visibility = View.GONE
                     mAdapter.setData(templeList)
                 } else {
                     text_my_temple_list_approved_no_data.visibility = View.VISIBLE
+                    recycler_my_temple_list_approved.visibility = View.GONE
                 }
             })
     }
 
     private fun showRecyclerView() {
-        mAdapter = MyTempleListAdapter()
+        mAdapter = MyTempleListAdapter(this)
         recycler_my_temple_list_approved?.layoutManager = LinearLayoutManager(context)
         recycler_my_temple_list_approved?.adapter = mAdapter
     }

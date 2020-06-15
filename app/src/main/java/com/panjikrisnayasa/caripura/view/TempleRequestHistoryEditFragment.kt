@@ -48,6 +48,7 @@ class TempleRequestHistoryEditFragment : Fragment() {
             mViewModel.getEditTempleApprovalHistory().observe(this, Observer { templeList ->
                 progress_temple_request_history_edit.visibility = View.GONE
                 if (templeList != null) {
+                    text_temple_request_history_edit_no_histories.visibility = View.GONE
                     mAdminAdapter.setData(templeList)
                 } else {
                     text_temple_request_history_edit_no_histories.visibility = View.VISIBLE

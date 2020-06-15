@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -20,11 +21,19 @@ import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleDetailViewModel
 import kotlinx.android.synthetic.main.activity_temple_detail.*
+import org.json.JSONException
+import org.json.JSONObject
 
 class MyTempleDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
         const val EXTRA_TEMPLE = "temple"
+        const val EXTRA_TEMPLE_ID = "temple_id"
+        const val EXTRA_POSITION = "position"
+        const val REQUEST_UPDATE_ADMIN = 1
+        const val RESULT_DELETE_ADMIN = 101
+        const val REQUEST_UPDATE_CONTRIBUTOR = 2
+        const val RESULT_UPDATE_CONTRIBUTOR = 201
     }
 
     private lateinit var mSharedPref: SharedPrefManager
@@ -54,9 +63,18 @@ class MyTempleDetailActivity : AppCompatActivity(), View.OnClickListener {
         button_temple_detail_call.setOnClickListener(this)
         button_temple_detail_route.setOnClickListener(this)
 
-        val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
-        if (temple != null) {
-            showTempleDetail(temple)
+        if (mSharedPref.getRole() == "contributor") {
+            val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
+            if (temple != null) {
+                showTempleDetail(temple)
+            }
+        } else {
+            val templeId = intent.getStringExtra(EXTRA_TEMPLE_ID)
+            if (templeId != null)
+                mViewModel.getTempleDetail(templeId).observe(this, Observer { temple ->
+                    if (temple != null)
+                        showTempleDetail(temple)
+                })
         }
     }
 
@@ -65,41 +83,120 @@ class MyTempleDetailActivity : AppCompatActivity(), View.OnClickListener {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            if (requestCode == DeleteTempleActivity.REQUEST_DELETE) {
+                if (resultCode == DeleteTempleActivity.RESULT_DELETE) {
+                    val resultIntent = Intent()
+                    setResult(RESULT_UPDATE_CONTRIBUTOR, resultIntent)
+                    finish()
+                }
+            } else if (requestCode == EditTempleFirstActivity.REQUEST_EDIT) {
+                if (resultCode == EditTempleFirstActivity.RESULT_EDIT_1) {
+                    val resultIntent = Intent()
+                    setResult(RESULT_UPDATE_CONTRIBUTOR, resultIntent)
+                    finish()
+                }
+            }
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> finish()
             R.id.menu_my_temple_detail_options_edit -> {
-                val editIntent = Intent(this, EditTempleFirstActivity::class.java)
-                editIntent.putExtra(EditTempleFirstActivity.EXTRA_TEMPLE, mTemple)
-                startActivity(editIntent)
+                if (mTemple.requestStatus == "waiting") {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.toast_message_waiting_admin_approval),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val editIntent = Intent(this, EditTempleFirstActivity::class.java)
+                    editIntent.putExtra(EditTempleFirstActivity.EXTRA_OLD_TEMPLE, mTemple)
+                    startActivityForResult(editIntent, EditTempleFirstActivity.REQUEST_EDIT)
+                }
             }
             R.id.menu_my_temple_detail_options_delete -> {
-                if (mSharedPref.getRole() == "contributor") {
-                    val deleteIntent = Intent(this, DeleteTempleActivity::class.java)
-                    deleteIntent.putExtra(DeleteTempleActivity.EXTRA_TEMPLE, mTemple)
-                    startActivity(deleteIntent)
+                if (mTemple.requestStatus == "waiting") {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.toast_message_waiting_admin_approval),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    val alertBuilder = AlertDialog.Builder(this)
-                    alertBuilder.setTitle(getString(R.string.dialog_delete_title))
-                    alertBuilder.setMessage(getString(R.string.dialog_delete_message))
-                    alertBuilder.setPositiveButton(getString(R.string.dialog_delete_positive_button)) { _, _ ->
-
-                    }
-                    alertBuilder.setNegativeButton(getString(R.string.dialog_delete_negative_button)) { _, _ ->
-
-                    }
-                    val alertDialog = alertBuilder.create()
-                    alertDialog.show()
-                    alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-                        .setTextColor(
-                            ContextCompat.getColor(
-                                applicationContext,
-                                R.color.colorNegativeButton
+                    if (mSharedPref.getRole() == "contributor") {
+                        val deleteIntent = Intent(this, DeleteTempleActivity::class.java)
+                        deleteIntent.putExtra(DeleteTempleActivity.EXTRA_TEMPLE, mTemple)
+                        startActivityForResult(deleteIntent, DeleteTempleActivity.REQUEST_DELETE)
+                    } else {
+                        val alertBuilder = AlertDialog.Builder(this)
+                        alertBuilder.setTitle(getString(R.string.dialog_delete_title))
+                        alertBuilder.setMessage(getString(R.string.dialog_delete_message))
+                        alertBuilder.setPositiveButton(getString(R.string.dialog_delete_positive_button)) { _, _ ->
+                        }
+                        alertBuilder.setNegativeButton(getString(R.string.dialog_delete_negative_button)) { _, _ ->
+                            val resultIntent = Intent()
+                            setResult(RESULT_DELETE_ADMIN, resultIntent)
+                            mViewModel.deleteTemple(mTemple).observe(this, Observer {
+                                if (it != null) {
+                                    if (mTemple.contributorId != "") {
+                                        val topic = "/topics/approval_" + mTemple.contributorId
+                                        val notification = JSONObject()
+                                        val notificationBody = JSONObject()
+                                        try {
+                                            notificationBody.put(
+                                                "title",
+                                                "Hapus pura oleh Admin"
+                                            )
+                                            notificationBody.put(
+                                                "message",
+                                                String.format(
+                                                    "${mTemple.name} milik Anda telah dihapus oleh Admin"
+                                                )
+                                            )
+                                            notificationBody.put(
+                                                "requestType",
+                                                "history_delete_request"
+                                            )
+                                            notificationBody.put(
+                                                "contributorId",
+                                                mTemple.contributorId
+                                            )
+                                            notificationBody.put("templeId", it)
+                                            notification.put("to", topic)
+                                            notification.put("data", notificationBody)
+                                        } catch (e: JSONException) {
+                                            e.message
+                                        }
+                                        mViewModel.sendNotification(
+                                            notification,
+                                            applicationContext
+                                        )
+                                    }
+                                    Toast.makeText(
+                                        this,
+                                        getString(R.string.toast_message_temple_deleted),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    finish()
+                                }
+                            })
+                        }
+                        val alertDialog = alertBuilder.create()
+                        alertDialog.show()
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                            .setTextColor(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.colorNegativeButton
+                                )
                             )
-                        )
-                    val message: TextView = alertDialog.findViewById(android.R.id.message)
-                    message.typeface =
-                        Typeface.createFromAsset(applicationContext.assets, "gotham_book.ttf")
+                        val message: TextView = alertDialog.findViewById(android.R.id.message)
+                        message.typeface =
+                            Typeface.createFromAsset(applicationContext.assets, "gotham_book.ttf")
+                    }
                 }
             }
         }

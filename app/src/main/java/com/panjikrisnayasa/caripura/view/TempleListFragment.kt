@@ -47,10 +47,11 @@ class TempleListFragment : Fragment(), TextWatcher {
             ViewModelProvider.NewInstanceFactory()
         ).get(TempleListViewModel::class.java)
 
-        mViewModel.getTemple()
+        mViewModel.getTempleList()
             .observe(this, Observer { templeList ->
                 progress_temple_list.visibility = View.GONE
                 if (templeList != null) {
+                    text_temple_list_no_data.visibility = View.GONE
                     mAdapter.setData(templeList)
                     edit_temple_list_find_temple.isEnabled = true
                     edit_temple_list_find_temple.addTextChangedListener(this)
@@ -58,13 +59,15 @@ class TempleListFragment : Fragment(), TextWatcher {
                     text_temple_list_no_data.visibility = View.VISIBLE
                 }
             })
-
     }
 
     private fun showRecyclerView() {
-        mAdapter = TempleListAdapter()
-        recycler_temple_list?.layoutManager = LinearLayoutManager(context)
-        recycler_temple_list?.adapter = mAdapter
+        val tContext = context
+        if (tContext != null) {
+            mAdapter = TempleListAdapter(tContext)
+            recycler_temple_list?.layoutManager = LinearLayoutManager(context)
+            recycler_temple_list?.adapter = mAdapter
+        }
     }
 
     override fun afterTextChanged(s: Editable?) {
@@ -77,5 +80,9 @@ class TempleListFragment : Fragment(), TextWatcher {
         val query = edit_temple_list_find_temple.text.trim().toString()
             .toLowerCase(Locale.getDefault())
         mAdapter.filter(query)
+        if (mAdapter.itemCount == 0)
+            text_temple_list_no_data.visibility = View.VISIBLE
+        else
+            text_temple_list_no_data.visibility = View.GONE
     }
 }

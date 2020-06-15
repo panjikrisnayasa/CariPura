@@ -13,14 +13,16 @@ import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.adapter.MyTempleListAdapter
 import com.panjikrisnayasa.caripura.adapter.MyTempleListViewPagerAdapter
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
-import com.panjikrisnayasa.caripura.viewmodel.MyTempleListViewModel
+import com.panjikrisnayasa.caripura.viewmodel.TempleListViewModel
 import kotlinx.android.synthetic.main.activity_my_temple_list.*
 
 class MyTempleListActivity : AppCompatActivity() {
 
     private lateinit var mSharedPref: SharedPrefManager
     private lateinit var mAdapter: MyTempleListAdapter
-    private lateinit var mViewModel: MyTempleListViewModel
+
+    //changed
+    private lateinit var mViewModel: TempleListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class MyTempleListActivity : AppCompatActivity() {
         mViewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
-        ).get(MyTempleListViewModel::class.java)
+        ).get(TempleListViewModel::class.java)
 
         mSharedPref = SharedPrefManager.getInstance(this)
         if (mSharedPref.getRole() == "contributor") {
@@ -52,19 +54,32 @@ class MyTempleListActivity : AppCompatActivity() {
             tab_my_temple_list.visibility = View.GONE
             floating_action_button_my_temple_list_add_temple.setOnClickListener {
                 val intent = Intent(this, AddTempleFirstActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, AddTempleFirstActivity.REQUEST_ADD)
             }
 
             showRecyclerView()
 
-            mViewModel.getAdminTempleList().observe(this, Observer { templeList ->
+            mViewModel.getTempleList().observe(this, Observer { templeList ->
                 progress_my_temple_list.visibility = View.GONE
                 if (templeList != null) {
+                    text_my_temple_list_no_data.visibility = View.GONE
                     mAdapter.setData(templeList)
                 } else {
                     text_my_temple_list_no_data.visibility = View.VISIBLE
                 }
             })
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            if (requestCode == MyTempleDetailActivity.REQUEST_UPDATE_ADMIN) {
+                if (resultCode == MyTempleDetailActivity.RESULT_DELETE_ADMIN) {
+                    val position = data.getIntExtra(MyTempleDetailActivity.EXTRA_POSITION, 0)
+                    mAdapter.removeItem(position)
+                }
+            }
         }
     }
 
@@ -94,7 +109,7 @@ class MyTempleListActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerView() {
-        mAdapter = MyTempleListAdapter()
+        mAdapter = MyTempleListAdapter(null)
         recycler_my_temple_list?.layoutManager = LinearLayoutManager(this)
         recycler_my_temple_list?.adapter = mAdapter
     }

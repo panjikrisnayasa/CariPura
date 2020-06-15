@@ -1,7 +1,7 @@
 package com.panjikrisnayasa.caripura.view
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,20 +44,30 @@ class TempleRequestListDeleteFragment : Fragment() {
         ).get(TempleRequestListViewModel::class.java)
 
         mViewModel.getDeleteTempleRequestList().observe(this, Observer { templeList ->
-            Log.d("hyperLoop", "view model observer")
             progress_temple_request_list_delete.visibility = View.GONE
             if (templeList != null) {
-                Log.d("hyperLoop", "temple list not null")
+                recycler_temple_request_list_delete.visibility = View.VISIBLE
+                text_temple_request_list_delete_no_requests.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
-                Log.d("hyperLoop", "temple list null")
+                recycler_temple_request_list_delete.visibility = View.GONE
                 text_temple_request_list_delete_no_requests.visibility = View.VISIBLE
             }
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null)
+            if (requestCode == TempleRequestDetailActivity.REQUEST_APPROVAL)
+                if (resultCode == TempleRequestDetailActivity.RESULT_APPROVAL) {
+                    val position = data.getIntExtra(TempleRequestDetailActivity.EXTRA_POSITION, 0)
+                    mAdapter.removeItem(position)
+                }
+    }
+
     private fun showRecyclerView() {
-        mAdapter = TempleRequestListAdapter()
+        mAdapter = TempleRequestListAdapter(this)
         recycler_temple_request_list_delete?.layoutManager = LinearLayoutManager(context)
         recycler_temple_request_list_delete?.adapter = mAdapter
     }

@@ -44,6 +44,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_edit_temple_name"
@@ -77,11 +78,13 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_edit_temple_address"
                         android:importantForAutofill="no"
-                        android:inputType="textCapWords" />
+                        android:inputType="textMultiLine|textCapWords"
+                        android:lineSpacingMultiplier="1.5" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,6 +105,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_village_office"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_edit_village_office"
@@ -127,6 +131,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_sub_district"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_edit_sub_district"
@@ -162,6 +167,7 @@
                     android:background="@drawable/background_rounded">
 
                     <Button
+                        android:id="@+id/button_add_edit_temple_first_pick_location"
                         style="@style/ButtonTheme.Small.Primary"
                         android:layout_width="wrap_content"
                         android:text="@string/add_edit_temple_first_button_pick_location" />
@@ -174,7 +180,7 @@
                 android:id="@+id/fragment_add_edit_temple_first_map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="160dp"
                 android:layout_marginStart="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_add_edit_temple_first_button_pick_location" />
@@ -202,6 +208,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_caretaker_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_caretaker_name"
@@ -235,6 +242,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_caretaker_phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_edit_caretaker_phone_number"
@@ -268,11 +276,13 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edit_add_edit_temple_first_feast_day"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/add_edit_temple_first_temple_feast_day"
                         android:importantForAutofill="no"
-                        android:inputType="phone" />
+                        android:inputType="textCapWords|textMultiLine"
+                        android:lineSpacingMultiplier="1.25"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -282,8 +292,8 @@
                 android:id="@+id/linear_add_edit_temple_first_feast_day_prayer_start_end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_add_edit_temple_first_edit_temple_feast_day">
@@ -295,6 +305,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/text_add_edit_temple_first_feast_day_prayer_start"
                     style="@style/TimePickerTextTheme.Enabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -312,6 +323,7 @@
                     android:text="@string/add_edit_temple_first_text_dash" />
 
                 <TextView
+                    android:id="@+id/text_add_edit_temple_first_feast_day_prayer_end"
                     style="@style/TimePickerTextTheme.Enabled"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -322,7 +334,7 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                    android:layout_weight="2.5" />
 
             </LinearLayout>
 
@@ -341,7 +353,7 @@
                     android:layout_gravity="center"
                     android:paddingStart="0dp"
                     android:paddingEnd="16dp"
-                    android:src="@drawable/ic_map_marker_purple_14dp"
+                    android:src="@drawable/ic_photo_library_purple_14dp"
                     tools:ignore="ContentDescription" />
 
                 <FrameLayout
@@ -350,6 +362,7 @@
                     android:background="@drawable/background_rounded">
 
                     <Button
+                        android:id="@+id/button_add_edit_temple_first_add_photo"
                         style="@style/ButtonTheme.Small.Primary"
                         android:layout_width="160dp"
                         android:text="@string/add_edit_temple_first_button_add_photo" />
@@ -358,25 +371,24 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/image_add_edit_temple_first_photo"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
                 android:layout_marginStart="30dp"
+                android:scaleType="centerCrop"
                 android:layout_marginTop="16dp"
-                android:overScrollMode="never"
                 android:visibility="gone"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_add_edit_temple_first_button_add_photo"
-                app:spanCount="3"
-                tools:itemCount="6"
-                tools:listitem="@layout/item_photo_list" />
+                tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorLayoutBackground"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/constraint_add_edit_temple_first_form">

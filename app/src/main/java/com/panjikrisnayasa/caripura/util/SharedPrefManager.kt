@@ -72,7 +72,7 @@ class SharedPrefManager(private val mContext: Context?) {
             mContext?.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences?.edit()
         editor?.putBoolean(KEY_IS_LOGGED_IN, false)
-        editor?.apply()
+        editor?.clear()?.apply()
     }
 
     fun setLastLocation(lastLat: String, lastLng: String) {

@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -25,6 +26,9 @@ class MyTempleDetailWaitingActivity : AppCompatActivity(), View.OnClickListener 
 
     companion object {
         const val EXTRA_TEMPLE = "temple"
+        const val EXTRA_POSITION = "position"
+        const val REQUEST_CANCEL = 5
+        const val RESULT_CANCEL = 501
     }
 
     private lateinit var mSharedPref: SharedPrefManager
@@ -85,10 +89,17 @@ class MyTempleDetailWaitingActivity : AppCompatActivity(), View.OnClickListener 
                     }
                 }
                 alertBuilder.setPositiveButton(getString(R.string.dialog_cancel_positive_button)) { _, _ ->
-
                 }
                 alertBuilder.setNegativeButton(getString(R.string.dialog_cancel_negative_button)) { _, _ ->
-
+                    val intent = Intent()
+                    setResult(RESULT_CANCEL, intent)
+                    mViewModel.cancelTempleRequest(mTemple)
+                    Toast.makeText(
+                        this,
+                        getString(R.string.toast_message_request_cancelled),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
                 }
                 val alertDialog = alertBuilder.create()
                 alertDialog.show()
@@ -142,7 +153,8 @@ class MyTempleDetailWaitingActivity : AppCompatActivity(), View.OnClickListener 
                 "edit" -> {
                     text_my_temple_detail_waiting_label.text =
                         getString(R.string.item_label_request_edit_temple)
-                    text_my_temple_detail_waiting_label.background = getDrawable(R.color.colorOrange)
+                    text_my_temple_detail_waiting_label.background =
+                        getDrawable(R.color.colorOrange)
                 }
                 else -> {
                     text_my_temple_detail_waiting_label.text =
@@ -172,7 +184,10 @@ class MyTempleDetailWaitingActivity : AppCompatActivity(), View.OnClickListener 
             text_my_temple_detail_waiting_full_moon_prayer_end.text = temple.fullMoonPrayerEnd
             text_my_temple_detail_waiting_dead_moon_prayer_start.text = temple.deadMoonPrayerStart
             text_my_temple_detail_waiting_dead_moon_prayer_end.text = temple.deadMoonPrayerEnd
-            edit_my_temple_detail_waiting_note_for_admin.setText(temple.contributorNote)
+            if (temple.contributorNote != "")
+                edit_my_temple_detail_waiting_note_for_admin.setText(temple.contributorNote)
+            else
+                edit_my_temple_detail_waiting_note_for_admin.setText("-")
             if (temple.galunganPrayerStart != "") {
                 linear_my_temple_detail_waiting_galungan.visibility = View.VISIBLE
                 text_my_temple_detail_waiting_galungan_prayer_start.text =

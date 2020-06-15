@@ -45,14 +45,27 @@ class TempleRequestHistoryContributorAdapter :
         holder.mTextFullMoonPrayerEnd.text = temple.fullMoonPrayerEnd
         holder.mTextDeadMoonPrayerStart.text = temple.deadMoonPrayerStart
         holder.mTextDeadMoonPrayerEnd.text = temple.deadMoonPrayerEnd
-        if (temple.requestStatus == "accepted") {
-            holder.mTextLabel.text =
-                holder.itemView.context.resources?.getString(R.string.item_label_accepted)
-            holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
-        } else {
-            holder.mTextLabel.text =
-                holder.itemView.context.resources?.getString(R.string.item_label_rejected)
-            holder.mTextLabel.setBackgroundResource(R.color.colorRed)
+        when (temple.requestStatus) {
+            "accepted" -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.item_label_accepted)
+                holder.mTextLabel.setBackgroundResource(R.color.colorGreen)
+            }
+            "rejected" -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.item_label_rejected)
+                holder.mTextLabel.setBackgroundResource(R.color.colorRed)
+            }
+            "deleted_by_admin" -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.temple_request_detail_text_label_deleted_by_admin)
+                holder.mTextLabel.setBackgroundResource(R.color.colorOrange)
+            }
+            "edited_by_admin" -> {
+                holder.mTextLabel.text =
+                    holder.itemView.context.resources?.getString(R.string.temple_request_detail_text_label_edited_by_admin)
+                holder.mTextLabel.setBackgroundResource(R.color.colorOrange)
+            }
         }
 
         holder.itemView.setOnClickListener {

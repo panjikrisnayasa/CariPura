@@ -3,27 +3,27 @@
     <string name="app_name">Cari Pura</string>
 
     <!--    activity_main-->
-    <string name="main_on_back_pressed">Press back again to exit</string>
+    <string name="main_on_back_pressed">Tekan tombol kembali lagi untuk keluar</string>
 
     <!--    activity_my_temple_list-->
-    <string name="my_temple_list_text_no_data">There are no registered temples yet</string>
-    <string name="my_temple_list_approved_text_no_data">There are no approved temples yet</string>
-    <string name="my_temple_list_waiting_text_no_data">There are no temples waiting for approval</string>
+    <string name="my_temple_list_text_no_data">Belum ada pura yang terdaftar</string>
+    <string name="my_temple_list_approved_text_no_data">Belum ada pura yang disetujui</string>
+    <string name="my_temple_list_waiting_text_no_data">Belum ada pura yang menunggu persetujuan</string>
 
     <!--    activity_sign_up-->
-    <string name="sign_up_text_already_have_a_contributor_account">Already have a contributor account?</string>
-    <string name="sign_up_text_login_here">Login here</string>
-    <string name="sign_up_edit_phone_number">Phone number</string>
-    <string name="sign_up_edit_full_name">Full name</string>
-    <string name="sign_up_edit_password">Password</string>
+    <string name="sign_up_text_already_have_a_contributor_account">Sudah punya akun kontributor?</string>
+    <string name="sign_up_text_login_here">Login disini</string>
+    <string name="sign_up_edit_phone_number">Nomor Telepon</string>
+    <string name="sign_up_edit_full_name">Nama Lengkap</string>
+    <string name="sign_up_edit_password">Kata Sandi</string>
     <string name="sign_up_edit_email">Email</string>
-    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_up_button">Daftar</string>
 
     <!--    activity_temple_detail-->
-    <string name="temple_detail_button_route">Route</string>
-    <string name="temple_detail_button_call">Call</string>
-    <string name="temple_detail_text_temple_feast_day">Temple feast day</string>
-    <string name="temple_detail_text_together_prayer">Together prayer</string>
+    <string name="temple_detail_button_route">Rute</string>
+    <string name="temple_detail_button_call">Hubungi</string>
+    <string name="temple_detail_text_temple_feast_day">Piodalan pura</string>
+    <string name="temple_detail_text_together_prayer">Persembahyangan bersama</string>
     <string name="temple_detail_text_full_moon">Purnama</string>
     <string name="temple_detail_text_dead_moon">Tilem</string>
     <string name="temple_detail_text_galungan">Galungan</string>
@@ -32,26 +32,28 @@
     <string name="temple_detail_text_pagerwesi">Pagerwesi</string>
     <string name="temple_detail_text_siwaratri">Siwaratri</string>
     <string name="temple_detail_text_melukat">Melukat</string>
-    <string name="temple_detail_text_others">Others</string>
-    <string name="temple_detail_text_prayer_equipment_seller">Prayer equipment seller</string>
-    <string name="temple_detail_text_food_drink_seller"><![CDATA[Food & drink seller]]></string>
+    <string name="temple_detail_text_others">Lain-lain</string>
+    <string name="temple_detail_text_prayer_equipment_seller">Penjual perlengkapan persembahyangan</string>
+    <string name="temple_detail_text_food_drink_seller"><![CDATA[Penjual makanan & minuman]]></string>
 
     <!--    activity_add_edit_temple_first-->
-    <string name="add_edit_temple_first_text_time">00:00</string>
+    <string name="add_edit_temple_first_text_time">00.00</string>
     <string name="add_edit_temple_first_text_dash">-</string>
-    <string name="add_edit_temple_first_edit_temple_name">Temple name</string>
-    <string name="add_edit_temple_first_edit_temple_address">Temple address</string>
-    <string name="add_edit_temple_first_edit_village_office">Village office</string>
-    <string name="add_edit_temple_first_edit_sub_district">Sub district</string>
-    <string name="add_edit_temple_first_button_pick_location">Pick Location</string>
-    <string name="add_edit_temple_first_caretaker_name">Caretaker name</string>
-    <string name="add_edit_temple_first_edit_caretaker_phone_number">Caretaker phone number</string>
-    <string name="add_edit_temple_first_temple_feast_day">Temple feast day</string>
-    <string name="add_edit_temple_first_button_add_photo">Add Photo</string>
-    <string name="add_edit_temple_first_button_next">Next</string>
+    <string name="add_edit_temple_first_edit_temple_name">Nama pura</string>
+    <string name="add_edit_temple_first_edit_temple_address">Alamat pura</string>
+    <string name="add_edit_temple_first_edit_village_office">Kelurahan</string>
+    <string name="add_edit_temple_first_edit_sub_district">Kecamatan</string>
+    <string name="add_edit_temple_first_button_pick_location">Pilih Lokasi</string>
+    <string name="add_edit_temple_first_caretaker_name">Nama pengempon</string>
+    <string name="add_edit_temple_first_edit_caretaker_phone_number">Nomor telepon pengempon</string>
+    <string name="add_edit_temple_first_temple_feast_day">Hari piodalan pura</string>
+    <string name="add_edit_temple_first_button_add_photo">Tambah Foto</string>
+    <string name="add_edit_temple_first_button_edit_photo">Ubah Foto</string>
+    <string name="add_edit_temple_first_button_next">Lanjut</string>
+    <string name="add_edit_temple_second_text_melukat_information">Melukat dilaksanakan sebulan sekali setiap hari Minggu pekan pertama bulan tersebut</string>
 
     <!--    activity_add_edit_temple_second-->
-    <string name="add_edit_temple_second_text_together_prayer">Together prayer</string>
+    <string name="add_edit_temple_second_text_together_prayer">Persembahyangan bersama</string>
     <string name="add_edit_temple_second_checkbox_full_moon">Purnama</string>
     <string name="add_edit_temple_second_checkbox_dead_moon">Tilem</string>
     <string name="add_edit_temple_second_checkbox_galungan">Galungan</string>
@@ -60,147 +62,173 @@
     <string name="add_edit_temple_second_checkbox_pagerwesi">Pagerwesi</string>
     <string name="add_edit_temple_second_checkbox_siwaratri">Siwaratri</string>
     <string name="add_edit_temple_second_checkbox_melukat">Melukat</string>
-    <string name="add_edit_temple_second_edit_melukat_information">Information about melukat schedule</string>
-    <string name="add_edit_temple_second_checkbox_prayer_needs_seller">Prayer needs shop</string>
-    <string name="add_edit_temple_second_checkbox_food_drink_seller"><![CDATA[Food & drink shop]]></string>
-    <string name="add_edit_temple_second_text_others">Others</string>
-    <string name="add_edit_temple_second_button_add">Add</string>
+    <string name="add_edit_temple_second_edit_melukat_information">Informasi terkait jadwal melukat</string>
+    <string name="add_edit_temple_second_checkbox_prayer_equipment_seller">Penjual perlengkapan persembahyangan</string>
+    <string name="add_edit_temple_second_checkbox_food_drink_seller"><![CDATA[Penjual makanan & minuman]]></string>
+    <string name="add_edit_temple_second_text_others">Lain-Lain</string>
+    <string name="add_edit_temple_second_button_add">Tambah</string>
+    <string name="add_edit_temple_second_button_edit">Ubah</string>
+    <string name="add_edit_temple_second_edit_note_for_admin">Catatan untuk admin</string>
+
+    <!--    activity_temple_request_detail-->
+    <string name="temple_request_detail_text_label_accepted">Diterima</string>
+    <string name="temple_request_detail_text_label_rejected">Ditolak</string>
+    <string name="temple_request_detail_text_label_deleted_by_admin">Dihapus oleh Admin</string>
+    <string name="temple_request_detail_text_label_edited_by_admin">Diubah oleh Admin</string>
+    <string name="temple_request_detail_edit_contributor_note">Catatan kontributor</string>
+    <string name="temple_request_detail_text_requested_by">Diajukan oleh</string>
+    <string name="temple_request_detail_edit_note_for_contributor">Catatan untuk kontributor</string>
+    <string name="temple_request_detail_button_accept">Terima</string>
+    <string name="temple_request_detail_button_reject">Tolak</string>
+    <string name="temple_request_detail_edit_admin_note">Catatan admin</string>
+    <string name="temple_request_detail_edit_note_for_admin">Catatan untuk admin</string>
+    <string name="temple_request_detail_toast_accepted">Pengajuan diterima</string>
+    <string name="temple_request_detail_toast_rejected">Pengajuan ditolak</string>
+    <string name="temple_request_detail_text_temple_request_cancelled">Pengajuan pura dibatalkan</string>
 
     <!--    activity_requested_by-->
-    <string name="requested_by_text_input_edit_text_full_name">Full Name</string>
-    <string name="requested_by_text_input_edit_text_phone_number">Phone Number</string>
+    <string name="requested_by_text_input_edit_text_full_name">Nama Lengkap</string>
+    <string name="requested_by_text_input_edit_text_phone_number">Nomor Telepon</string>
 
-    <!--    activity_temple_request_history_detail_contributor-->
-    <string name="temple_request_detail_text_label_accepted">Accepted</string>
-    <string name="temple_request_detail_text_label_declined">Declined</string>
-    <string name="temple_request_detail_edit_contributor_note">Contributor note</string>
-    <string name="temple_request_detail_text_requested_by">Requested by</string>
-    <string name="temple_request_detail_edit_note_for_contributor">Note for contributor</string>
-    <string name="temple_request_detail_button_accept">Accept</string>
-    <string name="temple_request_detail_button_reject">Reject</string>
-    <string name="temple_request_detail_edit_admin_note">Admin note</string>
-    <string name="temple_request_detail_edit_note_for_admin">Note for admin</string>
-    <string name="temple_request_detail_toast_accepted">Request accepted</string>
-    <string name="temple_request_detail_toast_rejected">Request rejected</string>
-
-    <!--    activity_delete_temple_request-->
-    <string name="delete_temple_request_text_input_edit_text_note_for_contributor">Note for contributor</string>
-    <string name="delete_temple_request_text_question">Are you sure want to delete this temple?</string>
-    <string name="delete_temple_request_button_delete">DELETE</string>
-    <string name="delete_temple_request_button_cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <!--    activity_delete_temple-->
+    <string name="delete_temple_edit_note_for_admin">Catatan untuk admin</string>
+    <string name="delete_temple_text_question">Anda yakin ingin menghapus pura ini?</string>
+    <string name="delete_temple_button_delete">HAPUS</string>
+    <string name="delete_temple_button_cancel">BATAL</string>
 
     <!--    activity_my_temple_detail_waiting-->
-    <string name="my_temple_detail_waiting_edit_note_for_admin">Note for admin</string>
+    <string name="my_temple_detail_waiting_edit_note_for_admin">Catatan untuk admin</string>
+
+    <!--    activity_pick_location-->
+    <string name="pick_location_button_pick_location">Pilih Lokasi</string>
 
     <!--    fragment_account_login-->
     <string name="account_login_edit_email">Email</string>
-    <string name="account_login_edit_password">Password</string>
+    <string name="account_login_edit_password">Kata Sandi</string>
     <string name="account_login_button_login">Login</string>
-    <string name="account_login_text_want_to_be_a_contributor">Want to be a contributor?</string>
-    <string name="account_login_text_sign_up_here">Sign up here</string>
+    <string name="account_login_text_want_to_be_a_contributor">Ingin menjadi kontributor?</string>
+    <string name="account_login_text_sign_up_here">Daftar disini</string>
 
     <!--    fragment_find_temple-->
-    <string name="find_temple_button_find_the_nearest_temple">Find Nearest Temple</string>
+    <string name="find_temple_button_find_the_nearest_temple">Cari Pura Terdekat</string>
 
     <!--    fragment_logged_in-->
-    <string name="logged_in_text_input_edit_text_full_name">Full Name</string>
-    <string name="logged_in_text_input_edit_text_phone_number">Phone Number</string>
+    <string name="logged_in_text_input_edit_text_full_name">Nama Lengkap</string>
+    <string name="logged_in_text_input_edit_text_phone_number">Nomor Telepon</string>
     <string name="logged_in_text_input_edit_text_email">Email</string>
-    <string name="logged_in_button_my_temple_list">My Temple List</string>
+    <string name="logged_in_button_my_temple_list">Daftar Pura Saya</string>
     <string name="logged_in_text_admin">Admin</string>
-    <string name="logged_in_button_temple_request_list">Temple Request List</string>
-    <string name="logged_in_text_contributor">Contributor</string>
+    <string name="logged_in_button_temple_request_list">Daftar Pengajuan Pura</string>
+    <string name="logged_in_text_contributor">Kontributor</string>
 
     <!--    fragment_temple_list-->
-    <string name="temple_list_text_no_data">There are no registered temples yet</string>
-    <string name="temple_list_edit_find_temple">Find temple</string>
+    <string name="temple_list_text_no_data">Tidak ada pura ditemukan</string>
+    <string name="temple_list_edit_find_temple">Cari pura</string>
 
-    <!--    fragment_temple_request_list-->
-    <string name="temple_request_list_no_requests">There are no requests yet</string>
+    <!--    fragment_temple_request_list -->
+    <string name="temple_request_list_no_requests">Belum ada pengajuan pura yang diajukan</string>
 
     <!--    fragment_temple_request_history-->
-    <string name="temple_request_list_no_histories">There are no histories yet</string>
+    <string name="temple_request_list_no_histories">Belum ada riwayat pengajuan pura</string>
 
     <!--    item_temple_list-->
     <string name="item_temple_list_text_dash">-</string>
-    <string name="item_temple_list_text_together_prayer">Together prayer</string>
+    <string name="item_temple_list_text_together_prayer">Persembahyangan bersama</string>
     <string name="item_temple_list_text_full_moon">Purnama</string>
     <string name="item_temple_list_text_dead_moon">Tilem</string>
 
     <!--    menu_main_bottom_navigation-->
-    <string name="menu_main_bottom_navigation_find_temple">Find Temple</string>
-    <string name="menu_main_bottom_navigation_temple_list">Temple List</string>
-    <string name="menu_main_bottom_navigation_account">Account</string>
+    <string name="menu_main_bottom_navigation_find_temple">Cari Pura</string>
+    <string name="menu_main_bottom_navigation_temple_list">Daftar Pura</string>
+    <string name="menu_main_bottom_navigation_account">Akun</string>
 
     <!--    menu_logged_in_options-->
     <string name="menu_logged_in_options_logout">Logout</string>
     <string name="dialog_logout_title">Logout</string>
-    <string name="dialog_logout_message">Are you sure you want to logout?</string>
-    <string name="dialog_logout_positive_button" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="dialog_logout_message">Anda yakin ingin logout?</string>
+    <string name="dialog_logout_positive_button">BATAL</string>
     <string name="dialog_logout_negative_button">LOGOUT</string>
 
     <!--    menu_my_temple_detail_options-->
     <string name="menu_my_temple_detail_options_edit">Edit</string>
     <string name="menu_my_temple_detail_options_delete">Delete</string>
-    <string name="menu_my_temple_detail_options_cancel">Cancel</string>
+    <string name="menu_my_temple_detail_options_cancel">Batal</string>
 
     <!--    menu_my_temple_detail_options_delete-->
-    <string name="dialog_delete_title">Delete Temple</string>
-    <string name="dialog_delete_message">Are you sure you want to delete this temple?</string>
-    <string name="dialog_delete_positive_button" tools:ignore="ButtonCase">CANCEL</string>
-    <string name="dialog_delete_negative_button">DELETE</string>
+    <string name="dialog_delete_title">Hapus Pura</string>
+    <string name="dialog_delete_message">Anda yakin ingin menghapus pura ini?</string>
+    <string name="dialog_delete_positive_button" tools:ignore="ButtonCase">BATAL</string>
+    <string name="dialog_delete_negative_button">HAPUS</string>
 
     <!--    menu_history-->
-    <string name="menu_history">History</string>
+    <string name="menu_history">Riwayat</string>
 
     <!--    menu_cancel-->
-    <string name="menu_cancel">Cancel</string>
-    <string name="dialog_cancel_title_add">Cancel Add Temple Request</string>
-    <string name="dialog_cancel_title_edit">Cancel Edit Temple Request</string>
-    <string name="dialog_cancel_title_delete">Cancel Delete Temple Request</string>
-    <string name="dialog_cancel_message_add">Are you sure want to cancel add temple request?</string>
-    <string name="dialog_cancel_message_edit">Are you sure want to cancel edit temple request?</string>
-    <string name="dialog_cancel_message_delete">Are you sure want to cancel delete temple request?</string>
+    <string name="menu_cancel">Batalkan</string>
+    <string name="dialog_cancel_title_add">Batal Pengajuan Tambah Pura</string>
+    <string name="dialog_cancel_title_edit">Batal Pengajuan Ubah Pura</string>
+    <string name="dialog_cancel_title_delete">Batal Pengajuan Hapus Pura</string>
+    <string name="dialog_cancel_message_add">Anda yakin ingin membatalkan pengajuan tambah pura ini?</string>
+    <string name="dialog_cancel_message_edit">Anda yakin ingin membatalkan pengajuan ubah pura ini?</string>
+    <string name="dialog_cancel_message_delete">Anda yakin ingin membatalkan pengajuan hapus pura ini?</string>
     <string name="dialog_cancel_positive_button" tools:ignore="ButtonCase">NO</string>
     <string name="dialog_cancel_negative_button">YES</string>
 
     <!--    view_pager-->
-    <string name="view_pager_add_temple">Add Temple</string>
-    <string name="view_pager_edit_temple">Edit Temple</string>
-    <string name="view_pager_delete_temple">Delete Temple</string>
-    <string name="view_pager_approved">Approved</string>
-    <string name="view_pager_waiting">Waiting Approval</string>
+    <string name="view_pager_add_temple">Tambah</string>
+    <string name="view_pager_edit_temple">Ubah</string>
+    <string name="view_pager_delete_temple">Hapus</string>
+    <string name="view_pager_approved">Disetujui</string>
+    <string name="view_pager_waiting">Menunggu</string>
 
     <!--    label-->
-    <string name="label_my_temple_list">My Temple List</string>
-    <string name="label_sign_up">Sign Up</string>
-    <string name="label_temple_detail">Temple Detail</string>
-    <string name="label_edit_temple">Edit Temple</string>
-    <string name="label_add_temple">Add Temple</string>
-    <string name="label_temple_request_list">Temple Request List</string>
-    <string name="label_temple_request_history">Temple Request History</string>
-    <string name="label_requested_by">Requested By</string>
-    <string name="label_delete_temple_request">Delete Temple Request</string>
-    <string name="label_edit_temple_request">Edit Temple Request</string>
-    <string name="label_add_temple_request">Add Temple Request</string>
-    <string name="label_route_to_temple">Route To Temple</string>
+    <string name="label_my_temple_list">Daftar Pura Saya</string>
+    <string name="label_sign_up">Daftar</string>
+    <string name="label_temple_detail">Detail Pura</string>
+    <string name="label_edit_temple">Ubah Pura</string>
+    <string name="label_add_temple">Tambah Pura</string>
+    <string name="label_temple_request_list">Daftar Pengajuan Pura</string>
+    <string name="label_temple_request_history">Riwayat Pengajuan Pura</string>
+    <string name="label_requested_by">Diajukan Oleh</string>
+    <string name="label_delete_temple_request">Ajukan Hapus Pura</string>
+    <string name="label_edit_temple_request">Ajukan Ubah Pura</string>
+    <string name="label_add_temple_request">Ajukan Tambah Pura</string>
+    <string name="label_route_to_temple">Rute Menuju Pura</string>
+    <string name="label_pick_location">Pilih Lokasi</string>
 
     <!--    item_label-->
-    <string name="item_label_request_add_temple">Request Add Temple</string>
-    <string name="item_label_request_edit_temple">Request Edit Temple</string>
-    <string name="item_label_request_delete_temple">Request Delete Temple</string>
-    <string name="item_label_accepted">Accepted</string>
-    <string name="item_label_rejected">Rejected</string>
+    <string name="item_label_request_add_temple">Pengajuan Tambah Pura</string>
+    <string name="item_label_request_edit_temple">Pengajuan Ubah Pura</string>
+    <string name="item_label_request_delete_temple">Pengajuan Hapus Pura</string>
+    <string name="item_label_accepted">Diterima</string>
+    <string name="item_label_rejected">Ditolak</string>
 
     <!--    error message-->
-    <string name="error_message_fill_this_field">Fill this field</string>
-    <string name="error_message_invalid_email">Invalid email</string>
-    <string name="error_message_password_length">Password must be at least 6 characters length</string>
-    <string name="error_message_verification_sent">Verification email sent</string>
-    <string name="error_message_verification_failed">Failed to send verification email</string>
-    <string name="error_message_sign_up_failed">Sign up failed, please try again</string>
-    <string name="error_message_verify_email">You need to verify your email address</string>
-    <string name="error_message_email_password_incorrect">Email or password incorrect</string>
+    <string name="error_message_fill_this_field">Isi kolom ini</string>
+    <string name="error_message_invalid_email">Email tidak valid</string>
+    <string name="error_message_password_length">Panjang kata sandi minimal 6 karakter</string>
+    <string name="error_message_verification_sent">Email verifikasi terkirim</string>
+    <string name="error_message_verification_failed">Gagal mengirim email verifikasi</string>
+    <string name="error_message_sign_up_failed">Gagal mendaftarkan akun, coba lagi</string>
+    <string name="error_message_verify_email">Verifikasi alamat email Anda terlebih dulu</string>
+    <string name="error_message_email_password_incorrect">Email atau password salah</string>
+    <string name="error_message_pick_location">Anda harus memilih lokasi pura terlebih dulu</string>
+    <string name="error_message_add_photo">Anda harus menambahkan foto pura terlebih dulu</string>
+
+    <!--    toast message-->
+    <string name="toast_message_temple_added">Pura ditambahkan</string>
+    <string name="toast_message_temple_edited">Pura diubah</string>
+    <string name="toast_message_temple_deleted">Pura dihapus</string>
+    <string name="toast_message_add_temple_requested">Tambah pura diajukan</string>
+    <string name="toast_message_edit_temple_requested">Ubah pura diajukan</string>
+    <string name="toast_message_delete_temple_requested">Hapus pura diajukan</string>
+    <string name="toast_message_request_accepted">Pengajuan diterima</string>
+    <string name="toast_message_request_rejected">Pengajuan ditolak</string>
+    <string name="toast_message_request_cancelled">Pengajuan dibatalkan</string>
+    <string name="toast_message_waiting_admin_approval">Menunggu persetujuan Admin untuk pengajuan Anda yang sebelumnya</string>
+    <string name="toast_message_pick_location">Ketuk dimana saja untuk menentukan lokasi pura</string>
+    <string name="toast_message_location_permission">Izin lokasi harus diaktifkan terlebih dulu</string>
+    <string name="toast_message_no_temple_nearby">Tidak menemukan pura disekitar Anda dalam radius 7 kilometer</string>
 
     <string name="google_maps_api_key">AIzaSyDmL95lQBtliz5QwfEV_gcaiWoEhFuNc84</string>
 

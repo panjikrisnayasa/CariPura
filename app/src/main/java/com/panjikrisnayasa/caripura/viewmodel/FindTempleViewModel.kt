@@ -46,7 +46,7 @@ class FindTempleViewModel : ViewModel() {
                 GeoLocation(
                     lastLocation.latitude,
                     lastLocation.longitude
-                ), 3.0
+                ), 7.0
             )
 
             geoQuery.addGeoQueryDataEventListener(object : GeoQueryDataEventListener {
@@ -59,11 +59,9 @@ class FindTempleViewModel : ViewModel() {
                 }
 
                 override fun onDataExited(dataSnapshot: DataSnapshot?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onDataChanged(dataSnapshot: DataSnapshot?, location: GeoLocation?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onDataEntered(dataSnapshot: DataSnapshot?, location: GeoLocation?) {
@@ -77,7 +75,6 @@ class FindTempleViewModel : ViewModel() {
                 }
 
                 override fun onDataMoved(dataSnapshot: DataSnapshot?, location: GeoLocation?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onGeoQueryError(error: DatabaseError?) {

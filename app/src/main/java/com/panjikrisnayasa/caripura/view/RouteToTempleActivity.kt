@@ -1,5 +1,6 @@
 package com.panjikrisnayasa.caripura.view
 
+import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -71,6 +72,16 @@ class RouteToTempleActivity : AppCompatActivity(), OnMapReadyCallback,
 
         setupMap()
 
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
         mGoogleMap?.isMyLocationEnabled = true
         mGoogleMap?.uiSettings?.isMyLocationButtonEnabled = false
 
@@ -114,12 +125,12 @@ class RouteToTempleActivity : AppCompatActivity(), OnMapReadyCallback,
         if (tContext != null) {
             if (ActivityCompat.checkSelfPermission(
                     tContext,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                    Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     FindTempleFragment.LOCATION_PERMISSION_REQUEST_CODE
                 )
                 return

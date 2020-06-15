@@ -1,5 +1,6 @@
 package com.panjikrisnayasa.caripura.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -45,15 +46,28 @@ class TempleRequestListEditFragment : Fragment() {
         mViewModel.getEditTempleRequestList().observe(this, Observer { templeList ->
             progress_temple_request_list_edit.visibility = View.GONE
             if (templeList != null) {
+                recycler_temple_request_list_edit.visibility = View.VISIBLE
+                text_temple_request_list_edit_no_requests.visibility = View.GONE
                 mAdapter.setData(templeList)
             } else {
+                recycler_temple_request_list_edit.visibility = View.GONE
                 text_temple_request_list_edit_no_requests.visibility = View.VISIBLE
             }
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null)
+            if (requestCode == TempleRequestDetailActivity.REQUEST_APPROVAL)
+                if (resultCode == TempleRequestDetailActivity.RESULT_APPROVAL) {
+                    val position = data.getIntExtra(TempleRequestDetailActivity.EXTRA_POSITION, 0)
+                    mAdapter.removeItem(position)
+                }
+    }
+
     private fun showRecyclerView() {
-        mAdapter = TempleRequestListAdapter()
+        mAdapter = TempleRequestListAdapter(this)
         recycler_temple_request_list_edit?.layoutManager = LinearLayoutManager(context)
         recycler_temple_request_list_edit?.adapter = mAdapter
     }

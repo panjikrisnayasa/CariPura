@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.MyTempleDetailWaitingActivity
 
-class MyTempleListWaitingAdapter :
+class MyTempleListWaitingAdapter(private val fragment: Fragment) :
     RecyclerView.Adapter<MyTempleListWaitingAdapter.MyTempleListWaitingViewHolder>() {
 
     private var mTempleList = arrayListOf<Temple>()
@@ -61,9 +62,13 @@ class MyTempleListWaitingAdapter :
         }
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, MyTempleDetailWaitingActivity::class.java)
+            val intent = Intent(fragment.context, MyTempleDetailWaitingActivity::class.java)
             intent.putExtra(MyTempleDetailWaitingActivity.EXTRA_TEMPLE, temple)
-            it.context.startActivity(intent)
+            intent.putExtra(MyTempleDetailWaitingActivity.EXTRA_POSITION, position)
+            fragment.startActivityForResult(
+                intent,
+                MyTempleDetailWaitingActivity.REQUEST_CANCEL
+            )
         }
     }
 
@@ -71,6 +76,12 @@ class MyTempleListWaitingAdapter :
         mTempleList.clear()
         mTempleList.addAll(templeList)
         notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int) {
+        mTempleList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, mTempleList.size)
     }
 
     inner class MyTempleListWaitingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

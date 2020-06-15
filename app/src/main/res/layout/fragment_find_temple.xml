@@ -55,6 +55,7 @@
                     android:fontFamily="@font/gotham_medium"
                     android:textColor="@color/colorTextBlack"
                     android:textSize="16sp"
+                    android:lineSpacingMultiplier="1.25"
                     tools:text="Pura Marga Sirsha" />
 
                 <TextView
@@ -65,7 +66,6 @@
                     android:drawableStart="@drawable/ic_itinerary_purple_14dp"
                     android:drawablePadding="16dp"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
                     tools:text="5 km" />
 
                 <TextView
@@ -76,7 +76,6 @@
                     android:drawableStart="@drawable/ic_motorcycle_purple_14dp"
                     android:drawablePadding="16dp"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="16sp"
                     tools:text="10 mins" />
 
             </LinearLayout>

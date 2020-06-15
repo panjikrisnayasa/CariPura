@@ -3,18 +3,20 @@ package com.panjikrisnayasa.caripura.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.panjikrisnayasa.caripura.model.Temple
 
 class TempleListViewModel : ViewModel() {
 
-    private lateinit var mDatabaseReference: DatabaseReference
     private val mTempleList = MutableLiveData<ArrayList<Temple>>()
 
-    fun getTemple(): LiveData<ArrayList<Temple>> {
+    fun getTempleList(): LiveData<ArrayList<Temple>> {
         val templeList = arrayListOf<Temple>()
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
-        mDatabaseReference.addValueEventListener(object : ValueEventListener {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("geo_fire")
+        databaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {
                 p0.message

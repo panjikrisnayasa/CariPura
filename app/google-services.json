@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "316369989134-28u2of9o41rcmqkomouh1g82310jjqj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.panjikrisnayasa.caripura",
+            "certificate_hash": "2097974ed00f88512c5ea32d315e39ae3f5e438d"
+          }
+        },
+        {
           "client_id": "316369989134-vsha18n2mt1l5nu5jmbeshss47vdmbr3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

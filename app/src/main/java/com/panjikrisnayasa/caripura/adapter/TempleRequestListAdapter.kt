@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
 import com.panjikrisnayasa.caripura.view.TempleRequestDetailActivity
 
-class TempleRequestListAdapter :
+class TempleRequestListAdapter(private val fragment: Fragment) :
     RecyclerView.Adapter<TempleRequestListAdapter.TempleRequestListViewHolder>() {
-
     private var mTempleList = arrayListOf<Temple>()
 
     override fun onCreateViewHolder(
@@ -66,7 +66,8 @@ class TempleRequestListAdapter :
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, TempleRequestDetailActivity::class.java)
             intent.putExtra(TempleRequestDetailActivity.EXTRA_TEMPLE, temple)
-            it.context.startActivity(intent)
+            intent.putExtra(TempleRequestDetailActivity.EXTRA_POSITION, position)
+            fragment.startActivityForResult(intent, TempleRequestDetailActivity.REQUEST_APPROVAL)
         }
     }
 
@@ -74,6 +75,12 @@ class TempleRequestListAdapter :
         mTempleList.clear()
         mTempleList.addAll(templeList)
         notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int) {
+        mTempleList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, mTempleList.size)
     }
 
     inner class TempleRequestListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -118,6 +118,12 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
         setupMap()
 
+        linear_find_temple.setOnClickListener {
+            val intent = Intent(context, TempleDetailActivity::class.java)
+            intent.putExtra(TempleDetailActivity.EXTRA_TEMPLE, mTemple)
+            startActivity(intent)
+        }
+
         floating_action_button_find_temple_my_location.setOnClickListener {
             val tLatLng = LatLng(mLastLocation.latitude, mLastLocation.longitude)
             mGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(tLatLng, 16f))
@@ -354,3 +360,4 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         }
     }
 }
+

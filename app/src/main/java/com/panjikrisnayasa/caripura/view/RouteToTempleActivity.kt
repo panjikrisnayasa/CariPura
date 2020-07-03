@@ -57,6 +57,10 @@ class RouteToTempleActivity : AppCompatActivity(), OnMapReadyCallback,
             val latLng = LatLng(mLastLocation.latitude, mLastLocation.longitude)
             mGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16f))
         }
+
+        linear_route_to_temple.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -69,6 +73,9 @@ class RouteToTempleActivity : AppCompatActivity(), OnMapReadyCallback,
     override fun onMapReady(p0: GoogleMap?) {
         mGoogleMap = p0
         mGoogleMap?.setOnMarkerClickListener(this)
+        mGoogleMap?.setOnInfoWindowClickListener {
+            finish()
+        }
 
         setupMap()
 

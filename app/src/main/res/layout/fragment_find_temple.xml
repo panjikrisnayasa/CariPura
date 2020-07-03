@@ -43,6 +43,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
+                android:id="@+id/linear_find_temple"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -53,9 +54,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_medium"
+                    android:lineSpacingMultiplier="1.25"
                     android:textColor="@color/colorTextBlack"
                     android:textSize="16sp"
-                    android:lineSpacingMultiplier="1.25"
                     tools:text="Pura Marga Sirsha" />
 
                 <TextView

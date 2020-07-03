@@ -52,46 +52,41 @@ class DeleteTempleActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.button_delete_temple_delete -> {
                 val noteForAdmin = edit_delete_temple_note_for_admin.text.toString()
-                if (noteForAdmin.isBlank())
-                    edit_delete_temple_note_for_admin.error =
-                        getString(R.string.error_message_fill_this_field)
-                else {
-                    val resultIntent = Intent()
-                    val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
-                    if (temple != null) {
-                        temple.contributorNote = noteForAdmin
-                        mViewModel.deleteTempleRequest(temple)
-                        Toast.makeText(
-                            this,
-                            getString(R.string.toast_message_delete_temple_requested),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        val topic = "/topics/request"
-                        val notification = JSONObject()
-                        val notificationBody = JSONObject()
-                        try {
-                            notificationBody.put(
-                                "title", "Pengajuan Hapus Pura"
-                            )
-                            notificationBody.put(
-                                "message",
-                                "${temple.name} diajukan untuk dihapus"
-                            )
-                            notificationBody.put("requestType", "delete_request")
-                            notificationBody.put(
-                                "contributorId",
-                                temple.contributorId
-                            )
-                            notificationBody.put("templeId", temple.id)
-                            notification.put("to", topic)
-                            notification.put("data", notificationBody)
-                        } catch (e: JSONException) {
-                            e.message
-                        }
-                        mViewModel.sendNotification(notification, applicationContext)
-                        setResult(RESULT_DELETE, resultIntent)
-                        finish()
+                val resultIntent = Intent()
+                val temple = intent.getParcelableExtra<Temple>(EXTRA_TEMPLE)
+                if (temple != null) {
+                    temple.contributorNote = noteForAdmin
+                    mViewModel.deleteTempleRequest(temple)
+                    Toast.makeText(
+                        this,
+                        getString(R.string.toast_message_delete_temple_requested),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    val topic = "/topics/request"
+                    val notification = JSONObject()
+                    val notificationBody = JSONObject()
+                    try {
+                        notificationBody.put(
+                            "title", "Pengajuan Hapus Pura"
+                        )
+                        notificationBody.put(
+                            "message",
+                            "${temple.name} diajukan untuk dihapus"
+                        )
+                        notificationBody.put("requestType", "delete_request")
+                        notificationBody.put(
+                            "contributorId",
+                            temple.contributorId
+                        )
+                        notificationBody.put("templeId", temple.id)
+                        notification.put("to", topic)
+                        notification.put("data", notificationBody)
+                    } catch (e: JSONException) {
+                        e.message
                     }
+                    mViewModel.sendNotification(notification, applicationContext)
+                    setResult(RESULT_DELETE, resultIntent)
+                    finish()
                 }
             }
             R.id.button_delete_temple_cancel -> {

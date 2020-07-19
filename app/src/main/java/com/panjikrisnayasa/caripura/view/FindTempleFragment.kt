@@ -28,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
+import com.panjikrisnayasa.caripura.util.SharedPrefLocationManager
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.FindTempleViewModel
 import com.squareup.picasso.Callback
@@ -90,6 +91,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     private lateinit var mLastLocation: Location
     private lateinit var mViewModel: FindTempleViewModel
     private lateinit var mSharedPref: SharedPrefManager
+    private lateinit var mSharedPrefLocation: SharedPrefLocationManager
     private lateinit var mTemple: Temple
 
     private var mGoogleMap: GoogleMap? = null
@@ -110,6 +112,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         super.onViewCreated(view, savedInstanceState)
 
         mSharedPref = SharedPrefManager.getInstance(context)
+        mSharedPrefLocation = SharedPrefLocationManager.getInstance(context)
 
         mViewModel = ViewModelProvider(
             this,
@@ -199,7 +202,7 @@ class FindTempleFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         mFusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
                 mLastLocation = location
-                mSharedPref.setLastLocation(
+                mSharedPrefLocation.setLastLocation(
                     location.latitude.toString(),
                     location.longitude.toString()
                 )

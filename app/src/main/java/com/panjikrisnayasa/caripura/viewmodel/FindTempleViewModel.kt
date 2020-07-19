@@ -2,6 +2,7 @@ package com.panjikrisnayasa.caripura.viewmodel
 
 import android.location.Location
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -110,30 +111,39 @@ class FindTempleViewModel : ViewModel() {
                 headers: Array<out Header>?,
                 responseBody: ByteArray?
             ) {
-                var tResult = ""
+                val tResult: String
+                val distanceDuration = arrayListOf<String>()
                 if (responseBody != null) {
                     tResult = String(responseBody)
-                }
-                val resultRoute = tResult
-                val responseObjectRoute = JSONObject(resultRoute)
-                val routes = responseObjectRoute.getJSONArray("routes")
-                val legs = routes.getJSONObject(0).getJSONArray("legs")
-                val steps = legs.getJSONObject(0).getJSONArray("steps")
-                val distance = legs.getJSONObject(0).getJSONObject("distance").getString("text")
-                val duration = legs.getJSONObject(0).getJSONObject("duration").getString("text")
-                val distanceDuration = arrayListOf<String>()
-                distanceDuration.add(distance)
-                distanceDuration.add(duration)
+                    val responseObjectRoute = JSONObject(tResult)
+                    val routes = responseObjectRoute.getJSONArray("routes")
+                    if (routes.length() > 0) {
+                        Log.d("hyperLoop", "routes length > 0")
+                        val legs = routes.getJSONObject(0)?.getJSONArray("legs")
+                        val steps = legs?.getJSONObject(0)?.getJSONArray("steps")
+                        val distance =
+                            legs?.getJSONObject(0)?.getJSONObject("distance")?.getString("text")
+                        val duration =
+                            legs?.getJSONObject(0)?.getJSONObject("duration")?.getString("text")
+                        if (distance != null && duration != null) {
+                            distanceDuration.add(distance)
+                            distanceDuration.add(duration)
+                        }
 
-                for (i in 0 until steps.length()) {
-                    val points =
-                        steps.getJSONObject(i).getJSONObject("polyline")
-                            .getString("points")
-                    path.add(PolyUtil.decode(points))
+                        if (steps != null)
+                            for (i in 0 until steps.length()) {
+                                val points =
+                                    steps.getJSONObject(i)?.getJSONObject("polyline")
+                                        ?.getString("points")
+                                path.add(PolyUtil.decode(points))
+                            }
+                    } else {
+                        Log.d("hyperLoop", "routes length < 0")
+                        return
+                    }
+                    mDistanceDuration.postValue(distanceDuration)
+                    mPath.postValue(path)
                 }
-
-                mDistanceDuration.postValue(distanceDuration)
-                mPath.postValue(path)
             }
 
             override fun onFailure(
@@ -142,7 +152,7 @@ class FindTempleViewModel : ViewModel() {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                error?.printStackTrace()
+                setDirectionApi(lastLat, lastLng, destinationLat, destinationLng)
             }
         })
     }

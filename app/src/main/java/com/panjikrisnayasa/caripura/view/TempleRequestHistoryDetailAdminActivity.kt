@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.panjikrisnayasa.caripura.R
 import com.panjikrisnayasa.caripura.model.Temple
+import com.panjikrisnayasa.caripura.util.SharedPrefLocationManager
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleDetailViewModel
 import kotlinx.android.synthetic.main.activity_temple_request_history_detail_admin.*
@@ -23,6 +24,7 @@ class TempleRequestHistoryDetailAdminActivity : AppCompatActivity(), View.OnClic
     }
 
     private lateinit var mSharedPref: SharedPrefManager
+    private lateinit var mSharedPrefLocation: SharedPrefLocationManager
     private lateinit var mViewModel: TempleDetailViewModel
     private var mSamplePhoto = intArrayOf(
         R.drawable.ic_launcher_background,
@@ -41,6 +43,7 @@ class TempleRequestHistoryDetailAdminActivity : AppCompatActivity(), View.OnClic
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         mSharedPref = SharedPrefManager.getInstance(applicationContext)
+        mSharedPrefLocation = SharedPrefLocationManager.getInstance(applicationContext)
 
         mViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             TempleDetailViewModel::class.java
@@ -90,8 +93,8 @@ class TempleRequestHistoryDetailAdminActivity : AppCompatActivity(), View.OnClic
     private fun showTempleDetail(temple: Temple) {
         mTemple = temple
         mViewModel.getDistanceDuration(
-            mSharedPref.getLastLat(),
-            mSharedPref.getLastLng(),
+            mSharedPrefLocation.getLastLat(),
+            mSharedPrefLocation.getLastLng(),
             temple.lat,
             temple.lng
         ).observe(this, Observer { distanceDuration ->

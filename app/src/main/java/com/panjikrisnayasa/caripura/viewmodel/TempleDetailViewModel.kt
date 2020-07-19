@@ -2,6 +2,7 @@ package com.panjikrisnayasa.caripura.viewmodel
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,26 +46,44 @@ class TempleDetailViewModel : ViewModel() {
             )
             .build()
         val url = builtUri.toString()
+        Log.d("hyperLoop", url)
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<out Header>?,
                 responseBody: ByteArray?
             ) {
-                var tResult = ""
-                if (responseBody != null) {
-                    tResult = String(responseBody)
-                }
-                val resultRoute = tResult
-                val responseObjectRoute = JSONObject(resultRoute)
-                val routes = responseObjectRoute.getJSONArray("routes")
-                val legs = routes.getJSONObject(0).getJSONArray("legs")
-                val distance = legs.getJSONObject(0).getJSONObject("distance").getString("text")
-                val duration = legs.getJSONObject(0).getJSONObject("duration").getString("text")
+                val tResult: String
                 val distanceDuration = arrayListOf<String>()
-                distanceDuration.add(distance)
-                distanceDuration.add(duration)
-                mDistanceDuration.postValue(distanceDuration)
+                if (responseBody != null) {
+                    Log.d("hyperLoop", "statusCode = $statusCode")
+                    Log.d("hyperLoop", "headers = $headers")
+                    Log.d("hyperLoop", "responseBody = $responseBody")
+                    tResult = String(responseBody)
+                    Log.d("hyperLoop", tResult)
+                    val responseObjectRoute = JSONObject(tResult)
+                    Log.d(
+                        "hyperLoop",
+                        "responseObjectRoute.length() = ${responseObjectRoute.length()}"
+                    )
+                    val routes = responseObjectRoute.getJSONArray("routes")
+                    if (routes.length() > 0) {
+                        Log.d("hyperLoop", "routes.length() = ${routes.length()}")
+                        val legs = routes.getJSONObject(0)?.getJSONArray("legs")
+                        val distance =
+                            legs?.getJSONObject(0)?.getJSONObject("distance")?.getString("text")
+                        val duration =
+                            legs?.getJSONObject(0)?.getJSONObject("duration")?.getString("text")
+                        if (distance != null && duration != null) {
+                            distanceDuration.add(distance)
+                            distanceDuration.add(duration)
+                        }
+                    } else {
+                        Log.d("hyperLoop", "routes length < 0")
+                        return
+                    }
+                    mDistanceDuration.postValue(distanceDuration)
+                }
             }
 
             override fun onFailure(
@@ -73,7 +92,7 @@ class TempleDetailViewModel : ViewModel() {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                error?.printStackTrace()
+                getDistanceDuration(lastLat, lastLng, destinationLat, destinationLng)
             }
         })
         return mDistanceDuration

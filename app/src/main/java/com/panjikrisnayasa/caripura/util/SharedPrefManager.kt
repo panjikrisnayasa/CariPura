@@ -13,8 +13,6 @@ class SharedPrefManager(private val mContext: Context?) {
     private val KEY_FULL_NAME = "full_name"
     private val KEY_PHONE_NUMBER = "phone_number"
     private val KEY_ROLE = "role"
-    private val KEY_LAST_LAT = "last_lat"
-    private val KEY_LAST_LNG = "last_lng"
 
     private val mSharedPref: SharedPreferences? =
         mContext?.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
@@ -73,20 +71,5 @@ class SharedPrefManager(private val mContext: Context?) {
         val editor = sharedPreferences?.edit()
         editor?.putBoolean(KEY_IS_LOGGED_IN, false)
         editor?.clear()?.apply()
-    }
-
-    fun setLastLocation(lastLat: String, lastLng: String) {
-        val editor = mSharedPref?.edit()
-        editor?.putString(KEY_LAST_LAT, lastLat)
-        editor?.putString(KEY_LAST_LNG, lastLng)
-        editor?.apply()
-    }
-
-    fun getLastLat(): String {
-        return mSharedPref?.getString(KEY_LAST_LAT, "") as String
-    }
-
-    fun getLastLng(): String {
-        return mSharedPref?.getString(KEY_LAST_LNG, "") as String
     }
 }

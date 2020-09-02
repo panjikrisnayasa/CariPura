@@ -10,8 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.panjikrisnayasa.caripura.R
-import com.panjikrisnayasa.caripura.adapter.MyTempleListAdapter
 import com.panjikrisnayasa.caripura.adapter.MyTempleListViewPagerAdapter
+import com.panjikrisnayasa.caripura.adapter.MyTempleListAdapter
 import com.panjikrisnayasa.caripura.util.SharedPrefManager
 import com.panjikrisnayasa.caripura.viewmodel.TempleListViewModel
 import kotlinx.android.synthetic.main.activity_my_temple_list.*

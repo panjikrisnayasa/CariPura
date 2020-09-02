@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <service android:name=".util.MyFirebaseMessagingService"
+        <service android:name="com.panjikrisnayasa.caripura.util.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -34,98 +34,98 @@
         </service>
 
         <activity
-            android:name=".view.PickLocationActivity"
+            android:name="com.panjikrisnayasa.caripura.view.PickLocationActivity"
             android:label="@string/label_pick_location"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestHistoryDetailAdminActivity"
+            android:name="com.panjikrisnayasa.caripura.view.TempleRequestHistoryDetailAdminActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.MyTempleDetailWaitingActivity"
+            android:name="com.panjikrisnayasa.caripura.view.MyTempleDetailWaitingActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.RouteToTempleActivity"
+            android:name="com.panjikrisnayasa.caripura.view.RouteToTempleActivity"
             android:label="@string/label_route_to_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.DeleteTempleActivity"
+            android:name="com.panjikrisnayasa.caripura.view.DeleteTempleActivity"
             android:label="@string/label_delete_temple_request"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.MyTempleDetailActivity"
+            android:name="com.panjikrisnayasa.caripura.view.MyTempleDetailActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.MyTempleListActivity"
+            android:name="com.panjikrisnayasa.caripura.view.MyTempleListActivity"
             android:label="@string/label_my_temple_list"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestHistoryDetailContributorActivity"
+            android:name="com.panjikrisnayasa.caripura.view.TempleRequestHistoryDetailContributorActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestHistoryActivity"
+            android:name="com.panjikrisnayasa.caripura.view.TempleRequestHistoryActivity"
             android:label="@string/label_temple_request_history"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.RequestedByActivity"
+            android:name="com.panjikrisnayasa.caripura.view.RequestedByActivity"
             android:label="@string/label_requested_by"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestDetailActivity"
+            android:name="com.panjikrisnayasa.caripura.view.TempleRequestDetailActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleRequestListActivity"
+            android:name="com.panjikrisnayasa.caripura.view.TempleRequestListActivity"
             android:label="@string/label_temple_request_list"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.EditTempleSecondActivity"
+            android:name="com.panjikrisnayasa.caripura.view.EditTempleSecondActivity"
             android:label="@string/label_edit_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.EditTempleFirstActivity"
+            android:name="com.panjikrisnayasa.caripura.view.EditTempleFirstActivity"
             android:label="@string/label_edit_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.AddTempleSecondActivity"
+            android:name="com.panjikrisnayasa.caripura.view.AddTempleSecondActivity"
             android:label="@string/label_add_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.AddTempleFirstActivity"
+            android:name="com.panjikrisnayasa.caripura.view.AddTempleFirstActivity"
             android:label="@string/label_add_temple"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.TempleDetailActivity"
+            android:name="com.panjikrisnayasa.caripura.view.TempleDetailActivity"
             android:label="@string/label_temple_detail"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.SignUpActivity"
+            android:name="com.panjikrisnayasa.caripura.view.SignUpActivity"
             android:label="@string/label_sign_up"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".view.SplashScreenActivity"
+            android:name="com.panjikrisnayasa.caripura.view.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity">
@@ -136,7 +136,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.panjikrisnayasa.caripura.view.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize"

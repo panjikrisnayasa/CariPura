@@ -45,7 +45,7 @@ class AddTempleFirstActivity : AppCompatActivity(), OnMapReadyCallback, View.OnC
 
             val timePickerDialog =
                 TimePickerDialog(
-                    context, TimePickerDialog.OnTimeSetListener { _, pHour, pMinute ->
+                    context, { _, pHour, pMinute ->
                         view.text = String.format("%02d.%02d", pHour, pMinute)
                     },
                     hour,

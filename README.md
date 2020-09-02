@@ -1,4 +1,4 @@
-# CariPura
+# Cari Pura
 Cari Pura is an android application that is able to find the location of the nearest temple and its detailed information in the city of Malang. This application is expected to facilitate the worship of Hindus in the city of Malang, especially for comer.
 
 Find The Nearest Temple is the main feature of Cari Pura. To be able to find the location of the nearest temple, this application uses GeoFire, a geolocation library.

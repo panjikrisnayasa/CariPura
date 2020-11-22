@@ -8,7 +8,7 @@ Find The Nearest Temple is the main feature of Cari Pura. To be able to find the
 
 Cari Pura is an application that implements MVVM architecture with Kotlin as programming language and Firebase as data storage.
 
-This application consists of 3 actor: guest, contributor, admin
+This application consists of 3 actor: guest, contributor, and admin.
 
 ## Some features of Cari Pura:
 ### 1. Find the nearest temple

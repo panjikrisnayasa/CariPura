@@ -14,7 +14,7 @@ This application consists of 3 actor: guest, contributor, and admin.
 ### 1. Find the nearest temple
 
 ![find the nearest temple](https://user-images.githubusercontent.com/48062932/92002773-d000f600-ed72-11ea-8bb6-7bba9b4f5b0c.png)
-<img src="https://user-images.githubusercontent.com/48062932/92002773-d000f600-ed72-11ea-8bb6-7bba9b4f5b0c.png" width="640">
+<img src="https://user-images.githubusercontent.com/48062932/92002773-d000f600-ed72-11ea-8bb6-7bba9b4f5b0c.png" width="360">
 
 ### 2. See the route to the temple
 
